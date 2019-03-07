@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+body{
+    font-family: 'Rubik', sans-serif;
+}
+.navbar-brand img {
+  padding: 0;
+  width: 32px;
+}
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+.about{
+  font-size: 1.2em;
+  width: 75%;
+  margin: 0 auto;
+}
+
+#home {
+  background: url('../images/709.jpg') no-repeat center center fixed;
+  display: table;
+  height: 600px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.landing-text{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: #7EC4B0;
+}
+
+.landing-text h1{
+  font-size: 500%;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.landing-text h3{
+  text-align: center;
+  color: #efefef;
+  font-weight: 700
+}
+
+.adopt_btn{
+  width: 85%;
+  margin: 0 auto;
+  margin-top: .7em;
+  background-color: #8C81DB;
+  border: solid 1px #efefef;
+}
+
+.adopt_btn:hover{
+  background-color: #8C9FDB;
+  border: solid 1px #efefef;
+}
+.display-4{
+  color: #7EC4B0;
+}
+.sign_up,.log_in{
+  background-color: #8C81DB;
+  border: solid 1px #efefef;
+	margin: 0 auto;
+}
+.sign_up:hover,.log_in:hover{
+  background-color: #8C9FDB;
+  border: solid 1px #efefef;
+}
+.my_btn {
+  background-color: #8C81DB;
+  border: solid 1px #efefef;
+  width: 30%;
+}
+.my_btn:hover{
+  background-color: #8C9FDB;
+  border: solid 1px #efefef;
+}
+.card-title{
+  text-align: center;
+}
+[class*="col-"]{
+  padding: 1rem;
+}
+
+@media (max-width: 992px) {
+  .social a{
+      font-size: 4em;
+      padding: 2rem;
+  }
+}
+
+.social a {
+  font-size: 4.5em;
+  padding: 3rem;
+}
+
+.fa-facebook {
+  color: #3b5998;
+}
+
+.fa-twitter {
+  color: #00aced;
+}
+
+.fa-google-plus-g {
+  color: #dd4b39;
+}
+
+.fa-instagram {
+  color: #517fa4;
+}
+
+.fa-youtube{
+  color: #bb0000;
+}
+
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-google-plus-g:hover,
+.fa-instagram:hover,
+.fa-youtube:hover{
+  color: #d5d5d5;
+}
+
+.card.index:hover{
+-webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+}
+
+.logged_in {
+  color: #00aced;
+}
+
+.no_user {
+  color: #517fa4;
+}
+
+.clear {
+  clear: both;
+}
+
+#message {
+  color: #0055DD;
+  background: white;
+  border: 2px solid #0055DD;
+  margin: 1em 0px;
+  padding: 0.5em 15px;
+  float:right;
+  direction: rtl;
+}
+
+#errors {
+  color: #ff9999;
+  font-size: 1em;
+  margin: 1em 0px;
+  direction: rtl;
+
+}
+
+#survey_answered_img {
+  background: url('../Images/dog_survey.jpg') no-repeat center center fixed;
+  display: table;
+  height: 500px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+  
+}
+#survey_img{
+  background: url('../Images/dog_survey.jpg') no-repeat center center fixed;
+  display: table;
+  height: 500px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+#survey_img_res{
+  background: url('../Images/survey_res.jpg') no-repeat center center fixed;
+  display: table;
+  height: 500px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+.chart {
+  width: 100%; 
+  min-height: 450px;
+}
+
+#home_adopt {
+  background: url('../Images/adopt_cover2.jpg') no-repeat center center fixed;
+  display: table;
+  height: 500px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.search_line{
+  text-align: center;
+}
+
+.dog_type, .dog_size, .dog_gender{
+  background-color: #8C81DB;
+  border: solid 1px black;
+  font-size: 20px;
+}
+
+.btn_search{
+  height: auto;
+  background-color: #8C81DB;
+  border: solid 2px black;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dog_search{
+  width: 300px;
+}
+
+.landing-text{
+  display: table-cell;
+  text-align: right;
+  vertical-align: bottom;
+  color: #7EC4B0;
+}
+
+img.card {
+  height: 100px;
+  width: 100px;
+}
+
+.search_message {
+  color: #ff9999;
+  background: white;
+  font-size: 2em;
+  margin: 1em 0px;
+  padding: 0.5em 15px;
+  direction: rtl;
+}
+.scrollable {
+  overflow-y: auto;
+  height: 80px;
+}
+
+#home_conact {
+  background: url('../Images/contact_home.jpg') no-repeat center center fixed;
+  display: table;
+  height: 500px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+
+
+.login{
+  opacity: 0.8;
+}
+
+#errors {
+  color: #ff9999;
+  font-size: 1em;
+  margin: 1em 0px;
+  direction: rtl;
+  float: right;
+}
+
+*{
+  box-sizing:border-box
+}
+
+#locationField {
+  
+  margin-bottom: 160px;
+  margin-right: 30%;
+}
+
+#autocomplete {
+  
+  margin: auto;
+  width: 45%;
+  vertical-align: middle;
+  display: table-cell;
+  height: 40px;
+  border-radius: 5px 5px 5px 5px;
+
+}
