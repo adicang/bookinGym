@@ -1,5 +1,5 @@
 var placeSearch, autocomplete;
-
+var lat, long;
 var componentForm = {
   street_number: 'short_name',
   route: 'long_name',
@@ -27,6 +27,9 @@ function initAutocomplete() {
 function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
+ lat = place.geometry.location.lat();
+
+ long = place.geometry.location.lng();
 
   for (var component in componentForm) {
     document.getElementById(component).value = '';
@@ -59,3 +62,12 @@ function geolocate() {
     });
   }
 }
+
+function returnLat(){
+  return lat;
+}
+
+function returnLng(){
+  return long;
+}
+

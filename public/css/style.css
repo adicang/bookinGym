@@ -282,19 +282,53 @@ img.card {
   box-sizing:border-box
 }
 
-#locationField {
+.locationFieldHomePage {
   
   margin-bottom: 160px;
-  margin-right: 30%;
+  margin-right: 35%;
 }
 
-#autocomplete {
+.autocompleteHomePage {
   
   margin: auto;
-  width: 45%;
+  width: 50%;
   vertical-align: middle;
   display: table-cell;
   height: 40px;
   border-radius: 5px 5px 5px 5px;
 
 }
+
+.autoCompleteSearchPage{
+  width: 80%;
+  height: 40px;
+  border-radius: 5px 5px 5px 5px;
+ 
+}
+#map {
+		
+        height: 100%;
+		width: 100%;
+      }
+	  
+.toRight{
+	float: right;
+}
+#gymCardStyle{
+
+  border:1px  solid; margin-bottom: 15px; width: 250px; border-radius: 5px 5px 5px 5px; 
+  float: right;
+  margin-right: 15px;
+  text-align: center;
+
+}
+#gymCardStyle:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+#gymCardStyleText{
+padding-top: 2px;
+  padding-right: 5px;
+}
+

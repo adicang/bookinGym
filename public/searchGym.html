@@ -20,7 +20,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="index.html">
         <img src="images/13546.jpg" alt=""> bookinGym
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">דף הבית</a>
+            <a class="nav-link" href="index.html">דף הבית</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">הוסף מועדון</a>
@@ -56,22 +56,60 @@
       </div>
     </nav>
   </header>
- 
-    <hr>
-    <section class="container-fluid padding">
-      <div class="row text-center padding">
-        <div class="col-12">
-          <h2>רשתות חברתיות</h2>
-        </div>
-        <div class="col-12 social padding">
-          <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-        </div>
+
+  <section class="container-fluid padding">
+
+      <div class="form-group col-12 text-right toRight">
+          <div id="locationField">
+            <input class="autoCompleteSearchPage col-3" id="autocomplete" placeholder="הקלד את כתובת המגורים שלך או חפש מועדון כושר" onFocus="geolocate()" type="text" />
+            <button onclick="showGyms()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
+          </div>
+
+
+</div>
+    <form action="map_data.php" method="POST">
+      <div class="row col-3 text-right">
+        <label>סוג מועדון: <select name="type" size="1">
+            <option value="" disabled selected hidden>בחר</option>
+            <option value="gym" name="gym"> מכון כושר </option>
+            <option value="studio" name="studio"> סטודיו </option>
+            <option value="pool" name="pool"> בריכה </option>
+          </select></label>
+          <button type="submit" class="btn btn-primary text-center sign_up ">סנן</button>
       </div>
-    </section>
+
+     
+    </form>
+
+  </section>
+
+  <section class="container-fluid padding">
+
+    <div  style="width: 100%; height:750px;">
+<div id="card" class="col-lg-5 toRight text-right"></div>
+      <div class="col-lg-7 toRight" id="map"></div>
+    </div>
+
+
+
+
+  </section>
+
+  <hr>
+  <section class="container-fluid padding">
+    <div class="row text-center padding">
+      <div class="col-12">
+        <h2>רשתות חברתיות</h2>
+      </div>
+      <div class="col-12 social padding">
+        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </section>
   </main>
   <footer>
     <div class="container-fluid padding">
@@ -100,11 +138,26 @@
       </div>
     </div>
   </footer>
-  <script src="js/animations.js">
+  <script src="js/animations.js"></script>
+  <script src='js/autoComplete.js'></script>
+
+  <script src="js/getMap.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places&callback=initialize&language=iw&region=IL"
+    async defer></script>
+  <script>
+    function initialize() {
+      initAutocomplete();
+    }
+	
+	function showGyms(){
+    
+		initMap();
+		showDetails();
+	}
   </script>
-  <script src='./js/autoComplete.js'></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places&callback=initAutocomplete&language=iw&region=IL" async defer></script>
-    <script src='../src/Main.js'></script>
+  <script src="./js/search.js"></script>
+
 </body>
 
 </html>

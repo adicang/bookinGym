@@ -15,13 +15,33 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
+$query = "SELECT * FROM Gyms";
+$result=$database->query($query);
+if($_POST['type']){
+				
+				$by_type = $_POST['type'];
+				
+
+				
+				$conditions = array();
+
+				if(! empty($by_type)) {
+				  $conditions[] = 'type="'.$by_type.'"';
+				}
+				
+
+				$sql = $query;
+				if (count($conditions) > 0) {
+				  $sql .= " WHERE " . implode(' AND ', $conditions);
+				}
+
+				$result=$database->query($sql);
+			}
+			
+			
+				
 
 
-
-// Select all the rows in the markers table
-
-$sql = "SELECT * FROM Gyms";
-$result=$database->query($sql);
 if (!$result) {
   die('Invalid query: ' . mysql_error());
 }

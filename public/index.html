@@ -20,7 +20,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="index.html">
         <img src="images/13546.jpg" alt=""> bookinGym
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">דף הבית</a>
+            <a class="nav-link" href="index.html">דף הבית</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">הוסף מועדון</a>
@@ -62,9 +62,9 @@
         <h1 class="home_h1">bookinGym</h1>
         <h3 class="home_h3">מנוע חיפוש שמאגד את כל החדרי הכושר במקום אחד!</h3>
         <div class="form-group col-12 textAlignRight">
-          <div id="locationField">
-            <input id="autocomplete" placeholder="הקלד את כתובת המגורים שלך או חפש מועדון כושר" onFocus="geolocate()" type="text" />
-            <a href="#" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</a>
+          <div class="locationFieldHomePage">
+            <input class="autocompleteHomePage col-4" id="autocomplete" placeholder="הקלד את כתובת המגורים שלך או חפש מועדון כושר" onFocus="geolocate()" type="text" />
+            <a href="#" id="find_gym" onclick="onClickFindGym()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</a>
           </div>
 
         </div>
@@ -210,11 +210,11 @@
     </div>
   </footer>
   <script src="js/animations.js">
+
   </script>
+     <script src="js/home.js"></script>
   <script src='./js/autoComplete.js'></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places&callback=initAutocomplete&language=iw&region=IL"
-    async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places&callback=initAutocomplete&language=iw&region=IL" async defer></script>
     <script src='../src/Main.js'></script>
 </body>
 
