@@ -57,70 +57,90 @@
       </div>
     </nav>
   </header>
-
-  <section class="container-fluid padding">
-    <div class="form-group col-12 text-right toRight">
-      <div id="locationField">
-        <input class="autoCompleteSearchPage col-3" id="autocomplete"
-          placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
-        <button onclick="showDetails()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
-        
+  <main>
+    <section class="container-fluid padding">
+      <div class="panel panel-primary toRight col-6" style="margin-right:150px;">
+        <div class="panel-heading">
+          <h3 class="panel-title text-right toRight">ימים ושעות פעילות</h3>
+        </div>
       </div>
-    </div>
-    <button type="submit" ></button>
-  </section>
+    </section>
 
+    <div class="clear"></div>
 
+    <section class="container-fluid padding">
+      <div class="row col-12 text-right">
 
-  <section class="container-fluid padding" style="width: 100%; height:750px;">
-      <div class="col-sm-1 toRight">
- <form  >
-    <div class="row text-right">
-      <fieldset><strong>סוג מועדון: </strong><br>
-        <input type="radio" id="gym" name="type" class="regular-checkbox" onclick="showDetails()"><label for="gym"> מכון כושר</label><br>
-        <input type="radio" id="studio" name="type" class="regular-checkbox" onclick="showDetails()"><label for="studio">
-          סטודיו</label><br>
-        <input type="radio" id="pool" name="type" class="regular-checkbox" onclick="showDetails()"><label for="pool"> בריכה</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-      <fieldset><strong>חוגים: </strong><br>
-        <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" onclick="showDetails()"><label for="TRX">TRX</label><br>
-        <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox" onclick="showDetails()"><label for="zumba">זומבה</label><br>
-        <input type="checkbox" id="Pilatis_Machine" name="Pilatis_Machine" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_Machine">פילאטיס מכשירים</label><br>
-        <input type="checkbox" id="Pilatis_mattress" name="Pilatis_mattress" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_mattress">פילאטיס מזרן</label><br>
-        <input type="checkbox" id="Shaping" name="Shaping" class="regular-checkbox" onclick="showDetails()"><label for="Shaping">עיצוב
-          וחיטוב</label><br>
-        <input type="checkbox" id="HIIT" name="HIIT" class="regular-checkbox" onclick="showDetails()"><label for="HIIT">HIIT</label><br>
-        <input type="checkbox" id="yoga" name="yoga" class="regular-checkbox" onclick="showDetails()"><label for="yoga">יוגה</label><br>
-        <input type="checkbox" id="Spinning" name="Spinning" class="regular-checkbox" onclick="showDetails()"><label
-          for="Spinning">ספינינג</label><br>
-        <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" onclick="showDetails()"><label
-          for="kikbox">קיק-בוקס</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-        <fieldset><strong>מתקנים: </strong><br>
-          <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" onclick="showDetails()"><label for="swimmingPool">בריכה</label><br>
-          <input type="checkbox" id="spa" name="spa" class="regular-checkbox" onclick="showDetails()"><label for="spa">ספא</label><br>
-          <input type="checkbox" id="parking" name="parking" class="regular-checkbox" onclick="showDetails()"><label
-            for="parking">חניה</label><br>
-            <input type="checkbox" id="accessibility" name="accessibility" class="regular-checkbox" onclick="showDetails()"><label for="accessibility">נגישות</label><br>
-        </fieldset>
+        <label for="schedule">העלאת לוח חוגים של המועדון (PDF בלבד)
+          <input name="schedule" type="file" accept="application/pdf" /></label>
+
       </div>
-  </form>
-    </div>
+    </section>
 
-  
-    <div id="card" class="col-sm-5 toRight text-right"></div>
-    <div class="col-sm-6 toRight" id="map"></div>
-  
 
-  </section>
+    <div class="clear"></div>
+    <hr>
 
-  <hr>
+    <section class="container-fluid padding">
+      <div class="col-sm-12 toRight">
+        <div class="row  text-right">
+          <fieldset><strong>ימי פעילות: </strong><br>
+            <div class="clear"></div>
+
+
+            <input type="checkbox" id="Sunday" name="Sunday" class="regular-checkbox" onclick="showFromTo('Sunday')"><label for="Sunday">ראשון</label>
+            <label id="fromSunday" class="fromTo">משעה: <input type="time" id="fromSunday1"> </label>
+            <label id="toSunday" class="fromTo">עד שעה: <input type="time" id="toSunday1"> </label>
+            <br>
+            <input type="checkbox" id="Monday" name="Monday" class="regular-checkbox"
+              onclick="showFromTo('Monday')"><label for="Monday">שני</label>
+              <label id="fromMonday" class="fromTo">משעה: <input type="time" id="fromMonday1"> </label>
+            <label id="toMonday" class="fromTo">עד שעה: <input type="time" id="toMonday1"> </label>
+            <br>
+            <input type="checkbox" id="Tuesday" name="Tuesday" class="regular-checkbox"
+              onclick="showFromTo('Tuesday')"><label for="Tuesday">שלישי</label>
+              <label id="fromTuesday" class="fromTo">משעה: <input type="time" id="fromTuesday1"> </label>
+              <label id="toTuesday" class="fromTo">עד שעה: <input type="time" id="toTuesday1"> </label>
+              <br>
+            <input type="checkbox" id="Wednesday" name="Wednesday" class="regular-checkbox"
+              onclick="showFromTo('Wednesday')"><label for="Wednesday">רביעי</label>
+              <label id="fromWednesday" class="fromTo">משעה: <input type="time" id="fromWednesday1"> </label>
+              <label id="toWednesday" class="fromTo">עד שעה: <input type="time" id="toWednesday1"> </label>
+          <br>
+
+            <input type="checkbox" id="Thursday" name="Thursday" class="regular-checkbox"
+              onclick="showFromTo('Thursday')"><label for="Thursday">חמישי</label>
+              <label id="fromThursday" class="fromTo">משעה: <input type="time" id="fromThursday1"> </label>
+              <label id="toThursday" class="fromTo">עד שעה: <input type="time" id="toThursday1"> </label>
+              <br>
+
+            <input type="checkbox" id="Friday" name="Friday" class="regular-checkbox"
+              onclick="showFromTo('Friday')"><label for="Friday">שישי</label>
+              <label id="fromFriday" class="fromTo">משעה: <input type="time" id="fromFriday1"> </label>
+              <label id="toFriday" class="fromTo">עד שעה: <input type="time" id="toFriday1"> </label>
+              <br>
+
+            <input type="checkbox" id="Saturday" name="Saturday" class="regular-checkbox"
+              onclick="showFromTo('Saturday')"><label for="Saturday">שבת</label>
+              <label id="fromSaturday" class="fromTo">משעה: <input type="time" id="fromSaturday1"> </label>
+              <label id="toSaturday" class="fromTo">עד שעה: <input type="time" id="toSaturday1"> </label>
+              <br>
+          </fieldset>
+        </div>
+      </div>
+    </section>
+
+    <div class="clear"></div>
+    <p id="loginError"></p>
+    <section class="container-fluid padding">
+      
+      <button onclick="addDaysAndHours()" class="btn btn-primary text-center sign_up toLeft" value="הבא">הבא</button>
+    </section>
+
+
+    <div class="clear"></div>
+    <hr>
+  </main>
   <section class="container-fluid padding">
     <div class="row text-center padding">
       <div class="col-12">
@@ -165,13 +185,14 @@
   </footer>
   <script src="js/animations.js"></script>
   <script src='js/autoComplete.js'></script>
+  <script src='js/addGym1.js'></script>
 
-  
+
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
-  
-  
+
+
 
 
 </body>

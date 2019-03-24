@@ -59,66 +59,67 @@
   </header>
 
   <section class="container-fluid padding">
-    <div class="form-group col-12 text-right toRight">
-      <div id="locationField">
-        <input class="autoCompleteSearchPage col-3" id="autocomplete"
-          placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
-        <button onclick="showDetails()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
-        
+    <div class="toRight">
+      <div class="panel panel-primary toRight col-6" style="margin-right:150px;">
+        <div class="panel-heading">
+          <h3 class="panel-title text-right toRight">פרטים כלליים</h3>
+        </div>
+        <div class="panel-body">
+          <form>
+            
+              <div class="form-group col-12 text-right toRight">
+                <label for="name">שם המועדון* </label>
+                <input type="text" class="form-control input-sm textAlignRight" id="name" name="name"
+                  placeholder="הכנס את שם המועדון">
+              </div>
+              <div class="form-group col-12 text-right toRight">
+                <label for="email">אימייל*</label>
+                <input type="text" class="form-control input-sm textAlignRight" id="email" name="email"
+                  placeholder="הכנס אימייל ליצירת קשר">
+              </div>
+
+              <div class="form-group col-12 text-right toRight">
+                <label for="phone">מספר טלפון*</label>
+                <input type="text" class="form-control input-sm textAlignRight" id="phone" name="phone"
+                  placeholder="הכנס מספר טלפון ליצירת קשר">
+              </div>
+
+              <div class="form-group col-12 text-right toRight">
+                <label for="description">תיאור*</label>
+                <textarea rows="4" class="form-control input-sm textAlignRight" id="description" name="description"
+                  placeholder="כתוב תיאור קצר של מועדון הכושר"></textarea>
+              </div>
+
+              <div class="form-group col-12 text-right toRight">
+                <label for="address">כתובת*</label>
+                <input class="form-control input-sm textAlignRight" id="autocomplete"
+                  placeholder="הכנס את כתובת המועדון" onFocus="geolocate()" type="text" />
+
+              </div>
+              <div class="form-group col-12 text-right toRight">
+                  <label for="description">אתר המועדון</label>
+                  <input type="url"  class="form-control input-sm textAlignRight" id="website" name="website"
+                    placeholder="הזן את כתובת האינטרנט של המועדון"></textarea>
+                </div>
+              <div class="form-group col-12 text-right toRight">
+                <label for="address">סוג המועדון*</label>
+                <p>
+                <label class="radio-inline"><input type="radio" name="type" id="gym" value="gym">מכון כושר</label>
+                <label class="radio-inline"><input type="radio" name="type" id="studio" value="studio">סטודיו</label>
+                <label class="radio-inline"><input type="radio" name="type" id="pool" value="pool">בריכה</label>
+              </p>
+              </div>
+            </form>
+            </div> 
       </div>
-    </div>
-    <button type="submit" ></button>
   </section>
+  <section class="container-fluid padding">
+      <button onclick="addFirstDetails()" class="btn btn-primary text-center sign_up toLeft" value="הבא">הבא</button>
+      <p id="loginError"></p>
+    </section>
 
 
-
-  <section class="container-fluid padding" style="width: 100%; height:750px;">
-      <div class="col-sm-1 toRight">
- <form  >
-    <div class="row text-right">
-      <fieldset><strong>סוג מועדון: </strong><br>
-        <input type="radio" id="gym" name="type" class="regular-checkbox" onclick="showDetails()"><label for="gym"> מכון כושר</label><br>
-        <input type="radio" id="studio" name="type" class="regular-checkbox" onclick="showDetails()"><label for="studio">
-          סטודיו</label><br>
-        <input type="radio" id="pool" name="type" class="regular-checkbox" onclick="showDetails()"><label for="pool"> בריכה</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-      <fieldset><strong>חוגים: </strong><br>
-        <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" onclick="showDetails()"><label for="TRX">TRX</label><br>
-        <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox" onclick="showDetails()"><label for="zumba">זומבה</label><br>
-        <input type="checkbox" id="Pilatis_Machine" name="Pilatis_Machine" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_Machine">פילאטיס מכשירים</label><br>
-        <input type="checkbox" id="Pilatis_mattress" name="Pilatis_mattress" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_mattress">פילאטיס מזרן</label><br>
-        <input type="checkbox" id="Shaping" name="Shaping" class="regular-checkbox" onclick="showDetails()"><label for="Shaping">עיצוב
-          וחיטוב</label><br>
-        <input type="checkbox" id="HIIT" name="HIIT" class="regular-checkbox" onclick="showDetails()"><label for="HIIT">HIIT</label><br>
-        <input type="checkbox" id="yoga" name="yoga" class="regular-checkbox" onclick="showDetails()"><label for="yoga">יוגה</label><br>
-        <input type="checkbox" id="Spinning" name="Spinning" class="regular-checkbox" onclick="showDetails()"><label
-          for="Spinning">ספינינג</label><br>
-        <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" onclick="showDetails()"><label
-          for="kikbox">קיק-בוקס</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-        <fieldset><strong>מתקנים: </strong><br>
-          <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" onclick="showDetails()"><label for="swimmingPool">בריכה</label><br>
-          <input type="checkbox" id="spa" name="spa" class="regular-checkbox" onclick="showDetails()"><label for="spa">ספא</label><br>
-          <input type="checkbox" id="parking" name="parking" class="regular-checkbox" onclick="showDetails()"><label
-            for="parking">חניה</label><br>
-            <input type="checkbox" id="accessibility" name="accessibility" class="regular-checkbox" onclick="showDetails()"><label for="accessibility">נגישות</label><br>
-        </fieldset>
-      </div>
-  </form>
-    </div>
-
-  
-    <div id="card" class="col-sm-5 toRight text-right"></div>
-    <div class="col-sm-6 toRight" id="map"></div>
-  
-
-  </section>
+  <div class="clear"></div>
 
   <hr>
   <section class="container-fluid padding">
@@ -165,13 +166,14 @@
   </footer>
   <script src="js/animations.js"></script>
   <script src='js/autoComplete.js'></script>
+  <script src='js/addGym1.js'></script>
 
-  
+
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
-  
-  
+
+
 
 
 </body>

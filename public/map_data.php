@@ -15,18 +15,60 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
-$query = "SELECT * FROM Gyms";
-$result=$database->query($query);
-if($_POST['type']){
-				
-				$by_type = $_POST['type'];
-				
+$query = "SELECT * FROM Gyms INNER JOIN Classes ON Gyms.id = Classes.gymId INNER JOIN Facilities ON Gyms.id = Facilities.gymId INNER JOIN Logos ON Gyms.id = Logos.gymId";
 
-				
+
+
+	
 				$conditions = array();
 
-				if(! empty($by_type)) {
-				  $conditions[] = 'type="'.$by_type.'"';
+				if($_GET["gym"]) {
+				  $conditions[] = 'type="gym"';
+        }
+        if($_GET["pool"]) {
+				  $conditions[] = 'type="pool"';
+        }
+        if($_GET["studio"]) {
+				  $conditions[] = 'type="studio"';
+        }
+        if($_GET["TRX"]) {
+				  $conditions[] = 'TRX=1';
+        }
+        if($_GET["zumba"]) {
+				  $conditions[] = 'zumba=1';
+        }
+        if($_GET["Pilatis_Machine"]) {
+				  $conditions[] = 'Pilatis_Machine=1';
+        }
+        if($_GET["Pilatis_mattress"]) {
+				  $conditions[] = 'Pilatis_mattress=1';
+        }
+        if($_GET["Shaping"]) {
+				  $conditions[] = 'Shaping=1';
+        }
+        if($_GET["HIIT"]) {
+				  $conditions[] = 'HIIT=1';
+        }
+        if($_GET["yoga"]) {
+				  $conditions[] = 'yoga=1';
+        }
+        if($_GET["Spinning"]) {
+				  $conditions[] = 'Spinning=1';
+        }
+        if($_GET["kikbox"]) {
+				  $conditions[] = 'kikbox=1';
+        }
+        if($_GET["swimmingPool"]) {
+				  $conditions[] = 'swimmingPool=1';
+        }
+        if($_GET["spa"]) {
+				  $conditions[] = 'spa=1';
+        }
+        if($_GET["parking"]) {
+				  $conditions[] = 'parking=1';
+        }
+        if($_GET["accessibility"]) {
+				  $conditions[] = 'accessibility=1';
 				}
 				
 
@@ -36,10 +78,7 @@ if($_POST['type']){
 				}
 
 				$result=$database->query($sql);
-			}
-			
-			
-				
+					
 
 
 if (!$result) {
@@ -62,7 +101,8 @@ while ($row = @mysqli_fetch_assoc($result)){
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
   echo 'type="' . $row['type'] . '" ';
-  echo 'logo="' .$row['logo'] . '" ';
+  echo 'logo="' .$row['imgName'] . '" ';
+  
   echo '/>';
   $ind = $ind + 1;
 }

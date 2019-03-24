@@ -10,8 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="js/search.js"></script>
-  <script src="js/autoComplete.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -39,7 +38,7 @@
             <a class="nav-link" href="searchGym.html">חפש מועדון</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">העברת מנוי/כרטיסייה</a>
+            <a class="nav-link" href="#">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="contact.php">צור קשר</a>
@@ -57,70 +56,70 @@
       </div>
     </nav>
   </header>
+  <main>
+    <section class="container-fluid padding">
+      <div class="panel panel-primary toRight col-6" >
+        <div class="panel-heading">
+          <h3 class="panel-title text-right toRight">חוגים ומתקנים</h3>
+        </div>
+      </div>
+    </section>
 
-  <section class="container-fluid padding">
-    <div class="form-group col-12 text-right toRight">
-      <div id="locationField">
-        <input class="autoCompleteSearchPage col-3" id="autocomplete"
-          placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
-        <button onclick="showDetails()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
+    <div class="clear"></div>
+
+    <section class="container-fluid padding">
+      <div class="row col-12 text-right">
+
         
+
       </div>
-    </div>
-    <button type="submit" ></button>
-  </section>
+    </section>
 
 
+    
 
-  <section class="container-fluid padding" style="width: 100%; height:750px;">
-      <div class="col-sm-1 toRight">
- <form  >
-    <div class="row text-right">
-      <fieldset><strong>סוג מועדון: </strong><br>
-        <input type="radio" id="gym" name="type" class="regular-checkbox" onclick="showDetails()"><label for="gym"> מכון כושר</label><br>
-        <input type="radio" id="studio" name="type" class="regular-checkbox" onclick="showDetails()"><label for="studio">
-          סטודיו</label><br>
-        <input type="radio" id="pool" name="type" class="regular-checkbox" onclick="showDetails()"><label for="pool"> בריכה</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-      <fieldset><strong>חוגים: </strong><br>
-        <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" onclick="showDetails()"><label for="TRX">TRX</label><br>
-        <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox" onclick="showDetails()"><label for="zumba">זומבה</label><br>
-        <input type="checkbox" id="Pilatis_Machine" name="Pilatis_Machine" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_Machine">פילאטיס מכשירים</label><br>
-        <input type="checkbox" id="Pilatis_mattress" name="Pilatis_mattress" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_mattress">פילאטיס מזרן</label><br>
-        <input type="checkbox" id="Shaping" name="Shaping" class="regular-checkbox" onclick="showDetails()"><label for="Shaping">עיצוב
-          וחיטוב</label><br>
-        <input type="checkbox" id="HIIT" name="HIIT" class="regular-checkbox" onclick="showDetails()"><label for="HIIT">HIIT</label><br>
-        <input type="checkbox" id="yoga" name="yoga" class="regular-checkbox" onclick="showDetails()"><label for="yoga">יוגה</label><br>
-        <input type="checkbox" id="Spinning" name="Spinning" class="regular-checkbox" onclick="showDetails()"><label
-          for="Spinning">ספינינג</label><br>
-        <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" onclick="showDetails()"><label
-          for="kikbox">קיק-בוקס</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-        <fieldset><strong>מתקנים: </strong><br>
-          <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" onclick="showDetails()"><label for="swimmingPool">בריכה</label><br>
-          <input type="checkbox" id="spa" name="spa" class="regular-checkbox" onclick="showDetails()"><label for="spa">ספא</label><br>
-          <input type="checkbox" id="parking" name="parking" class="regular-checkbox" onclick="showDetails()"><label
-            for="parking">חניה</label><br>
-            <input type="checkbox" id="accessibility" name="accessibility" class="regular-checkbox" onclick="showDetails()"><label for="accessibility">נגישות</label><br>
-        </fieldset>
-      </div>
-  </form>
-    </div>
+    <section class="container-fluid padding">
+        <div class="row  text-right">
+            <fieldset><strong>חוגים: </strong><br>
+              <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" ><label for="TRX">TRX</label><br>
+              <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox"><label for="zumba">זומבה</label><br>
+              <input type="checkbox" id="Pilatis_Machine" name="Pilatis_Machine" class="regular-checkbox" ><label
+                for="Pilatis_Machine">פילאטיס מכשירים</label><br>
+              <input type="checkbox" id="Pilatis_mattress" name="Pilatis_mattress" class="regular-checkbox" "><label
+                for="Pilatis_mattress">פילאטיס מזרן</label><br>
+              <input type="checkbox" id="Shaping" name="Shaping" class="regular-checkbox" ><label for="Shaping">עיצוב
+                וחיטוב</label><br>
+              <input type="checkbox" id="HIIT" name="HIIT" class="regular-checkbox" ><label for="HIIT">HIIT</label><br>
+              <input type="checkbox" id="yoga" name="yoga" class="regular-checkbox" ><label for="yoga">יוגה</label><br>
+              <input type="checkbox" id="Spinning" name="Spinning" class="regular-checkbox" ><label
+                for="Spinning">ספינינג</label><br>
+              <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" ><label
+                for="kikbox">קיק-בוקס</label><br>
+            </fieldset>
+          </div>
+          <div class="row  text-right">
+              <fieldset><strong>מתקנים: </strong><br>
+                <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" ><label for="swimmingPool">בריכה</label><br>
+                <input type="checkbox" id="spa" name="spa" class="regular-checkbox" ><label for="spa">ספא</label><br>
+                <input type="checkbox" id="parking" name="parking" class="regular-checkbox" ><label
+                  for="parking">חניה</label><br>
+                  <input type="checkbox" id="accessibility" name="accessibility" class="regular-checkbox" ><label for="accessibility">נגישות</label><br>
+              </fieldset>
+            </div>
+    </section>
 
-  
-    <div id="card" class="col-sm-5 toRight text-right"></div>
-    <div class="col-sm-6 toRight" id="map"></div>
-  
+    <div class="clear"></div>
+    <hr>
+    
+    <section class="container-fluid padding">
+        <p id="loginError"></p>
+      <button onclick="addClassesAndFacilities()" class="btn btn-primary text-center sign_up toLeft" value="הבא">הבא</button>
+    </section>
 
-  </section>
 
-  <hr>
+    <div class="clear"></div>
+    <hr>
+  </main>
   <section class="container-fluid padding">
     <div class="row text-center padding">
       <div class="col-12">
@@ -165,13 +164,14 @@
   </footer>
   <script src="js/animations.js"></script>
   <script src='js/autoComplete.js'></script>
+  <script src='js/addGym1.js'></script>
 
-  
+
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
-  
-  
+
+
 
 
 </body>

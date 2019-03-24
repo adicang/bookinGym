@@ -7,13 +7,18 @@
   <link rel="shortcut icon" href="images/13546.jpg" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+  
+  
   <title>bookinGym</title>
 </head>
 
@@ -32,16 +37,16 @@
             <a class="nav-link" href="index.html">דף הבית</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">הוסף מועדון</a>
+            <a class="nav-link" href="addGym1.html">הוסף מועדון</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="searchGym.html">חפש מועדון</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Includes/about_us.php">אודות</a>
+              <a class="nav-link" href="transferForm.php">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Includes/contact_us.php">צור קשר</a>
+              <a class="nav-link" href="contact.php">צור קשר</a>
           </li>
 
           <li>
@@ -60,10 +65,10 @@
     <div id='home'>
       <div class="landing-text">
         <h1 class="home_h1">bookinGym</h1>
-        <h3 class="home_h3">מנוע חיפוש שמאגד את כל החדרי הכושר במקום אחד!</h3>
+        <h3 class="home_h3">מנוע חיפוש המאגד את כל חדרי הכושר במקום אחד!</h3>
         <div class="form-group col-12 textAlignRight">
           <div class="locationFieldHomePage">
-            <input class="autocompleteHomePage col-4" id="autocomplete" placeholder="הקלד את כתובת המגורים שלך או חפש מועדון כושר" onFocus="geolocate()" type="text" />
+            <input class="autocompleteHomePage col-4" id="autocomplete" placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
             <a href="#" id="find_gym" onclick="onClickFindGym()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</a>
           </div>
 
@@ -71,6 +76,7 @@
 
       </div>
     </div>
+    
     <section class="container-fluid padding FirstCo">
       <div class="row about_us text-center">
         <div class="col-12">
@@ -155,8 +161,7 @@
             מעוניינים למכור.
           </p>
           <p>
-            בתאריך 01/01/2019 יתבצע יריד התרמות וגיוס כספים למען העמותה. ביריד יהיו דוכני אוכל, מכירת צעצועים ואוכל
-            לכלבים במחירים מוזלים ועוד.
+            באמצעות המערכת תוכלו לפרסם במודעה מפורטת את הכרטיסייה או המנוי אותם תרצו למכור או לחילופין לרכוש כרטיסייה או מנוי לטווח קצר או במחיר מוזל יותר!
           </p>
           <br>
           <a href="#" class="btn btn-primary my_btn">למכירת/קניית כרטיסייה או מנוי</a>
@@ -215,7 +220,7 @@
      <script src="js/home.js"></script>
   <script src='./js/autoComplete.js'></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places&callback=initAutocomplete&language=iw&region=IL" async defer></script>
-    <script src='../src/Main.js'></script>
+  
 </body>
 
 </html>

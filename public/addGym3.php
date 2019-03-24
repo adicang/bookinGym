@@ -1,3 +1,38 @@
+<?php  
+ require("config.php");
+require("database.php");
+
+    $queryId = "SELECT MAX(id) FROM Gyms";
+    $res=$database->query($queryId);
+    $row=$res->fetch_assoc();
+    $id=$row['MAX(id)'];
+
+
+ if(isset($_POST['uploadfilesub'])) {
+
+  $filename = $_FILES['uploadfile']['name'];
+  $filetmpname = $_FILES['uploadfile']['tmp_name'];
+  $folder = 'images/Logos/';
+
+  move_uploaded_file($filetmpname, $folder.$filename);
+
+  $sql = "INSERT INTO `Logos`(`gymId`, `imgName`) VALUES ($id,'$filename')";
+  $result=$database->query($sql);
+
+  $filename = $_FILES['uploadImg1']['name'];
+  $filetmpname = $_FILES['uploadImg1']['tmp_name'];
+  $folder = 'images/';
+
+  move_uploaded_file($filetmpname, $folder.$filename);
+
+  $sql = "INSERT INTO `uploadedimage`(`imagename`, `gymId`) VALUES ('$filename',$id)";
+  $result=$database->query($sql);
+  header('Location: addGym4.html');
+ }
+
+
+ ?>
+
 <!doctype html>
 <html lang="heb" dir="rtl">
 
@@ -14,7 +49,17 @@
   <script src="js/autoComplete.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  
+<style>
 
+.imageUpload{
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-image:url(images/plus.png);
+}
+
+</style>
   <title>bookinGym</title>
 </head>
 
@@ -59,66 +104,81 @@
   </header>
 
   <section class="container-fluid padding">
-    <div class="form-group col-12 text-right toRight">
-      <div id="locationField">
-        <input class="autoCompleteSearchPage col-3" id="autocomplete"
-          placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
-        <button onclick="showDetails()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
-        
+      <div class="panel panel-primary toRight col-6" >
+        <div class="panel-heading">
+          <h3 class="panel-title text-right toRight">הוספת תמונות</h3>
+        </div>
       </div>
+    </section>
+
+    <div class="clear"></div>
+
+    
+
+
+  <section class="container-fluid padding">
+  <form method="post" enctype="multipart/form-data">  
+    <div id="addLogo" class="toRight">
+       
+
+        <label for="imageUpload" class="imageUpload" id="insertLogo">לחצו על מנת להעלות את לוגו המועדון</label>
+        <input type="file" name="uploadfile" id="imageUpload" accept="image/*" style="display: none" onchange="preview_logo(event)">
+        <p>שימו לב שעל הלוגו להיות במידות של 50X50 פיקסלים</p>
+
     </div>
-    <button type="submit" ></button>
   </section>
-
-
-
-  <section class="container-fluid padding" style="width: 100%; height:750px;">
-      <div class="col-sm-1 toRight">
- <form  >
-    <div class="row text-right">
-      <fieldset><strong>סוג מועדון: </strong><br>
-        <input type="radio" id="gym" name="type" class="regular-checkbox" onclick="showDetails()"><label for="gym"> מכון כושר</label><br>
-        <input type="radio" id="studio" name="type" class="regular-checkbox" onclick="showDetails()"><label for="studio">
-          סטודיו</label><br>
-        <input type="radio" id="pool" name="type" class="regular-checkbox" onclick="showDetails()"><label for="pool"> בריכה</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-      <fieldset><strong>חוגים: </strong><br>
-        <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" onclick="showDetails()"><label for="TRX">TRX</label><br>
-        <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox" onclick="showDetails()"><label for="zumba">זומבה</label><br>
-        <input type="checkbox" id="Pilatis_Machine" name="Pilatis_Machine" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_Machine">פילאטיס מכשירים</label><br>
-        <input type="checkbox" id="Pilatis_mattress" name="Pilatis_mattress" class="regular-checkbox" onclick="showDetails()"><label
-          for="Pilatis_mattress">פילאטיס מזרן</label><br>
-        <input type="checkbox" id="Shaping" name="Shaping" class="regular-checkbox" onclick="showDetails()"><label for="Shaping">עיצוב
-          וחיטוב</label><br>
-        <input type="checkbox" id="HIIT" name="HIIT" class="regular-checkbox" onclick="showDetails()"><label for="HIIT">HIIT</label><br>
-        <input type="checkbox" id="yoga" name="yoga" class="regular-checkbox" onclick="showDetails()"><label for="yoga">יוגה</label><br>
-        <input type="checkbox" id="Spinning" name="Spinning" class="regular-checkbox" onclick="showDetails()"><label
-          for="Spinning">ספינינג</label><br>
-        <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" onclick="showDetails()"><label
-          for="kikbox">קיק-בוקס</label><br>
-      </fieldset>
-    </div>
-    <div class="row  text-right">
-        <fieldset><strong>מתקנים: </strong><br>
-          <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" onclick="showDetails()"><label for="swimmingPool">בריכה</label><br>
-          <input type="checkbox" id="spa" name="spa" class="regular-checkbox" onclick="showDetails()"><label for="spa">ספא</label><br>
-          <input type="checkbox" id="parking" name="parking" class="regular-checkbox" onclick="showDetails()"><label
-            for="parking">חניה</label><br>
-            <input type="checkbox" id="accessibility" name="accessibility" class="regular-checkbox" onclick="showDetails()"><label for="accessibility">נגישות</label><br>
-        </fieldset>
+  <div class="clear"></div>
+  <hr>
+  <section class="container-fluid padding">
+       
+      <div id="addImage" class="toRight">
+         
+  
+          <label for="imageUpload" class="imageUpload" id="insertImage"><span id=inputTitle>לחצו על מנת להוסיף תמונות של המועדון</span></label>
+          <input type="file" name="uploadImg1" id="imageUpload" accept="image/*" style="display: none" onchange="preview_image(event)">
+          
+          
       </div>
-  </form>
-    </div>
+      <div class="clear"></div>
+      <div class="container-fluid padding">
+   
+      <input type="submit" name="uploadfilesub" value="הבא" class="btn btn-primary text-center sign_up toLeft"/>
+      
+</div>
+      </form>
+    </section>
+
+  <div class="clear"></div>
+
+  <script> 
+  
+  function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                
+                var src = reader.result;
+                var url = "url("+src+")";
+                document.getElementById('insertImage').style.backgroundImage = url;
+                document.getElementById("insertImage").style.backgroundSize = "200px 200px";
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+ 
+
+ function preview_logo(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                
+                var src = reader.result;
+                var url = "url("+src+")";
+                document.getElementById('insertLogo').style.backgroundImage = url;
+                document.getElementById("insertLogo").style.backgroundSize = "200px 200px";
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
 
   
-    <div id="card" class="col-sm-5 toRight text-right"></div>
-    <div class="col-sm-6 toRight" id="map"></div>
-  
-
-  </section>
+ </script>  
 
   <hr>
   <section class="container-fluid padding">
