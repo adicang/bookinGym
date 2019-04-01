@@ -75,7 +75,7 @@
           <div class="row col-6 toRight">
             <label for="businessNum">מספר עסק:
               <br>
-              <input type="number" name="businessNum"></label>
+              <input type="number" name="businessNum" id="businessNum"></label>
             </label>
           </div>
           <div class="clear"></div>
@@ -83,14 +83,14 @@
           <div class="row col-6 toRight">
             <label for="accountNum">מספר חשבון בנק:
               <br>
-              <input type="number" name="accountNum">
+              <input type="number" name="accountNum" id="accountNum">
             </label>
           </div>
           <div class="clear"></div>
           <div class="row col-6 toRight">
             <label for="branchNum">מספר סניף:
               <br>
-              <input type="number" name="branchNum">
+              <input type="number" name="branchNum" id="branchNum">
             </label>
           </div>
         </fieldset>
@@ -116,14 +116,13 @@
 
 
         <div class="form-group col-3 text-right toRight">
-          <label for="periodTime">לאורך:</label>
-            <input type="number" class="form-control input-sm textAlignRight" id="periodTime" name="periodTime"
-              required>
+          <label for="periodTimeSub">לאורך:</label>
+            <input type="number" class="form-control input-sm textAlignRight" id="periodTimeSub" name="periodTimeSub">
         </div>
 
         <div class="form-group col-3 text-right toRight">
-            <label for="periodType">  בחר תקופה:</label>
-            <select class="form-control input-lg textAlignRight" id="periodType" name="periodType" required >
+            <label for="periodTypeSub">  בחר תקופה:</label>
+            <select class="form-control input-lg textAlignRight" id="periodTypeSub" name="periodTypeSub" >
                 <option value="days"> ימים</option>
                 <option value="weeks">שבועות</option>
                 <option value="months">חודשים</option>
@@ -133,8 +132,8 @@
         
 
         <div class="form-group col-3 text-right toRight">
-          <label for="price"> מחיר</label>
-          <input type="number" class="form-control input-sm textAlignRight" id="priceSub" name="price" required>
+          <label for="priceSub"> מחיר</label>
+          <input type="number" class="form-control input-sm textAlignRight" id="priceSub" name="priceSub">
         </div>
       </fieldset>
     </div>
@@ -148,24 +147,24 @@
             <label for="enterCount">כמות כניסות</label>
 
             <input type="number" class="form-control input-sm textAlignRight" id="enterCount" name="enterCount"
-              required>
+              >
             <br>
           </div>
 
           <div class="form-group col-3 text-right toRight">
-            <label for="price"> מחיר</label>
-            <input type="number" class="form-control input-sm textAlignRight" id="priceCa" name="priceCard" required>
+            <label for="priceCard"> מחיר</label>
+            <input type="number" class="form-control input-sm textAlignRight" id="priceCard" name="priceCard">
           </div>
 
           <div class="form-group col-3 text-right toRight">
-              <label for="periodTime">לאורך:</label>
-                <input type="number" class="form-control input-sm textAlignRight" id="periodTime" name="periodTime"
-                  required>
+              <label for="periodTimeCard">לאורך:</label>
+                <input type="number" class="form-control input-sm textAlignRight" id="periodTimeCard" name="periodTimeCard"
+                  >
             </div>
     
             <div class="form-group col-3 text-right toRight">
-                <label for="periodType">  בחר תקופה:</label>
-                <select class="form-control input-lg textAlignRight" id="periodType" name="periodType" required >
+                <label for="periodTypeCard">  בחר תקופה:</label>
+                <select class="form-control input-lg textAlignRight" id="periodTypeCard" name="periodTypeCard"  >
                     <option value="days"> ימים</option>
                     <option value="weeks">שבועות</option>
                     <option value="months">חודשים</option>
@@ -175,12 +174,13 @@
 
         </fieldset>
       </div>
-      <div class="form-group col-8 text-right toRight">
-        <span class="input-group-btn"><input type="submit" class="btn btn-primary text-center sign_up"
-            value="שלח" /></span>
-      </div>
       </form>
     </div>
+  </section>
+  <div class="clear"></div>
+  <section class="container-fluid padding">
+      <p id="loginError"></p>
+    <button onclick="addCardsAndSubscription()" class="btn btn-primary text-center sign_up toLeft" value="הוסף מועדון">הוסף מועדון</button>
   </section>
 
 
@@ -230,6 +230,7 @@
   </footer>
   <script src="js/animations.js"></script>
   <script src='js/autoComplete.js'></script>
+  <script src='js/addGym1.js'></script>
 
 
   <script

@@ -4,47 +4,75 @@ window.onload = function () {
     var gymId = url.searchParams.get("gymId");
 
 
-    downloadUrl('map_data.php', function (data) {
+    downloadUrl('include/map_data1.php', function (data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName('marker');
         Array.prototype.forEach.call(markers, function (markerElem) {
-    
+
             var id = markerElem.getAttribute('id');
-            if(id == gymId){ 
+            if (id == gymId) {
+                var lat = markerElem.getAttribute('lat');
+                var lng = markerElem.getAttribute('lng');
+                var map = new google.maps.Map(document.getElementById('mapGymPage'), {
+                    center: new google.maps.LatLng(lat, lng),
+                    zoom: 18
+                });
+                var name = markerElem.getAttribute('name');
+                var address = markerElem.getAttribute('address');
+                var type = markerElem.getAttribute('type');
+                var infoWindow = new google.maps.InfoWindow;
+                var logoSource = "images/GymImg/";
+                var logoName = markerElem.getAttribute('logo');
+                var logo = logoSource.concat(logoName);
+                var addressParsed = unParse(markerElem.getAttribute('address'));
+                var point = new google.maps.LatLng(
+                    parseFloat(markerElem.getAttribute('lat')),
+                    parseFloat(markerElem.getAttribute('lng')));
 
-            var name = markerElem.getAttribute('name');
-            var address = markerElem.getAttribute('address');
-            var type = markerElem.getAttribute('type');
-            var logoSource = "images/Logos/";
-            var logoName = markerElem.getAttribute('logo');
-            var logo = logoSource.concat(logoName);
-            var description = markerElem.getAttribute('description');
+                var infowincontent = document.createElement('div');
+                var strong1 = document.createElement('strong');
+                strong1.textContent = name
+                infowincontent.appendChild(strong1);
+                infowincontent.appendChild(document.createElement('br'));
 
-            var card = document.getElementById("card");
-            var title = document.createElement('h1');
-            title.textContent = name
-            card.appendChild(title);
+                var text1 = document.createElement('text');
+                text1.textContent = addressParsed
+                infowincontent.appendChild(text1);
 
-           
-            var imageEl = document.createElement('img');
-            imageEl.setAttribute("id", "gymCardStyleImage");
-            imageEl.src = logo;
-            //imageEl.width = 100;
-            card.appendChild(imageEl);
+                var imageEl1 = document.createElement('img');
+                imageEl1.src = logo;
+                infowincontent.appendChild(imageEl1);
+                var icon = customIcon[type] || {};
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: point,
+                    icon: customIcon[type].icon
+                });
+                marker.addListener('click', function () {
+                    infoWindow.setContent(infowincontent);
+                    infoWindow.open(map, marker);
+                    var cardBtn = document.getElementById(id);
+                    cardBtn.setAttribute("style", "box-shadow: 5px 8px 8px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);");
+                    window.setTimeout(function () { cardBtn.setAttribute("style", "box-shadow: 0px 0px 0px 0px);"); }, 4000);
+                });
 
-            var description1 = document.createElement('p');
-            description1.textContent = description
-            card.appendChild(description);
-
-            card.appendChild(document.createElement('br'));
             }
-            
-
 
         });
     });
 }
 
+var customIcon = {
+    gym: {
+        icon: 'images/iconGym.png'
+    },
+    studio: {
+        icon: 'images/iconStudio.png'
+    },
+    pool: {
+        icon: 'images/iconPool.png'
+    }
+};
 
 function downloadUrl(url, callback) {
     var request = window.ActiveXObject ?
@@ -61,7 +89,7 @@ function downloadUrl(url, callback) {
     request.open('GET', url, true);
     request.send(null);
 
-    
+
 
 
 
@@ -70,6 +98,15 @@ function downloadUrl(url, callback) {
 function doNothing() { }
 
 
+function unParse(str) {
+    if (str.includes("&quot;")) {
+        var res = str.replace('&quot;', '"');
+        return res;
+    }
+    else {
+        return str;
+    }
+}
 
 
 
@@ -85,7 +122,7 @@ var __slice = [].slice; (function (e, t) {
         function t(t, n) {
             var r, i, s, o = this; this.options = e.extend({}, this.defaults, n); this.$el = t; s = this.defaults; for (r in s) {
                 i = s[r]; if (this.$el.data(r) != null) {
-                this.options[r] = this.$el.data(r)
+                    this.options[r] = this.$el.data(r)
                 }
             }
             this.createStars(); this.syncRating(); this.$el.on("mouseover.starrr", "span", function (e) { return o.syncRating(o.$el.find("span").index(e.currentTarget) + 1) }); this.$el.on("mouseout.starrr", function () { return o.syncRating() });

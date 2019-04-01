@@ -15,6 +15,12 @@ body{
   margin: 0 auto;
 }
 
+.regForm{
+  border: solid #00aced 0.5px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
 #home {
   background: url('../images/709.jpg') no-repeat center center fixed;
   display: table;
@@ -25,21 +31,92 @@ body{
   background-attachment: scroll;
 }
 
-#contact {
-  background: url('../images/268671-P56008-73.jpg') no-repeat center center fixed;
+.signInBack{
+  background: url('../images/Gym-Anxieties-Addressed-01.jpg') no-repeat center center fixed;
+  opacity: 0.8;
+  height: 100px;
+}
+.regis{
+  background: url('../images/686.jpg') no-repeat center center fixed;
+  opacity: 0.8;
   display: table;
-  height: 600px;
+  height: 400px;
   position: relative;
   width: 100%;
   background-size: cover;
   background-attachment: scroll;
 }
-
+.regSuccess{
+  height: 160px;
+  margin-top: 40px;
+  text-align: center;
+}
+.regSuccessH1{
+  font-size: 50px;
+}
+.adminUser::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f508"; 
+}
+.user::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f007"; 
+}
+.mail::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f674";    padding-left: 10px; 
+}
+.phone::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f095";    padding-left: 10px; 
+}
+.address::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f3c5";    padding-left: 10px; 
+}
+.exploer::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f109";    padding-left: 10px; 
+}
+#contact {
+  background: url('../images/268671-P56008-73.jpg') no-repeat center center fixed;
+  display: table;
+  height: 440px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+#transfer {
+  background: url('../images/3858.jpg') no-repeat center center fixed;
+  display: table;
+  height: 440px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+#title{
+	text-align: center;
+	color: #1a75ff;
+	text-decoration: bold;
+	margin: 0 auto;
+}
+#main #details{
+	float: right;
+	text-align: right;
+}
+#typeC #typeF #typeS{
+	float: right;
+	text-align: right;
+}
+#pictures{
+	margin: 0 auto;
+	border: 2px green solid;
+}
 .landing-text{
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   color: #7EC4B0;
+}
+
+.hide{
+  display: none;
 }
 
 .landing-text h1{
@@ -50,7 +127,37 @@ body{
 }
 
 .contact-padding{
-  padding-bottom: 220px;
+  padding-bottom: 170px;
+}
+
+.transfer-padding{
+  padding-bottom: 170px;
+}
+
+.regis-padding{
+  padding-bottom: 150px;
+  
+}
+.transferPadding{
+  margin-top: 10px;
+}
+
+.signInBack{
+  background: url('../images/538695-PJKWJ6-285.jpg') no-repeat center center fixed;
+  opacity: 0.8;
+  background-size: 100% 150%;
+    height: 460px;
+}
+.textWhite{
+  color: white;
+}
+.regSuccess{
+  height: 160px;
+  margin-top: 40px;
+  text-align: center;
+}
+.regSuccessH1{
+  font-size: 50px;
 }
 
 .landing-text h3{
@@ -320,6 +427,32 @@ img.card {
 
 }
 
+#item{
+	clear:both;
+	flex-direction: column;
+	display: inline-block
+  margin: 2%;
+  text-align: right;
+  position: relative;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 0px 0px #DBDBDB;
+    float: right;
+    width: 100%;
+	padding:1px;
+  
+}
+
+.transferItem{
+  margin-left: 6%;
+	width: 100%;
+	float: right;
+  margin-top: 2%;
+  text-align: right;
+ 
+  
+}
+
 .autoCompleteSearchPage{
   width: 80%;
   height: 40px;
@@ -331,6 +464,24 @@ img.card {
         height: 100%;
 		width: 100%;
       }
+
+      #mapGymPage {
+		
+        height: 50%;
+    width: 100%;
+    margin-bottom: 5%;
+    box-shadow: 5px 5px 5px 5px #888888;
+   
+      }
+
+
+.grow { 
+  transition: all .2s ease-in-out; 
+  }
+   
+  .grow:hover { 
+  transform: scale(1.1); 
+  }
 	  
 .toRight{
 	float: right;
@@ -545,3 +696,8 @@ padding-top: 2px;
           #subscriptionSection{
             display: none;
           }
+		  
+		#transferTitel{
+			color: #ff4411; font-size: 48px; font-family: 'Signika', sans-serif; padding-bottom: 10px; font-weight:bold;
+			
+		}

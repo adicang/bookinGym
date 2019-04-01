@@ -1,6 +1,6 @@
 
 <?php
-    require("config.php");
+    require("include/config.php");
     require("database.php");
         header('Content-Type: text/html; charset=utf-8');
    
@@ -19,12 +19,14 @@
               $error .= "Error: The price is required.<br>"; }
             if (!$_POST['place']) {
               $error .= "Error: The place is required.<br>"; }
-            if (!$_POST['name']) {
+            if (!$_POST['sellerName']) {
               $error .= "Error: The name is required.<br>"; }
             if (!$_POST['phonenum']) {
               $error .= "Error: The phone is required.<br>"; }
-            if ($_POST['email'] && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            if ($_POST['sellerMail'] && !filter_var($_POST['sellerMail'], FILTER_VALIDATE_EMAIL)) {
               $error .= "Error: Invalid email format.<br>"; } 
+              if (!$_POST['gymNameCard']) {
+              $error .= "Error: The gymName is required.<br>"; }
             
           
             if (isset($error)) {
@@ -35,12 +37,13 @@
               $validity=$_POST['validity'];
               $priceCard=$_POST['priceCard'];
               $place=$_POST['place'];
-              $name=$_POST['name'];
+              $sellerName=$_POST['sellerName'];
               $phonenum=$_POST['phonenum'];
-              $email=$_POST['email'];
+              $sellerMail=$_POST['sellerMail'];
+              $gymNameCard=$_POST['gymNameCard'];
               
               $error=null;
-              $sql="insert into `cardTransfer`(`count`,`validity`,`priceCard`,`place`,`name`,`phonenum`,`email`) values('".$count."','".$validity."',".$priceCard.",'".$place."','".$name."','".$phonenum."','".$email."')";
+              $sql="insert into `cardTransfer`(`count`,`validity`,`priceCard`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`) values('".$count."','".$validity."',".$priceCard.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameCard."')";
               $result=$database->query($sql);
               if(!$result){
                 $error='Can not send message.';
@@ -59,12 +62,14 @@
               $error .= "Error: The price is required.<br>"; }
             if (!$_POST['place']) {
               $error .= "Error: The place is required.<br>"; }
-            if (!$_POST['name']) {
+            if (!$_POST['sellerName']) {
               $error .= "Error: The name is required.<br>"; }
             if (!$_POST['phonenum']) {
               $error .= "Error: The phone is required.<br>"; }
-            if ($_POST['email'] && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-              $error .= "Error: Invalid email format.<br>"; } 
+            if ($_POST['sellerMail'] && !filter_var($_POST['sellerMail'], FILTER_VALIDATE_EMAIL)) {
+              $error .= "Error: Invalid sellerMail format.<br>"; } 
+              if (!$_POST['gymNameSub']) {
+                $error .= "Error: The gymName is required.<br>"; }
             
           
             if (isset($error)) {
@@ -75,12 +80,13 @@
               $end=$_POST['end'];
               $price=$_POST['price'];
               $place=$_POST['place'];
-              $name=$_POST['name'];
+              $sellerName=$_POST['sellerName'];
               $phonenum=$_POST['phonenum'];
-              $email=$_POST['email'];
+              $sellerMail=$_POST['sellerMail'];
+              $gymNameSub=$_POST['gymNameSub'];
               
               $error=null;
-              $sql="insert into `subscriptionTransfer`(`start`,`end`,`price`,`place`,`name`,`phonenum`,`email`) values('".$start."','".$end."',".$price.",'".$place."','".$name."','".$phonenum."','".$email."')";
+              $sql="insert into `subscriptionTransfer`(`start`,`end`,`price`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`) values('".$start."','".$end."',".$price.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameSub."')";
               $result=$database->query($sql);
               if(!$result){
                 $error='Can not send message.';
@@ -171,7 +177,25 @@
 <div id="cardSection">
 	<fieldset>
 	<legend> פרטי כרטיסיה</legend>
-      
+  <div class="form-group col-2 text-right toRight">
+          <label for="gymNameCard">שם מועדון</label>
+
+          <select class="form-control input-sm textAlignRight" id="gymNameCard" name="gymNameCard" required>
+          <option value="" disabled selected hidden>בחר</option>
+            <?php
+              $sql="Select * From Gyms order by name asc";
+              $result=$database->query($sql);
+              if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    
+        echo "<option value=".$row["id"].">".$row["name"]."</option>";
+  }
+}
+            ?>
+          </select>
+		  <br>
+        </div>
 			<div class="form-group col-2 text-right toRight">
           <label for="numberOf">כמות כניסות</label>
 
@@ -189,6 +213,8 @@
           </select>
 		  <br>
         </div>
+
+        
 		
         <div class="form-group col-2 text-right toRight">
           <label for="validity">תוקף</label>
@@ -198,15 +224,15 @@
 
         <div class="form-group col-2 text-right toRight">
           <label for="price"> מחיר</label>
-          <input type="number" class="form-control input-sm textAlignRight" id="priceCa" name="priceCard" required>
+          <input type="number" class="form-control input-sm textAlignRight" id="priceCard" name="priceCard" required>
         </div>
 
         <div class="form-group col-2 text-right toRight">
           <label for="place">איזור מכירה</label>
-          <select class="form-control input-sm textAlignRight" id="place" name="place" required >
-            <option value="north"> צפון</option>
-            <option value="center">מרכז</option>
-            <option value="south">דרום</option>
+          <select class="form-control input-sm textAlignRight" id="placeCard" name="place" required >
+            <option value="צפון"> צפון</option>
+            <option value="מרכז">מרכז</option>
+            <option value="דרום">דרום</option>
           </select>
         </div>
     
@@ -216,7 +242,26 @@
 <div id="subscriptionSection">
 	<fieldset>
 	<legend>פרטי המנוי</legend>
-      
+  <div class="form-group col-2 text-right toRight">
+          <label for="gymNameSub">שם מועדון</label>
+
+          <select class="form-control input-sm textAlignRight" id="gymNameSub" name="gymNameSub" required>
+          <option value="" disabled selected hidden>בחר</option>
+            <?php
+              $sql="Select * From Gyms order by name asc";
+              $result=$database->query($sql);
+              if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    
+        echo "<option value=".$row["id"].">".$row["name"]."</option>";
+  }
+}
+            ?>
+          </select>
+		  <br>
+        </div>    
+
 			 <div id="subscription">
 	  <div class="form-group col-2 text-right toRight">
           <label for="startDate">תאריך התחלה</label>
@@ -236,10 +281,10 @@
 
         <div class="form-group col-2 text-right toRight">
           <label for="place">איזור מכירה</label>
-          <select class="form-control input-sm textAlignRight" id="place" name="place" required>
-            <option value="north"> צפון</option>
-            <option value="center">מרכז</option>
-            <option value="south">דרום</option>
+          <select class="form-control input-sm textAlignRight" id="placeSub" name="place" required>
+            <option value="צפון"> צפון</option>
+            <option value="מרכז">מרכז</option>
+            <option value="דרום">דרום</option>
           </select>
         </div>
     
@@ -255,7 +300,7 @@
 			<div id="contacts">
 			<div class="form-group col-2 text-right toRight">
 			<label for="name">שם</label>
-			<input type="text" class="form-control input-sm textAlignRight" id="name"  name= "name" placeholder="הזן את שמך" required>
+			<input type="text" class="form-control input-sm textAlignRight" id="name"  name= "sellerName" placeholder="הזן את שמך" required>
 			</div>
 			
 			<div class="form-group col-2 text-right toRight">
@@ -264,8 +309,8 @@
 			</div>
 		
 			<div class="form-group col-2 text-right toRight">
-			<label for="email" >אימייל:</label>
-			<input type="email" class="form-control input-sm textAlignRight" name="email" required>
+			<label for="sellerMail" >אימייל:</label>
+			<input type="email" class="form-control input-sm textAlignRight" name="sellerMail" required>
 			</div>
 		</div>
 	  </fieldset>
@@ -331,12 +376,11 @@
 function selectedSection(){
   if(document.getElementById("card").checked){
     document.getElementById("cardSection").style.display = "inline";
-	startDate.removeAttribute('required');
-	endDate.removeAttribute('required');
-	priceSub.removeAttribute('required');
-	place.removeAttribute('required');
-
-	
+    document.getElementById("startDate").removeAttribute("required");
+    document.getElementById("endDate").removeAttribute("required");
+    document.getElementById("priceSub").removeAttribute("required");
+    document.getElementById("placeSub").removeAttribute("required");
+    document.getElementById("gymNameSub").removeAttribute("required");
   }
   else{
     document.getElementById("cardSection").style.display = "none";
@@ -344,13 +388,12 @@ function selectedSection(){
   }
   if(document.getElementById("subscription").checked){
     document.getElementById("subscriptionSection").style.display = "inline";
-	count.removeAttribute('required');
-	validity.removeAttribute('required');
-	priceCa.removeAttribute('required');
-	place.removeAttribute('required');
-	
-	
-  }
+    document.getElementById("count").removeAttribute("required");
+    document.getElementById("validity").removeAttribute("required");
+    document.getElementById("priceCard").removeAttribute("required");
+    document.getElementById("placeCard").removeAttribute("required");
+    document.getElementById("gymNameCard").removeAttribute("required");
+  		  }
   else{
     document.getElementById("subscriptionSection").style.display = "none";
 	

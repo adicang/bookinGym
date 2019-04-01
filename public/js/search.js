@@ -14,7 +14,17 @@ window.onload = function () {
 
 function open_gym_page() {
     var gymId = event.srcElement.id;
-    window.location = '/gymPage.html?gymId=' + gymId;
+    window.location = '/gymPage.php?gymId=' + gymId;
+}
+
+function unParse(str) {
+    if (str.includes("&quot;")) {
+        var res = str.replace('&quot;', '"');
+        return res;
+    }
+    else{
+        return str;
+    }
 }
 
 
@@ -37,7 +47,7 @@ function showDetails() {
         card.removeChild(card.children[i]);
     }
 
-    var str = "map_data.php?";
+    var str = "include/map_data1.php?";
     var arr = ["gym", "studio", "pool", "TRX", "zumba", "Pilatis_Machine", "Pilatis_mattress", "Shaping", "HIIT", "yoga", "Spinning", "kikbox", "swimmingPool", "spa", "parking", "accessibility"];
     for (var i = 0; i < arr.length; i++) {
         if (document.getElementById(arr[i]).checked) {
@@ -52,9 +62,25 @@ function showDetails() {
 
     var lat = returnLat();
     if (!lat) {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var lat1 = url.searchParams.get("lat");
+        if (lat1 > "") {
+            lat = lat1;
+        }
+    }
+    if (!lat) {
         lat = 32.0853;
     }
     var lng = returnLng();
+    if (!lng) {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var lng1 = url.searchParams.get("lng");
+        if (lng1 > "") {
+            lng = lng1;
+        }
+    }
     if (!lng) {
         lng = 34.7818;
     }
@@ -75,15 +101,15 @@ function showDetails() {
             var point = new google.maps.LatLng(
                 parseFloat(markerElem.getAttribute('lat')),
                 parseFloat(markerElem.getAttribute('lng')));
-            var logoSource = "images/Logos/";
+            var logoSource = "images/GymImg/";
             var logoName = markerElem.getAttribute('logo');
             var logo = logoSource.concat(logoName);
 
 
             var searchBox_lat_lng = new google.maps.LatLng(lat, lng);
             var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(searchBox_lat_lng, point); //distance in meters between your location and the marker
-            if (distance_from_location <=  10000) {
-                
+            if (distance_from_location <= 10000) {
+
                 //card
                 var gymCard = document.createElement('div');
                 gymCard.setAttribute("class", "gymCardStyle");
@@ -93,9 +119,10 @@ function showDetails() {
                 gymCard.appendChild(strong);
                 gymCard.appendChild(document.createElement('br'));
 
+                var addressParsed=unParse(markerElem.getAttribute('address'));
                 var text = document.createElement('text');
                 text.setAttribute("class", "gymCardStyleText");
-                text.textContent = address
+                text.textContent = addressParsed
                 gymCard.appendChild(text);
 
                 gymCard.appendChild(document.createElement('br'));
@@ -113,6 +140,7 @@ function showDetails() {
                 gymCard.appendChild(btn);
                 gymCard.appendChild(document.createElement('br'));
                 card.appendChild(gymCard);
+
                 //map
                 var infowincontent = document.createElement('div');
                 var strong1 = document.createElement('strong');
@@ -121,7 +149,7 @@ function showDetails() {
                 infowincontent.appendChild(document.createElement('br'));
 
                 var text1 = document.createElement('text');
-                text1.textContent = address
+                text1.textContent = addressParsed
                 infowincontent.appendChild(text1);
 
                 var imageEl1 = document.createElement('img');
@@ -139,9 +167,10 @@ function showDetails() {
                     var cardBtn = document.getElementById(id);
                     cardBtn.setAttribute("style", "box-shadow: 5px 8px 8px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);");
                     window.setTimeout(function () { cardBtn.setAttribute("style", "box-shadow: 0px 0px 0px 0px);"); }, 4000);
-                });}
-            });
-        
+                });
+            }
+        });
+
     });
 
 }

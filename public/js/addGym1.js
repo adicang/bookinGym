@@ -21,7 +21,7 @@ function addFirstDetails() {
     var lat = returnLat();
     var lng = returnLng();
 
-    request.open("POST", 'addGym1.php', true);
+    request.open("POST", '../include/addGym1.php', true);
     request.setRequestHeader('Content-type', 'application/json');
     var user_data = {
         "name": document.getElementById("name").value,
@@ -68,11 +68,11 @@ function addClassesAndFacilities() {
         }
     }
 
-    
-    request.open("POST", 'addGym4.php', true);
+
+    request.open("POST", '..include/addGym4.php', true);
     request.setRequestHeader('Content-type', 'application/json');
     var user_data = {
-        
+
         "TRX": document.getElementById("TRX").checked,
         "zumba": document.getElementById("zumba").checked,
         "Pilatis_Machine": document.getElementById("Pilatis_Machine").checked,
@@ -92,6 +92,40 @@ function addClassesAndFacilities() {
     request.send(data);
 }
 
+function addCardsAndSubscription() {
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 & request.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            if (myObj.code == 1)
+                window.location.href = "addGym_final.html";
+            else
+                document.getElementById("loginError").innerHTML = myObj.loginError;
+        }
+    }
+
+    request.open("POST", '../include/addGym5.php', true);
+    request.setRequestHeader('Content-type', 'application/json');
+    var user_data = {
+        "businessNum": document.getElementById("businessNum").value,
+        "accountNum": document.getElementById("accountNum").value,
+        "branchNum": document.getElementById("branchNum").value,
+        "subscription": document.getElementById("subscription").checked,
+        "card": document.getElementById("card").checked,
+        "periodTimeSub": document.getElementById("periodTimeSub").value,
+        "periodTypeSub": document.getElementById("periodTypeSub").value,
+        "priceSub": document.getElementById("priceSub").value,
+        "enterCount": document.getElementById("enterCount").value,
+        "priceCard": document.getElementById("priceCard").value,
+        "periodTimeCard": document.getElementById("periodTimeCard").value,
+        "periodTypeCard": document.getElementById("periodTypeCard").value,
+    }
+
+    var data = JSON.stringify(user_data);
+    request.send(data);
+}
+
 function addDaysAndHours() {
     var request = new XMLHttpRequest();
 
@@ -105,8 +139,8 @@ function addDaysAndHours() {
         }
     }
 
-    
-    request.open("POST", 'addGym2.php', true);
+
+    request.open("POST", '../include/addGym2.php', true);
     request.setRequestHeader('Content-type', 'application/json');
     var user_data = {
         "Sunday": document.getElementById("Sunday").checked,
@@ -134,4 +168,43 @@ function addDaysAndHours() {
 
     var data = JSON.stringify(user_data);
     request.send(data);
+}
+
+function showNewImgDiv(id) {
+    var str1 = "addImage";
+    var str2 = id;
+    var element = str1.concat(str2);
+    document.getElementById(element).style.display = "block";
+}
+
+function preview_image(event, id, title) {
+   
+    const reader = new FileReader();
+    reader.onload = function () {
+        var src = reader.result;
+        var url = "url(" + src + ")";
+        document.getElementById(id).style.backgroundImage = url;
+        document.getElementById(id).style.backgroundSize = "200px 200px";
+        document.getElementById(title).innerHTML = "לחץ להחלפת התמונה";
+    }
+    reader.readAsDataURL(event.target.files[0]);
+    
+}
+
+function uploadedImage(event, id, addId,title) {
+    preview_image(event, id,title);
+    showNewImgDiv(addId);
+}
+
+
+function preview_logo(event) {
+    const reader = new FileReader();
+    reader.onload = function () {
+
+        var src = reader.result;
+        var url = "url(" + src + ")";
+        document.getElementById('insertLogo').style.backgroundImage = url;
+        document.getElementById("insertLogo").style.backgroundSize = "200px 200px";
+    }
+    reader.readAsDataURL(event.target.files[0]);
 }
