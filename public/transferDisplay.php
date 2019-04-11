@@ -68,58 +68,117 @@
 </section>
 <div class="clear"></div>
 <section class="container-fluid padding">
+
 <div class="row col-6 toRight card-title">
   <div style="margin:auto">
   <h1 id="transferTitel">כרטיסיות</h1>
+  <form action="transferDisplay.php" method="POST">
+			<div class="row col-3 toRight">
+				<label>אזור מכירה: <select name="place1" size="1">
+					<option value="" disabled selected hidden>בחר</option>
+					<option value="צפון" <?php if ($_POST['place1'] == 'צפון') echo 'selected="selected"'; ?>> צפון </option>
+					<option value ="מרכז" <?php if ($_POST['place1'] == 'מרכז') echo 'selected="selected"'; ?>> מרכז </option>
+					<option value ="דרום" <?php if ($_POST['place1'] == 'דרום') echo 'selected="selected"'; ?>> דרום </option>
+					</select></label>
+			</div>
+			<div class="row col-3 toRight">
+				<label>מחיר: <input type="text" class="form-control input-sm textAlignRight" id="from" name="from"
+                  placeholder="מ-">
+				  <input type="text" class="form-control input-sm textAlignRight" id="to" name="to"
+                  placeholder="עד-"></label>
+			</div>
+			<div class="row col-3 toRight">
+				<button type="submit" value="חפש" id="searchDogButton">חפש</button>
+				
+			</div>
+		</form>
 </div>
 </div>
 <div class="row col-6 toRight card-title">
 <div style="margin:auto ">
   <h1 id="transferTitel">מנויים</h1>
+  <form action="transferDisplay.php" method="POST">
+			<div class="row col-5 toRight">
+				<label>אזור מכירה: <select name="place" size="1">
+					<option value="" disabled selected hidden>בחר</option>
+					<option value="צפון" <?php if ($_POST['place'] == 'צפון') echo 'selected="selected"'; ?>> צפון </option>
+					<option value ="מרכז" <?php if ($_POST['place'] == 'מרכז') echo 'selected="selected"'; ?>> מרכז </option>
+					<option value ="דרום" <?php if ($_POST['place'] == 'דרום') echo 'selected="selected"'; ?>> דרום </option>
+					</select></label>
+			</div>
+			<div class="row col-6 toRight">
+				<label>מחיר: <input type="text" class="form-control input-sm" id="from" name="from" placeholder="מ-"><input type="text" class="form-control input-sm" id="to" name="to"
+                  placeholder="עד-"></label>
+			</div>
+			<div class="row col-1 toRight">
+				<button type="submit" value="חפש" id="search">חפש</button>
+				
+			</div>
+		</form>
 </div>
 </div>
 </section>
 
   <section class="container-fluid padding">
     <div class="row col-6 toRight" >
-   <div style="margin:auto; width:100%;padding-right:100px">
+   <div style="margin:auto; width:100%;padding-right:80px ;padding-left:20px;">
       
   <?php 	
 			require('include/config.php');
 			require("include/database.php");
-			$query = "SELECT * FROM cardTransfer inner Join Gyms on cardTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId";
-			$result=$database->query($query);
+			if($_POST['place1']){
+				
+				$by_place = $_POST['place1'];
+
+				$query = "SELECT * FROM cardTransfer inner Join Gyms on cardTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId";
+				$conditions = array();
+
+				if(! empty($by_place)) {
+				  $conditions[] = 'place="'.$by_place.'"';
+				}
+				
+				$sql = $query;
+				if (count($conditions) > 0) {
+				  $sql .= " WHERE " . implode(' AND ', $conditions);
+				}
+				$result=$database->query($sql);
+			}
+			
 				if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
 		
           echo '<div id="item">';
-		   echo '<div style="border:2px solid black;">';
-          echo '<div style="width:30%; float:right;">';
+		 
+          echo '<div style="width:40%; float:right;padding:30px;">';
               
-                  echo "<h3>פרטי הכרטיסייה:</h3>";
+                  echo "<h3><b>פרטי הכרטיסייה:</b></h3>";
+				  echo '<div style="font-size:18px;">';
                   echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
                   echo "<b>כמות כניסות:</b> ".$row["count"]."<br>";
                   echo "<b>תוקף:</b> ".$row["validity"]."<br>";
-                  echo "<b><mark>מחיר:</b></mark> ".$row["priceCard"]."<br>";
+                  echo "<b>מחיר:</b>".$row["priceCard"]."<br>";
                   echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
+				  echo "</div>";
 		echo "</div>";
-        echo '<div style="width:30%; float:right;margin-right: 10px;">';
-                echo "<h3>פרטי המוכר:</h3>";
+        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px;">';
+                echo "<h3><b>פרטי המוכר:</b></h3>";
+				 echo '<div style="font-size:18px;">';
                 echo "<b>שם:</b> ".$row["sellerName"]."<br>";
                 echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
                 echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
+				echo "</div>";
               echo "</div>";
 
-              echo '<div style="width:30%; float:right;">';
+              echo '<div style="width:20%; float:right;padding:30px;">';
     echo '<div style="margin:auto; margin-left: 10px;">';
-    echo "<img src='images/Logos/".$row["imgName"]."' style='float:left' width='60%'>";
+    echo "<img src='images/GymImg/".$row["imgName"]."' style='float:left' width='60%'>";
     echo "</div>";
-    echo "</div>";
+   
 echo '</div>';
     echo '</div>';
     echo '<div class="clear"></div>';
-    echo '<hr>';
+    
           
         }
       }
@@ -130,38 +189,57 @@ echo '</div>';
       </div>
        </div>
        <div class="row col-6 toRight">
-       <div style="margin:auto; width:100%; padding-right:100px;">  
+       <div style="margin:auto; width:100%; padding-left:80px;padding-right:20px;">  
 <?php
+	if($_POST['place']){
+				
+				$by_place = $_POST['place'];
 
-$query = "SELECT * FROM subscriptionTransfer inner Join Gyms on subscriptionTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId";
-$result=$database->query($query);
+				$query = "SELECT * FROM subscriptionTransfer inner Join Gyms on subscriptionTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId";
+				$conditions = array();
+
+				if(! empty($by_place)) {
+				  $conditions[] = 'place="'.$by_place.'"';
+				}
+				
+				$sql = $query;
+				if (count($conditions) > 0) {
+				  $sql .= " WHERE " . implode(' AND ', $conditions);
+				}
+				$result=$database->query($sql);
+			}
+
   if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
     echo '<div id="item">';
-    echo '<div style="width:30%; float:right;">';
-    echo "<h3>פרטי המנוי:</h3> ";
+    echo '<div style="width:40%; float:right;padding:30px;">';
+    echo "<h3><b>פרטי המנוי:</b></h3> ";
+		echo '<div style="font-size:18px;">';
 		echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
         echo "<b>תאריך התחלה:</b> ".$row["start"]."<br>";
         echo "<b>תאריך סיום:</b> ".$row["end"]."<br>";
         echo "<b>מחיר:</b> ".$row["price"]."<br>";
         echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
+		echo "</div>"; 
         echo "</div>";  
-        echo '<div style="width:30%; float:right;margin-right: 10px;">';
-        echo "<h3>פרטי המוכר:</h3> ";
+        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px;">';
+        echo "<h3><b>פרטי המוכר:</b></h3> ";
+		echo '<div style="font-size:18px;">';
         echo "<b>שם:</b> ".$row["sellerName"]."<br>";
         echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
         echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
+		 echo "</div>";  
         echo "</div>";    
-    echo '<div style="width:30%; float:right;">';
+    echo '<div style="width:20%; float:right; padding:30px;">';
     echo '<div style="margin:auto;margin-left: 10px;">';
-    echo "<img src='images/Logos/".$row["imgName"]."' style='float:left' width='60%'>";
+    echo "<img src='images/GymImg/".$row["imgName"]."' style='float:left' width='60%'>";
     echo "</div>";
     echo "</div>";
 
     echo '</div>';
     echo '<div class="clear"></div>';
-    echo '<hr>';
+   
   }
   
 }

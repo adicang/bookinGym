@@ -21,6 +21,39 @@ body{
   border-radius: 8px;
 }
 
+.imageUpload{
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-image:url('../images/plus.png');
+  margin-left: 10px;
+}
+
+.startest{
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-image: url("../images/goldStar.jpg");
+  margin-left: 10px;
+  background-size: 195px 185px;
+  background-repeat: no-repeat;
+  line-height: 26px;
+  float: right;
+}
+
+.avgStar{
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-image: url("../images/goldStar.jpg");
+  margin-right: 50px;
+  background-size: 195px 185px;
+  background-repeat: no-repeat;
+  line-height: 26px;
+  float: right;
+
+}
+
 #home {
   background: url('../images/709.jpg') no-repeat center center fixed;
   display: table;
@@ -29,6 +62,11 @@ body{
   width: 100%;
   background-size: cover;
   background-attachment: scroll;
+}
+
+.cars{
+  width: 70%;
+    margin: auto;
 }
 
 .signInBack{
@@ -94,7 +132,9 @@ body{
 	text-align: center;
 	color: #1a75ff;
 	text-decoration: bold;
-	margin: 0 auto;
+  margin: 0 auto;
+  float: right;
+  padding-left: 300px
 }
 #main #details{
 	float: right;
@@ -112,11 +152,20 @@ body{
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  color: #7EC4B0;
+  color:#f8f9fa;
 }
-
+.landing-text1{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color:#f8f9fa;
+}
 .hide{
   display: none;
+}
+
+.marginTopLow{
+  margin-top: -40px
 }
 
 .landing-text h1{
@@ -430,16 +479,17 @@ img.card {
 #item{
 	clear:both;
 	flex-direction: column;
-	display: inline-block
+	display: inline-block;
   margin: 2%;
   text-align: right;
   position: relative;
     background-color: #ffffff;
     border-radius: 5px;
-    box-shadow: 0px 1px 0px 0px #DBDBDB;
+    box-shadow: 0px 1px 5px 2px #e7eaed;
     float: right;
     width: 100%;
 	padding:1px;
+	height:250px;
   
 }
 
@@ -698,6 +748,22 @@ padding-top: 2px;
           }
 		  
 		#transferTitel{
-			color: #ff4411; font-size: 48px; font-family: 'Signika', sans-serif; padding-bottom: 10px; font-weight:bold;
+			color: #162560; font-size: 48px;  padding-bottom: 10px; font-weight:bold;
 			
-		}
+    }
+    
+    .ReviewItem{
+      clear:both;
+	  flex-direction: column;
+	  display: inline-block;
+  
+  text-align: right;
+  position: relative;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 2px #e7eaed;
+    float: right;
+    width: 100%;
+	padding:1px;
+	
+    }

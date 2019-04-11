@@ -72,8 +72,22 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-12 grow" id="title">';
-				echo '<h1 style="text-shadow:3px 2px #cce0ff">'.$row["name"]."</h1>";
+				echo '<div class="col-lg-2 toRight">';
+				$query1 = "SELECT ROUND(AVG(rate), 1) FROM reviews group by gymId having gymId=".$id."";
+				$result1=$database->query($query1);
+				if ($result1->num_rows > 0) {
+			// output data of each row
+				while($row1 = $result1->fetch_assoc()) {
+									
+										echo '<div class="avgStar grow" >';
+											echo '<span id="inputTitle1"><br><br><br><h1><b>'.$row1["ROUND(AVG(rate), 1)"].'</b></h1> </span>';
+											echo '</div>';
+											
+				}
+			}
+				echo '</div>';
+				echo '<div class="col-lg-10 grow toRight" id="title">';
+				echo '<h1 style="text-shadow:3px 2px #cce0ff"><b>'.$row["name"]."</b></h1>";
 				if($row["type"]=="studio"){
 						echo "<b><h3>סטודיו</h3></b><br>";
 						}
@@ -124,7 +138,7 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-5 text-right toRight" id="details">';
+				echo '<div class="col-lg-6 text-right toRight" id="details">';
 				echo '<div id="mapGymPage" class="grow"></div>';
 					echo "<span class='icon mail '></span>";
 					echo "<u>מייל:</u> ".$row["email"]."<br>";
@@ -244,25 +258,55 @@
 
 		echo '</div>';
 		
+		?>
 		
+
+<div class="col-lg-12 text-right toRight">
+<div id="carouselExampleControls" class="carousel slide cars" data-ride="carousel">
+  <div class="carousel-inner">
+	<?php
 		
 		$query = "SELECT * FROM Gyms inner Join uploadedimage on Gyms.id=uploadedimage.gymId where Gyms.id=".$id."";
 		$result=$database->query($query);
 		if ($result->num_rows > 0) {
 			// output data of each row
+			$flag=1;
 			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-12 text-right toRight">';
-					echo '<div id="pictures">';
-					echo "תמונות</div>";
+				if($flag==1){
+					echo '<div class="carousel-item active">';
+					echo '<img class="d-block w-100" src="images/GymImg/'.$row["imagename"].'" >';
 				echo '</div>';
+				$flag=2;
+				}
+				else{
+					echo '<div class="carousel-item">';
+					echo '<img class="d-block w-100" src="images/GymImg/'.$row["imagename"].'" >';
+				echo '</div>';
+				}
+				
+					
+					
 			}
 		}			  
 	
 	?>
+				
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+		
 	</div>	
 	</section>
 	<div class="clear"></div>
-  <div class="container">
+  <div class="container marginTopLow">
       <div class="row" style="margin-top:40px;">
         <div class="col-md-6">
           <div class="well well-sm">
@@ -275,12 +319,11 @@
                         <form accept-charset="UTF-8" action="" method="post">
                             <input id="ratings-hidden" name="rating" type="hidden"> 
                             <textarea class="form-control animated textAlignRight" cols="50" id="new-review" name="comment" placeholder="הוסף ביקורת כאן..." rows="5"></textarea>
-            
                             <div class="text-right">
                                 <div class="stars starrr" data-rating="0"></div>
                                 <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
                                 <span class="glyphicon glyphicon-remove"></span>ביטול</a>
-                                <button class="btn btn-success btn-sm" type="submit">שמור</button>
+                                <input class="btn btn-success btn-sm" type="submit" name="submitReview" value="שמור">
                             </div>
                         </form>
                     </div>
@@ -291,6 +334,43 @@
       </div>
 		</div>
 		
+<?php
+	if($_POST["submitReview"]){
+		$rate=$_POST["rating"];
+		$descripiton=$_POST["comment"];
+		$sql="INSERT INTO `reviews`(`gymId`, `rate`, `description`) VALUES (".$id.",".$rate.",'".$descripiton."')";
+		$result=$database->query($sql);
+	}
+
+	$query = "SELECT * FROM `reviews` where gymId=".$id."";
+		$result=$database->query($query);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+					echo '<div class="container marginTopLow grow">';
+						echo '<div class="row" style="margin-top:40px;">';
+							echo '<div class="col-md-9">';
+								echo '<div class="ReviewItem">';
+									echo '<div class="startest" >';
+										echo '<span id="inputTitle1"><br><br><br><h1><b>'.$row["rate"].'</b></h1> </span>';
+										echo '</div >';
+									
+										
+									
+								
+									echo '<div style="width:70%; float:right;margin-right: 10px;padding:30px;">';
+										echo "<h3><b>תיאור:</b></h3>";
+										echo "".$row["description"]."<br>";
+									echo "</div>";
+								echo '</div>';
+							echo '</div>';
+						echo '</div>';
+					echo '</div>';		
+					echo '<div class="clear"></div>';	
+				}	
+		}	
+?>
+
 		<div class="clear"></div>
     <section class="container-fluid padding">
         <button onclick="window.history.back()" class="btn btn-primary text-center sign_up toRight">חזרה לחיפוש מועדוני כושר</button>

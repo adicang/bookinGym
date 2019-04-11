@@ -8,10 +8,7 @@
     $urlContents = file_get_contents('php://input');
     $urlaray = json_decode($urlContents, true);
 
-    $queryId = "SELECT MAX(id) FROM Gyms";
-    $res=$database->query($queryId);
-    $row=$res->fetch_assoc();
-    $id=$row['MAX(id)'];
+   
 
 	
 
@@ -34,7 +31,7 @@
         $post_data = array('code'=>0,'loginError'=>'*אנא בחר סוג מועדון');
     }
     else{
-        $sql="insert into `Gyms`(`id`,`name`,`email`,`phone`,`description`,`address`,`type`,`lat`,`lng`,`website`) values(".($id+1).",'".$urlaray['name']."','".$urlaray['email']."','".$urlaray['phone']."','".$urlaray['description']."','".$urlaray['address']."','".$urlaray['type']."',".$urlaray['lat'].",".$urlaray['lng'].",'".$urlaray['website']."')";
+        $sql="insert into `Gyms`(`name`,`email`,`phone`,`description`,`address`,`type`,`lat`,`lng`,`website`) values('".$urlaray['name']."','".$urlaray['email']."','".$urlaray['phone']."','".$urlaray['description']."','".$urlaray['address']."','".$urlaray['type']."',".$urlaray['lat'].",".$urlaray['lng'].",'".$urlaray['website']."')";
         $result=$database->query($sql);
         
         if (!$result){

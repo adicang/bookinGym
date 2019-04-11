@@ -48,7 +48,7 @@ function showDetails() {
     }
 
     var str = "include/map_data1.php?";
-    var arr = ["gym", "studio", "pool", "TRX", "zumba", "Pilatis_Machine", "Pilatis_mattress", "Shaping", "HIIT", "yoga", "Spinning", "kikbox", "swimmingPool", "spa", "parking", "accessibility"];
+    var arr = ["gym", "studio", "pool", "TRX", "zumba", "Pilatis_Machine", "Pilatis_mattress", "Shaping", "HIIT", "yoga", "Spinning", "kikbox", "swimmingPool", "spa", "parking", "accessibility","1star","2star","3star","4star","5star"];
     for (var i = 0; i < arr.length; i++) {
         if (document.getElementById(arr[i]).checked) {
             if (str.includes("=")) {

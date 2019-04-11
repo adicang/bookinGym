@@ -15,15 +15,17 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
-$query = "SELECT * FROM Gyms INNER JOIN Classes ON Gyms.id = Classes.gymId INNER JOIN Facilities ON Gyms.id = Facilities.gymId INNER JOIN Logos ON Gyms.id = Logos.gymId";
+
+
+$query = "SELECT * from `Gyms` a left join (select gymId,avg(rate) as rate from reviews GROUP BY gymId ) b on a.id=b.gymId INNER JOIN Classes ON a.id = Classes.gymId INNER JOIN Facilities ON a.id = Facilities.gymId INNER JOIN Logos ON a.id = Logos.gymId";
 
 
 
 	
-				$conditions = array();
+		$conditions = array();
 
-				if($_GET["gym"]) {
-				  $conditions[] = 'type="gym"';
+		if($_GET["gym"]) {
+    		  $conditions[] = 'type="gym"';
         }
         if($_GET["pool"]) {
 				  $conditions[] = 'type="pool"';
@@ -69,13 +71,29 @@ $query = "SELECT * FROM Gyms INNER JOIN Classes ON Gyms.id = Classes.gymId INNER
         }
         if($_GET["accessibility"]) {
 				  $conditions[] = 'accessibility=1';
-				}
+        }
+        if($_GET["1star"]) {
+            $conditions[] = 'rate>1';
+        }
+        if($_GET["2star"]) {
+            $conditions[] = 'rate>2';
+        }
+        if($_GET["3star"]) {
+            $conditions[] = 'rate>3';
+        }
+        if($_GET["4star"]) {
+            $conditions[] = 'rate>4';
+        }
+        if($_GET["5star"]) {
+            $conditions[] = 'rate=5';
+        }
 				
 
-				$sql = $query;
-				if (count($conditions) > 0) {
-				  $sql .= " WHERE " . implode(' AND ', $conditions);
-				}
+        $sql = $query;
+		if (count($conditions) > 0) {
+        		  $sql .= " WHERE " . implode(' AND ', $conditions);
+        }
+              
 
 				$result=$database->query($sql);
 					

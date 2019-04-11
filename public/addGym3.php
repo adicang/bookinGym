@@ -8,32 +8,7 @@
     $id=$row['MAX(id)'];
 
 
-    if(isset($_POST['uploadfilesub'])) {
-
     
-      $name_array = $_FILES['file_array']['name'];
-      $tmp_name_array = $_FILES['file_array']['tmp_name'];
-      $type_array = $_FILES['file_array']['type'];
-      $size_array = $_FILES['file_array']['size'];
-      $error_array = $_FILES['file_array']['error'];
-      for($i = 0; $i < count($tmp_name_array); $i++){
-          if(move_uploaded_file($tmp_name_array[$i], "images/GymImg/".$name_array[$i])){
-              if($i==0){
-                $sql = "INSERT INTO `Logos`(`gymId`, `imgName`) VALUES ($id,'$name_array[$i]')";
-                $result=$database->query($sql);
-              }
-              else{
-                $sql = "INSERT INTO `uploadedimage`(`imagename`, `gymId`) VALUES ('".$name_array[$i]."',".$id.")";
-                $result=$database->query($sql);
-              }
-              echo $name_array[$i]." upload is complete<br>";
-          } else {
-              echo "move_uploaded_file function failed for ".$name_array[$i]."<br>";
-          }
-      }
-    
-      header('Location: addGym4.html');
-    }
  ?>
 
 <!doctype html>
@@ -52,16 +27,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   
-<style>
 
-.imageUpload{
-  width: 200px;
-  height: 200px;
-  text-align: center;
-  background-image:url(images/plus.png);
-}
-
-</style>
   <title>bookinGym</title>
 </head>
 
@@ -174,7 +140,39 @@
       </div>
       <div class="clear"></div>
       <div class="container-fluid padding">
-   
+   <?php
+      if(isset($_POST['uploadfilesub'])) {
+
+        if(!isset($_FILES['file_array'])){
+          echo 'אנא העלה תמונות<br>';
+        }
+        else{
+          $name_array = $_FILES['file_array']['name'];
+          $tmp_name_array = $_FILES['file_array']['tmp_name'];
+          $type_array = $_FILES['file_array']['type'];
+          $size_array = $_FILES['file_array']['size'];
+          $error_array = $_FILES['file_array']['error'];
+          for($i = 0; $i < count($tmp_name_array); $i++){
+              if(move_uploaded_file($tmp_name_array[$i], "images/GymImg/".$name_array[$i])){
+                  if($i==0){
+                    $sql = "INSERT INTO `Logos`(`gymId`, `imgName`) VALUES ($id,'$name_array[$i]')";
+                    $result=$database->query($sql);
+                  }
+                  else{
+                    $sql = "INSERT INTO `uploadedimage`(`imagename`, `gymId`) VALUES ('".$name_array[$i]."',".$id.")";
+                    $result=$database->query($sql);
+                  }
+                  echo $name_array[$i]." upload is complete<br>";
+              } else {
+                  echo "move_uploaded_file function failed for ".$name_array[$i]."<br>";
+              }
+          }
+        
+          header('Location: addGym4.html');
+        }
+          
+        }
+   ?>
       <input type="submit" name="uploadfilesub" value="הבא" class="btn btn-primary text-center sign_up toLeft"/>
       
 </div>

@@ -26,7 +26,7 @@
     else if($urlaray['Wednesday'] && !$urlaray['fromWednesday'] || $urlaray['Wednesday'] && !$urlaray['toWednesday']){
         $post_data = array('code'=>0,'loginError'=>'*אנא הזן שעות עבור יום רביעי');
     }
-    else if($urlaray['Thursday'] && !$urlaray['fromThursdayy'] || $urlaray['Thursday'] && !$urlaray['toThursday']){
+    else if($urlaray['Thursday'] && !$urlaray['fromThursday'] || $urlaray['Thursday'] && !$urlaray['toThursday']){
         $post_data = array('code'=>0,'loginError'=>'*אנא הזן שעות עבור יום חמישי');
     }
     else if($urlaray['Friday'] && !$urlaray['fromFriday'] || $urlaray['Friday'] && !$urlaray['toFriday']){

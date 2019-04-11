@@ -69,7 +69,7 @@ function addClassesAndFacilities() {
     }
 
 
-    request.open("POST", '..include/addGym4.php', true);
+    request.open("POST", '../include/addGym4.php', true);
     request.setRequestHeader('Content-type', 'application/json');
     var user_data = {
 
@@ -85,7 +85,7 @@ function addClassesAndFacilities() {
         "swimmingPool": document.getElementById("swimmingPool").checked,
         "spa": document.getElementById("spa").checked,
         "parking": document.getElementById("parking").checked,
-        "accessibility": document.getElementById("accessibility").checked,
+        "accessibility": document.getElementById("accessibility").checked
     }
 
     var data = JSON.stringify(user_data);
