@@ -1,7 +1,12 @@
 
 <?php
-    require("include/config.php");
-    require("database.php");
+    
+	
+    require_once('include/init.php');
+    if (!$session->get_signed_in()){
+      header('Location: regOnly.php');
+  }
+   
         header('Content-Type: text/html; charset=utf-8');
    
        
@@ -41,13 +46,17 @@
               $phonenum=$_POST['phonenum'];
               $sellerMail=$_POST['sellerMail'];
               $gymNameCard=$_POST['gymNameCard'];
+              $userId=$session->get_user_id();
               
               $error=null;
-              $sql="insert into `cardTransfer`(`count`,`validity`,`priceCard`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`) values('".$count."','".$validity."',".$priceCard.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameCard."')";
+              $sql="insert into `cardTransfer`(`count`,`validity`,`priceCard`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`,`userId`) values('".$count."','".$validity."',".$priceCard.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameCard."',".$userId.")";
               $result=$database->query($sql);
               if(!$result){
                 $error='Can not send message.';
                 echo '<section style="margin-top:6%">'.$error.'</section>' ;
+              }
+              else{
+                header('Location: transferDisplay.php');
               }
             }
         }
@@ -84,15 +93,18 @@
               $phonenum=$_POST['phonenum'];
               $sellerMail=$_POST['sellerMail'];
               $gymNameSub=$_POST['gymNameSub'];
+              $userId=$session->get_user_id();
               
               $error=null;
-              $sql="insert into `subscriptionTransfer`(`start`,`end`,`price`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`) values('".$start."','".$end."',".$price.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameSub."')";
+              $sql="insert into `subscriptionTransfer`(`start`,`end`,`price`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`,`userId`) values('".$start."','".$end."',".$price.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameSub."',".$userId.")";
               $result=$database->query($sql);
               if(!$result){
                 $error='Can not send message.';
                 echo '<section style="margin-top:6%">'.$error.'</section>' ;
-      
-			}
+              }
+              else{
+                header('Location: transferDisplay.php');
+              }
 		}
 	 }
 	}	 
@@ -120,9 +132,9 @@
 </head>
 
 <body>
-  <header>
+<header>
     <nav class="navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <img src="images/13546.jpg" alt=""> bookinGym
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -131,34 +143,56 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">דף הבית</a>
+            <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="addGym1.html">הוסף מועדון</a>
+            <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="searchGym.html">חפש מועדון</a>
+            <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="transferForm.php">העברת מנוי/כרטיסייה</a>
+              <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.php">צור קשר</a>
+              <a class="nav-link" href="contact.php">צור קשר</a>
           </li>
 
-          <li>
-            <a class="nav-link" style="color: #00aced;"><i class="fa fa-user-circle logged_in"
-                aria-hidden="true"></i>כניסת משתמשים </a>
-          </li>
-          <li>
-            <a class="nav-link " href="Includes/log_out.php"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> |
-              התנתק</a>
-          </li>
+         
+          <?php
+
+            if($session->get_signed_in()){
+              echo '<li>
+              <a class="nav-link" style="color: #00aced;" href="#">
+                <i class="fa fa-user-circle logged_in" aria-hidden="true"></i> שלום '.$session->get_user_name().'</a>
+            </li>';
+              echo '<li>
+                  <a class="nav-link " href="include/logout.php"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> |
+                    התנתק</a>
+                </li>';
+            }
+            else{
+              echo '<li>
+              <a class="nav-link" style="color: #00aced;" href="signIn.php">
+                <i class="fa fa-user-circle logged_in" aria-hidden="true"></i>כניסת משתמשים</a>
+            </li>';
+              echo '<li>
+                  <a class="nav-link " href="reg.php"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
+                    הירשם</a>
+                </li>';
+            }
+          ?>
+          
         </ul>
       </div>
     </nav>
   </header>
-
+  <div id='transferForm'>
+      <div class="landing-text transfer-padding">
+        <h1 class="home_h1">הוספת מנוי או כרטיסייה</h1>    
+       </div>
+    </div>
+<div class="clear"></div>
   <section class="container-fluid padding">
     <form class="mbr-form " action="transferForm.php" method="post" >
 

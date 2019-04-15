@@ -31,7 +31,8 @@
         $post_data = array('code'=>0,'loginError'=>'*אנא בחר סוג מועדון');
     }
     else{
-        $sql="insert into `Gyms`(`name`,`email`,`phone`,`description`,`address`,`type`,`lat`,`lng`,`website`) values('".$urlaray['name']."','".$urlaray['email']."','".$urlaray['phone']."','".$urlaray['description']."','".$urlaray['address']."','".$urlaray['type']."',".$urlaray['lat'].",".$urlaray['lng'].",'".$urlaray['website']."')";
+        $userId=$session->get_user_id();
+        $sql="insert into `Gyms`(`name`,`email`,`phone`,`description`,`address`,`type`,`lat`,`lng`,`website`,`Manager_id`) values('".$urlaray['name']."','".$urlaray['email']."','".$urlaray['phone']."','".$urlaray['description']."','".$urlaray['address']."','".$urlaray['type']."',".$urlaray['lat'].",".$urlaray['lng'].",'".$urlaray['website']."',".$userId.")";
         $result=$database->query($sql);
         
         if (!$result){

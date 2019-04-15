@@ -46,7 +46,7 @@
         $post_data = array('code'=>0,'loginError'=>'*אנא הזן את תקופת הכרטיסייה');
     }
     else{
-        $sql="INSERT INTO `Gyms`(`account_num`,`businessNum`,`branchNum`) VALUES ('".$urlaray['accountNum']."','".$urlaray['businessNum']."','".$urlaray['branchNum']."') WHERE gymId = ".$id.")";
+        $sql="UPDATE `Gyms` SET `account_num`='".$urlaray['accountNum']."',`businessNum`='".$urlaray['businessNum']."',`branchNum`='".$urlaray['branchNum']."' WHERE id=".$id."";
         $result=$database->query($sql);
         if (!$result){
             $error='Can not add business details.  Error is:'.$database->get_connection()->error;

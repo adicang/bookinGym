@@ -28,7 +28,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <img src="images/13546.jpg" alt=""> bookinGym
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -43,7 +43,7 @@
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="searchGym.html">חפש מועדון</a>
+            <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
@@ -71,7 +71,7 @@
                 <i class="fa fa-user-circle logged_in" aria-hidden="true"></i>כניסת משתמשים</a>
             </li>';
               echo '<li>
-                  <a class="nav-link " href="reg.html"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
+                  <a class="nav-link " href="reg.php"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
                     הירשם</a>
                 </li>';
             }
@@ -166,7 +166,7 @@
           </article>
         </div>
         <div class="col-12 text-center">
-          <a href="searchGym.html" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</a>
+          <a href="searchGym.php" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</a>
         </div>
       </div>
     </section>

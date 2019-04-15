@@ -5,6 +5,7 @@ require_once('init.php');
 class Session{
     private $signed_in;
     private $user_id;
+    private $id;
     
     
 
@@ -46,6 +47,26 @@ class Session{
     }
     public function get_user_name(){
         return $this->user_id;
+    }
+    public function get_user_id(){
+        global $database;
+        $sql="SELECT id from users WHERE username='".$this->user_id."'";
+        $result=$database->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                return $row["id"];
+            }
+        }
+    }
+    public function get_user_type(){
+        global $database;
+        $sql="SELECT userType from users WHERE username='".$this->user_id."'";
+        $result=$database->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                return $row["userType"];
+            }
+        }
     }
      
 }

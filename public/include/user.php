@@ -3,6 +3,7 @@
 require('init.php');
 
 class User{
+    private $id;
     private $userType;
     private $FullName;
     private $username;

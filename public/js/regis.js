@@ -5,7 +5,7 @@ function addUserToDatabase() {
         if (request.readyState == 4 & request.status == 200) {
             var myObj = JSON.parse(this.responseText);
             if (myObj.code == 1){
-                window.location.href="regSuccess.html"
+                window.location.href="regSuccess.php"
             }
             else
                 document.getElementById("RegError").innerHTML = myObj.regError;

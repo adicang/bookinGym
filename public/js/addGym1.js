@@ -5,7 +5,7 @@ function addFirstDetails() {
         if (request.readyState == 4 & request.status == 200) {
             var myObj = JSON.parse(this.responseText);
             if (myObj.code == 1)
-                window.location.href = "addGym2.html";
+                window.location.href = "addGym2.php";
             else
                 document.getElementById("loginError").innerHTML = myObj.loginError;
         }
@@ -62,7 +62,7 @@ function addClassesAndFacilities() {
         if (request.readyState == 4 & request.status == 200) {
             var myObj = JSON.parse(this.responseText);
             if (myObj.code == 1)
-                window.location.href = "addGym5.html";
+                window.location.href = "addGym5.php";
             else
                 document.getElementById("loginError").innerHTML = myObj.loginError;
         }
@@ -99,7 +99,7 @@ function addCardsAndSubscription() {
         if (request.readyState == 4 & request.status == 200) {
             var myObj = JSON.parse(this.responseText);
             if (myObj.code == 1)
-                window.location.href = "addGym_final.html";
+                window.location.href = "addGym_final.php";
             else
                 document.getElementById("loginError").innerHTML = myObj.loginError;
         }

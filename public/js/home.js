@@ -3,6 +3,6 @@ function onClickFindGym (event) {
     var lat1= returnLat();
     var lng1 = returnLng();
 
-    window.location = '/searchGym.html?address=' + address + '&lat='+ lat1 +'&lng=' +lng1;
+    window.location = '/searchGym.php?address=' + address + '&lat='+ lat1 +'&lng=' +lng1;
    
 }

@@ -1,7 +1,15 @@
 <?php
-	
-  require_once('include/init.php');
-  ?>
+	require_once('include/init.php');
+  if (!$session->get_signed_in()){
+    header('Location: regOnly.php');
+  }
+  else{
+    $userType=$session->get_user_type();
+    if($userType!="adminUser"){
+      header('Location: regOnly.php');
+    }
+  }
+?>
 <html lang="heb" dir="rtl">
 
 <head>
@@ -24,7 +32,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <img src="images/13546.jpg" alt=""> bookinGym
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -39,7 +47,7 @@
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="searchGym.html">חפש מועדון</a>
+            <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
@@ -67,7 +75,7 @@
                 <i class="fa fa-user-circle logged_in" aria-hidden="true"></i>כניסת משתמשים</a>
             </li>';
               echo '<li>
-                  <a class="nav-link " href="reg.html"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
+                  <a class="nav-link " href="reg.php"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
                     הירשם</a>
                 </li>';
             }

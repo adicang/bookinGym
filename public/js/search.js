@@ -69,7 +69,7 @@ function showDetails() {
             lat = lat1;
         }
     }
-    if (!lat) {
+    if (!lat || lat=="undefined") {
         lat = 32.0853;
     }
     var lng = returnLng();
@@ -81,7 +81,7 @@ function showDetails() {
             lng = lng1;
         }
     }
-    if (!lng) {
+    if (!lng || lng=="undefined") {
         lng = 34.7818;
     }
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -128,6 +128,8 @@ function showDetails() {
                 gymCard.appendChild(document.createElement('br'));
                 var imageEl = document.createElement('img');
                 imageEl.setAttribute("id", "gymCardStyleImage");
+                imageEl.setAttribute("width", "50px");
+                imageEl.setAttribute("height", "50px");
                 imageEl.src = logo;
                 gymCard.appendChild(imageEl);
                 gymCard.appendChild(document.createElement('br'));
@@ -153,6 +155,8 @@ function showDetails() {
                 infowincontent.appendChild(text1);
 
                 var imageEl1 = document.createElement('img');
+                imageEl1.setAttribute("width", "50px");
+                imageEl1.setAttribute("height", "50px");
                 imageEl1.src = logo;
                 infowincontent.appendChild(imageEl1);
                 var icon = customIcon[type] || {};
