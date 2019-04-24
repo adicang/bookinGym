@@ -79,32 +79,60 @@
   </header>
   <main>
     <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" style="margin-right:150px;">
+      <div class="panel panel-primary toRight col-6" style="margin-right:95px;">
         <div class="panel-heading">
-          <h3 class="panel-title text-right toRight">ימים ושעות פעילות</h3>
+          <h3 class="panel-title text-right toRight" style=" font-weight: bold;">ימים ושעות פעילות</h3>
         </div>
       </div>
     </section>
 
     <div class="clear"></div>
-
-    <section class="container-fluid padding">
-      <div class="row col-12 text-right">
-
-        <label for="schedule">העלאת לוח חוגים של המועדון (PDF בלבד)
-          <input name="schedule" type="file" accept="application/pdf" /></label>
-
-      </div>
+    <form method="post" enctype="multipart/form-data">  
+    <section class="container-fluid padding">   
+       <div class="toRight" style="margin-right:100px;">
+         <label for="logoUpload" class="imageUpload" id="insertPdf">לחצו על מנת להעלות את לוח החוגים של המועדון</label>
+         <input type="file" name="file_array[]" id="logoUpload" accept="application/pdf" style="display: none;" onchange="preview_pdf()">
+        </div>
+   
     </section>
+    </form>
 
+    <script>
+$(document).ready(function(){
+ $(document).on('change', '#logoUpload', function(){
+  var name = document.getElementById("logoUpload").files[0].name;
+  var form_data = new FormData();
+  var ext = name.split('.').pop().toLowerCase();
+  var oFReader = new FileReader();
+  oFReader.readAsDataURL(document.getElementById("logoUpload").files[0]);
+  
+   form_data.append("file", document.getElementById('logoUpload').files[0]);
+   $.ajax({
+    url:"include/uploadPdf.php",
+    method:"POST",
+    data: form_data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    beforeSend:function(){
+     $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
+    },   
+    success:function(data)
+    {
+     $('#uploaded_image').html(data);
+    }
+   }); 
+ });
+});
+</script>
 
     <div class="clear"></div>
-    <hr>
+    
 
     <section class="container-fluid padding">
-      <div class="col-sm-12 toRight">
+      <div class="col-sm-12 toRight" style="margin-right:100px;">
         <div class="row  text-right">
-          <fieldset><strong>ימי פעילות: </strong><br>
+          <fieldset><strong>בחר את ימי הפעילות: </strong><br><br>
             <div class="clear"></div>
 
 
@@ -151,31 +179,20 @@
     </section>
 
     <div class="clear"></div>
+   <section class="container-fluid padding">
+  <div class="col-sm-3 toLeft">
+    <button onclick="addDaysAndHours()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הבא">הבא</button>	
     <p id="loginError"></p>
-    <section class="container-fluid padding">
-      
-      <button onclick="addDaysAndHours()" class="btn btn-primary text-center sign_up toLeft" value="הבא">הבא</button>
-    </section>
+	<p style="text-align: center;"> עמוד 2 מתוך 5 </p>
+	</div>
+  </section>
 
 
     <div class="clear"></div>
-    <hr>
+    
   </main>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
-  </main>
+ 
+  
   <footer>
     <div class="container-fluid padding">
       <div class="row text-center">

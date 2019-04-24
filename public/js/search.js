@@ -1,4 +1,5 @@
 
+
 window.onload = function () {
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -108,7 +109,9 @@ function showDetails() {
 
             var searchBox_lat_lng = new google.maps.LatLng(lat, lng);
             var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(searchBox_lat_lng, point); //distance in meters between your location and the marker
-            if (distance_from_location <= 10000) {
+            var selector = document.getElementById('radiusKm');
+            var selectedDistance = selector[selector.selectedIndex].value;
+            if (distance_from_location <= selectedDistance) {
 
                 //card
                 var gymCard = document.createElement('div');
@@ -201,6 +204,16 @@ function downloadUrl(url, callback) {
 function doNothing() { }
 
 
+function clearAllSelectedFilters() {
+    var arr = ["gym", "studio", "pool", "TRX", "zumba", "Pilatis_Machine", "Pilatis_mattress", "Shaping", "HIIT", "yoga", "Spinning", "kikbox", "swimmingPool", "spa", "parking", "accessibility","1star","2star","3star","4star","5star"];
+    for (var i = 0; i < arr.length; i++) {
+        if (document.getElementById(arr[i]).checked) {
+            document.getElementById(arr[i]).checked=false;
+        }
+    }
+    document.getElementById("clearAll").checked=false;
+    showDetails();
+}
 
 
 

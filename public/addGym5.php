@@ -79,23 +79,23 @@
   </header>
 
   <section class="container-fluid padding">
-    <div class="panel panel-primary toRight col-6">
+    <div class="panel panel-primary toRight col-6" style="margin-right:100px;">
       <div class="panel-heading">
-        <h3 class="panel-title text-right toRight">מנויים וכרטיסיות</h3>
+        <h3 class="panel-title text-right toRight" style=" font-weight: bold;">פרטי תשלום</h3>
       </div>
     </div>
     <div class="clear"></div>
-    <div class="form-group col-8 text-right toRight">
+    <div class="form-group col-8 text-right toRight" style="margin-right:100px;">
       <form action="" method="post">
 
         <fieldset>
           <legend>
-            פרטי חשבון עסק
+          פרטי חשבון העסק:
           </legend>
           <div class="row col-6 toRight">
             <label for="businessNum">מספר עסק:
               <br>
-              <input type="number" name="businessNum" id="businessNum"></label>
+              <input type="number" name="businessNum" id="businessNum">
             </label>
           </div>
           <div class="clear"></div>
@@ -116,8 +116,8 @@
         </fieldset>
 
         <fieldset>
-          <legend> סוג מנוי</legend>
-          <div class="form-group col-8 text-right toRight">
+          <legend>מנויים וכרטיסיות:</legend>
+          <div class="form-group col-8 text-right toRight" >
             <label for="subscription">
               <input type="checkbox" id="subscription" name="subscription" value="subscription"
                 onclick="selectedSection()">מנוי
@@ -130,7 +130,7 @@
         </fieldset>
     </div>
 
-    <div class="form-group col-8 text-right toRight" id="subscriptionSection">
+    <div class="form-group col-8 text-right toRight" id="subscriptionSection" style="margin-right:100px;">
       <fieldset>
         <legend>פרטי המנוי</legend>
 
@@ -158,7 +158,7 @@
       </fieldset>
     </div>
 
-    <div class="form-group col-8 text-right toRight">
+    <div class="form-group col-8 text-right toRight" style="margin-right:100px;">
       <div id="cardSection">
         <fieldset>
           <legend> פרטי כרטיסיה</legend>
@@ -198,28 +198,21 @@
     </div>
   </section>
   <div class="clear"></div>
+  
+
+  
+
+
   <section class="container-fluid padding">
-      <p id="loginError"></p>
-    <button onclick="addCardsAndSubscription()" class="btn btn-primary text-center sign_up toLeft" value="הוסף מועדון">הוסף מועדון</button>
+  <div class="col-sm-3 toLeft">
+    <button onclick="addCardsAndSubscription()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הוסף מועדון">הוסף מועדון</button>	
+    <p id="loginError"></p>
+	<p style="text-align: center;"> עמוד 5 מתוך 5 </p>
+	</div>
   </section>
-
-
   <div class="clear"></div>
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+  
+  
   </main>
   <footer>
     <div class="container-fluid padding">

@@ -21,10 +21,17 @@
             if (!$error){
 					$currUser=$currUser->find_user_by_id($user);
                     $session->login($currUser);
-					$post_data = array('code'=>1,'loginError'=>'');
+                    $sql="SELECT * FROM users where username='".$user."' and isApproved=1";
+                    $result=$database->query($sql);
+                    if ($result->num_rows > 0) {
+                    $post_data = array('code'=>1,'loginError'=>'');
+                    }
+                    else{
+                        $post_data = array('code'=>0,'loginError'=>'*המשתמש לא סיים את תהליך ההרשמה');
+                    }
             }
             else{
-                $post_data=array('code'=>0,'loginError'=>'אחד מהערכים שהזנת לא נכונים');
+                $post_data=array('code'=>0,'loginError'=>'*אחד או יותר מהערכים שהוזנו לא נכונים');
             }
     }
 	

@@ -56,7 +56,7 @@
                 echo '<section style="margin-top:6%">'.$error.'</section>' ;
               }
               else{
-                header('Location: transferDisplay.php');
+                header('Location: transferForm1.php');
               }
             }
         }
@@ -103,7 +103,7 @@
                 echo '<section style="margin-top:6%">'.$error.'</section>' ;
               }
               else{
-                header('Location: transferDisplay.php');
+                header('Location: transferForm1.php');
               }
 		}
 	 }
@@ -250,9 +250,9 @@
 
         
 		
-        <div class="form-group col-2 text-right toRight">
+        <div class="form-group col-3 text-right toRight">
           <label for="validity">תוקף</label>
-          <input type="date" class="form-control input-sm textAlignRight" id="validity" name="validity" required >
+          <input  type="date" class="form-control input-sm textAlignRight" id="validity" name="validity" required >
 		  
         </div>
 
@@ -297,12 +297,12 @@
         </div>    
 
 			 <div id="subscription">
-	  <div class="form-group col-2 text-right toRight">
+	  <div class="form-group col-3 text-right toRight">
           <label for="startDate">תאריך התחלה</label>
           <input type="date" class="form-control input-sm textAlignRight" id="startDate" name="start" required>
         </div>
 
-        <div class="form-group col-2 text-right toRight">
+        <div class="form-group col-3 text-right toRight">
           <label for="endDate"> תאריך סיום</label>
           <input type="date" class="form-control input-sm textAlignRight" id="endDate" name="end" required>
         </div>
@@ -332,17 +332,17 @@
 		<fieldset>
 			<legend> פרטי איש קשר</legend>
 			<div id="contacts">
-			<div class="form-group col-2 text-right toRight">
+			<div class="form-group col-3 text-right toRight">
 			<label for="name">שם</label>
 			<input type="text" class="form-control input-sm textAlignRight" id="name"  name= "sellerName" placeholder="הזן את שמך" required>
 			</div>
 			
-			<div class="form-group col-2 text-right toRight">
+			<div class="form-group col-3 text-right toRight">
 			<label for="phonenum" >מספר טלפון: </label>
 			<input id="phonenum" type="tel"  class="form-control input-sm textAlignRight" name="phonenum" pattern="^\d{3}\d{7}$" required >
 			</div>
 		
-			<div class="form-group col-2 text-right toRight">
+			<div class="form-group col-3 text-right toRight">
 			<label for="sellerMail" >אימייל:</label>
 			<input type="email" class="form-control input-sm textAlignRight" name="sellerMail" required>
 			</div>
@@ -358,21 +358,8 @@
   
 
   <div class="clear"></div>
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+
+  
   </main>
   <footer>
     <div class="container-fluid padding">

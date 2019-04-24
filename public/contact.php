@@ -77,16 +77,14 @@
       </div>
     </nav>
   </header>
+  <main>
   <div id='contact'>
       <div class="landing-text contact-padding">
         <h1 class="home_h1">צרו איתנו קשר</h1>    
        </div>
     </div>
   <section class="container-fluid padding">
-      
-		
-          
-          
+         
           <div class="container">
             <div class="row justify-content-center" dir="rtl">
               <div class="media-container-column col-lg-8" data-form-type="formoid">
@@ -118,7 +116,7 @@
                       <textarea type="text" class="form-control textAlignRight" name="message" rows="7" data-form-field="Message" required="" placeholder="פרט כאן את נושא הפניה" id="message-form1-v"></textarea>
                     </div>
               
-                    <span class="input-group-btn"><input type="submit" class="btn btn-primary text-center sign_up" value="שלח הודעה"/></span>
+                    <span class="input-group-btn"><input type="submit" onclick="contactSend()" class="btn btn-primary text-center sign_up" value="שלח הודעה"/></span>
                   </form>
               </div>
             </div>
@@ -161,6 +159,9 @@
             $error='Can not send message.';
             echo '<section style="margin-top:6%">'.$error.'</section>' ;
           }
+		  else{
+			  header('location: contact1.php');
+		  }
         }
       }
     ?>
@@ -168,23 +169,8 @@
 
 
 
- 
 
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+  
   </main>
   <footer>
     <div class="container-fluid padding">

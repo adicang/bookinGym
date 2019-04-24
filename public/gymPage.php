@@ -150,9 +150,16 @@
 					if($row["Saturday"]==1){
 						echo "<b>יום שבת: </b>".$row["SaturdayTo"]." - ".$row["SaturdayFrom"]."<br>";
 					}
+					$query1 = "SELECT * FROM Gyms inner Join pdfFiles on Gyms.id=pdfFiles.gymId where Gyms.id=".$id."";
+					$result1=$database->query($query1);
+					if ($result1->num_rows > 0) {
+						$row = $result1->fetch_assoc();
+						$fileName=$row["pdfName"];
+						echo '<a href="pdfFiles/'.basename($fileName).'">לחצו כאן להורדת מערכת השעות של המועדון</a>';
+					}
 				echo '</div>';
-				}
 		}
+	}
 		$query = "SELECT * FROM Gyms where Gyms.id=".$id."";
 		$result=$database->query($query);
 		if ($result->num_rows > 0) {
@@ -396,21 +403,8 @@
         <button onclick="window.history.back()" class="btn btn-primary text-center sign_up toRight">חזרה לחיפוש מועדוני כושר</button>
         </section>
 				<div class="clear"></div>
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+
+ 
   </main>
   <footer>
     <div class="container-fluid padding">

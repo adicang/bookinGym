@@ -1,12 +1,15 @@
 <?php
-	
+session_start();
   require_once('include/init.php');
+   
+ 
   ?>
 <html lang="heb" dir="rtl">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="shortcut icon" href="images/13546.jpg" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -101,9 +104,13 @@
                             </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" type="button" value="התחבר" onclick='login()'>
-                    </fieldset>
+                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+						
+					
+									</fieldset>
+									
                     </form>
-                    <p id="loginError"></p>
+                    <p id="loginError1"></p>
             </div>
           </div>
         </div>
@@ -113,23 +120,11 @@
  <div class="clear"></div>
 
 
+
  
 
   <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+  
   </main>
   <footer>
     <div class="container-fluid padding">
@@ -177,7 +172,7 @@
                         if (myObj.code == 1)
                             window.location.href = "index.php";
                         else
-                            document.getElementById("loginError").innerHTML=myObj.loginError;
+                            document.getElementById("loginError1").innerHTML=myObj.loginError;
                     }
                 }
                 
@@ -197,6 +192,8 @@
             
         
         </script>
+
+
 
 </body>
 

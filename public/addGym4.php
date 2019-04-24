@@ -78,29 +78,19 @@
   </header>
   <main>
     <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" >
+      <div class="panel panel-primary toRight col-6" style="margin-right:90px;>
         <div class="panel-heading">
-          <h3 class="panel-title text-right toRight">חוגים ומתקנים</h3>
+          <h3 class="panel-title text-right toRight" style=" font-weight: bold;">חוגים ומתקנים</h3>
         </div>
       </div>
     </section>
 
     <div class="clear"></div>
+   
 
     <section class="container-fluid padding">
-      <div class="row col-12 text-right">
-
-        
-
-      </div>
-    </section>
-
-
-    
-
-    <section class="container-fluid padding">
-        <div class="row  text-right">
-            <fieldset><strong>חוגים: </strong><br>
+        <div class="row text-right" style="margin-right:110px;">
+            <fieldset><strong>בחר חוגים: </strong><br>
               <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" ><label for="TRX">TRX</label><br>
               <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox"><label for="zumba">זומבה</label><br>
               <input type="checkbox" id="Pilatis_Machine" name="Pilatis_Machine" class="regular-checkbox" ><label
@@ -114,11 +104,12 @@
               <input type="checkbox" id="Spinning" name="Spinning" class="regular-checkbox" ><label
                 for="Spinning">ספינינג</label><br>
               <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" ><label
-                for="kikbox">קיק-בוקס</label><br>
+                for="kikbox">קיק-בוקס</label>
             </fieldset>
           </div>
-          <div class="row  text-right">
-              <fieldset><strong>מתקנים: </strong><br>
+		  <br>
+          <div class="row  text-right" style="margin-right:110px;">
+              <fieldset><strong>בחר מתקנים: </strong><br>
                 <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" ><label for="swimmingPool">בריכה</label><br>
                 <input type="checkbox" id="spa" name="spa" class="regular-checkbox" ><label for="spa">ספא</label><br>
                 <input type="checkbox" id="parking" name="parking" class="regular-checkbox" ><label
@@ -129,32 +120,21 @@
     </section>
 
     <div class="clear"></div>
-    <hr>
     
-    <section class="container-fluid padding">
-        <p id="loginError"></p>
-      <button onclick="addClassesAndFacilities()" class="btn btn-primary text-center sign_up toLeft" value="הבא">הבא</button>
-    </section>
+    <br>
+      <section class="container-fluid padding">
+  <div class="col-sm-3 toLeft">
+    <button onclick="addClassesAndFacilities()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הבא">הבא</button>	
+    <p id="loginError"></p>
+	<p style="text-align: center;"> עמוד 4 מתוך 5 </p>
+	</div>
+  </section>
 
 
     <div class="clear"></div>
-    <hr>
+    
   </main>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
-  </main>
+  
   <footer>
     <div class="container-fluid padding">
       <div class="row text-center">

@@ -89,9 +89,9 @@
   </header>
 
   <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" >
+      <div class="panel panel-primary toRight col-6" style="margin-right:100px;">
         <div class="panel-heading">
-          <h3 class="panel-title text-right toRight">הוספת תמונות</h3>
+          <h3 class="panel-title text-right toRight" style=" font-weight: bold;">הוספת תמונות</h3>
         </div>
       </div>
     </section>
@@ -103,19 +103,20 @@
 
   <form method="post" enctype="multipart/form-data">  
   <section class="container-fluid padding">
-    <div id="addLogo" class="toRight">
-       
+  <div class="toRight">
+    <div id="addLogo" style="padding-left:130px;">
         <label for="logoUpload" class="imageUpload" id="insertLogo">לחצו על מנת להעלות את לוגו המועדון</label>
         <input type="file" name="file_array[]" id="logoUpload" accept="image/*" style="display: none" onchange="preview_logo(event)">
-        <p>שימו לב שעל הלוגו להיות במידות של 50X50 פיקסלים</p>
-
     </div>
+	<p style="margin-right:100px;">* שימו לב שעל הלוגו להיות במידות של 50X50 פיקסלים</p>
+	</div>
   </section>
+
   <div class="clear"></div>
   <hr>
   <section class="container-fluid padding">
        
-      <div id="addImage1" class="toRight">
+      <div id="addImage1" class="toRight" style="margin-right:100px;">
          
   
           <label for="imageUpload1" class="imageUpload" id="insertImage1"><span id="inputTitle1">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -159,9 +160,9 @@
       <div class="container-fluid padding">
    <?php
       if(isset($_POST['uploadfilesub'])) {
-
-        if(!isset($_FILES['file_array'])){
-          echo 'אנא העלה תמונות<br>';
+        if (!is_uploaded_file($_FILES['file_array']['tmp_name'][0])) {
+          
+          echo '<p id="loginError">אנא העלה תמונות</p>';
         }
         else{
           $name_array = $_FILES['file_array']['name'];
@@ -184,38 +185,31 @@
                   echo "move_uploaded_file function failed for ".$name_array[$i]."<br>";
               }
           }
-        
           header('Location: addGym4.php');
         }
           
-        }
+      }
    ?>
-      <input type="submit" name="uploadfilesub" value="הבא" class="btn btn-primary text-center sign_up toLeft"/>
+      
       
 </div>
     </section>
-      </form>
+      
 
   <div class="clear"></div>
+  <section class="container-fluid padding">
+	  <div class="col-sm-3 toLeft">
+	  <input type="submit" name="uploadfilesub" value="הבא" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;"/>
+		<p id="loginError"></p>
+		<p style="text-align: center;"> עמוד 3 מתוך 5 </p>
+		</div>
+  </section>
+</form>
 
-
+  <div class="clear"></div>
  
 
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+  
   </main>
   <footer>
     <div class="container-fluid padding">

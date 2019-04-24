@@ -77,18 +77,27 @@
       </div>
     </nav>
   </header>
+  <main>
 
   <div id='addGymSuc'>
-    <div class="addGymSucText">
-      <div class="landing-text transfer-padding">
-        <h1 class="home_h1">מועדון הכושר נוסף בהצלחה!</h1>    
-        <h3 >בקרוב כמות המתאמנים שלך תגדל!</h3>
-                <div class="form-group col-12 textAlignRight locationFieldHomePage">              
-                    <a href="index.php" id="find_gym"  class="btn btn-primary text-center sign_up ">חזור לעמוד הבית</a>
-                  </div>
-       </div>
-    </div>
+      <div class="landing-text3">
+        <h1 class="home_h1">מועדון הכושר נוסף בהצלחה!</h1>
+        <h3 class="home_h3">בקרוב כמות המתאמנים שלך תגדל!</h3>
+        <div class="center">
+          
+        <a href="index.php" id="find_gym"  class="btn btn-primary text-center sign_up "> חזור לעמוד הבית </a>
+          
           </div>
+        </div>
+
+      </div>
+   
+
+
+
+
+
+
 <div class="clear"></div>
 
 
@@ -97,21 +106,8 @@
 
  
 
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+
+  
   </main>
   <footer>
     <div class="container-fluid padding">

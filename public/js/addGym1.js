@@ -208,3 +208,8 @@ function preview_logo(event) {
     }
     reader.readAsDataURL(event.target.files[0]);
 }
+
+function preview_pdf(){
+    var url="url(../images/pdfCheck.png)";
+    document.getElementById('insertPdf').style.backgroundImage = url;
+}

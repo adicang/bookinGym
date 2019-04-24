@@ -81,7 +81,7 @@
 
     <div class='regis'>
         <div class="landing-text regis-padding">
-            <h1 class="home_h1">הצטרפו למשתמשי bookinGym</h1>
+            <h1 class="home_h1" style="  text-shadow: 1px 1px grey;">הרישום בוצע בהצלחה!</h1>
         </div>
     </div>
 
@@ -91,28 +91,14 @@
     <section class="container-fluid padding" id="regSuccess">
         <div class="container">
             <div class="regSuccess">
-                <h1 class="regSuccessH1">הרישום בוצע בהצלחה!</h1>
                 <button class="btn btn-primary text-center sign_up " onclick="window.location.href='signIn.php'">עבור לעמוד כניסת משתמשים</button>
             </div>
         </div>
     </section>
     <div class="clear"></div>
 
-    <hr>
-    <section class="container-fluid padding">
-        <div class="row text-center padding">
-            <div class="col-12">
-                <h2>רשתות חברתיות</h2>
-            </div>
-            <div class="col-12 social padding">
-                <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-                <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </section>
+
+   
     </main>
     <footer>
         <div class="container-fluid padding">

@@ -120,30 +120,14 @@
                 </div>
                 
                 <button class="btn btn-primary text-center sign_up toLeft" value="הירשם" onclick="addUserToDatabase()">הירשם</button>
-                <a href="#">כבר רשום? התחבר כאן</a>
+                <a href="signIn.php">כבר רשום? התחבר כאן</a>
            
             <br>
             </div>
   </section>
 
 
-
-
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+ 
   </main>
   <footer>
     <div class="container-fluid padding">

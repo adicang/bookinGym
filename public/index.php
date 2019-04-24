@@ -115,7 +115,7 @@
             הקשיים הכרוכים בבחירת מרכז כושר.
           </p>
           <br>
-          <a href="contact.php" class="btn btn-primary text-center my_btn">צור קשר</a>
+          <a href="contact.php" class="btn btn-primary text-center my_btn" style="width: 20%">צור קשר</a>
         </div>
       </div>
     </section>
@@ -184,28 +184,15 @@
             באמצעות המערכת תוכלו לפרסם במודעה מפורטת את הכרטיסייה או המנוי אותם תרצו למכור או לחילופין לרכוש כרטיסייה או מנוי לטווח קצר או במחיר מוזל יותר!
           </p>
           <br>
-          <a href="#" class="btn btn-primary my_btn">למכירת/קניית כרטיסייה או מנוי</a>
+          <a href="transferDisplay.php" class="btn btn-primary my_btn">למכירה או קנייה של מנוי/כרטיסייה</a>
         </div>
         <div class="col-lg-6">
           <img src="images/46880.jpg" class="img-fluid">
         </div>
       </div>
     </section>
-    <hr>
-    <section class="container-fluid padding">
-      <div class="row text-center padding">
-        <div class="col-12">
-          <h2>רשתות חברתיות</h2>
-        </div>
-        <div class="col-12 social padding">
-          <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-          <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-    </section>
+
+   
   </main>
   <footer>
     <div class="container-fluid padding">

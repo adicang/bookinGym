@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/style.css">
 
   <title>bookinGym</title>
+
+  
 </head>
 
 <body>
@@ -84,6 +86,14 @@
         <input class="autoCompleteSearchPage col-3" id="autocomplete"
           placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
         <button onclick="showDetails()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
+        <label>בטווח של: <select id="radiusKm" name="radiusKm" size="1" onchange="showDetails()">
+        <option value="1000" >1 קילומטר</option>
+          <option value="2000" >2 קילומטר</option>
+          <option value="3000" >3 קילומטר</option>
+          <option value="5000" >5 קילומטר</option>
+					<option value="10000" selected>10 קילומטר</option>
+          <option value="20000" >20 קילומטר</option>
+					</select></label>
         
       </div>
     </div>
@@ -94,16 +104,27 @@
 
   <section class="container-fluid padding" style="width: 100%; height:750px;">
       <div class="col-sm-1 toRight">
- <form  >
-    <div class="row text-right">
-      <fieldset><strong>סוג מועדון: </strong><br>
-        <input type="radio" id="gym" name="type" class="regular-checkbox" onclick="showDetails()"><label for="gym"> מכון כושר</label><br>
-        <input type="radio" id="studio" name="type" class="regular-checkbox" onclick="showDetails()"><label for="studio">
-          סטודיו</label><br>
-        <input type="radio" id="pool" name="type" class="regular-checkbox" onclick="showDetails()"><label for="pool"> בריכה</label><br>
+
+ <div class="row text-right">
+      <fieldset>
+        <input type="radio" id="clearAll" name="clearAll" class="regular-checkbox" onclick="clearAllSelectedFilters()"><label for="clearAll"> נקה הכל</label><br>
       </fieldset>
     </div>
+    <div class="row text-right clear">
+    <button class="collapsible1 btn text-center sign_up ">סנן לפי סוג  </button>
+    <div class="content">
+      <fieldset><strong>סוג מועדון: </strong><br>
+        <input type="radio" id="gym" name="type" class="regular-checkbox" onclick="showDetails()"><label for="gym"> מכון כושר                  </label><br>
+        <input type="radio" id="studio" name="type" class="regular-checkbox" onclick="showDetails()"><label for="studio">
+          סטודיו</label><br>
+        <input type="radio" id="pool" name="type" class="regular-checkbox" onclick="showDetails()"><label for="pool"> בריכה            </label><br>
+      </fieldset>
+      </div>
+    </div>
     <div class="row  text-right">
+    <button class="collapsible1 btn text-center sign_up ">סנן לפי חוג  </button>
+    <div class="content">
+    
       <fieldset><strong>חוגים: </strong><br>
         <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" onclick="showDetails()"><label for="TRX">TRX</label><br>
         <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox" onclick="showDetails()"><label for="zumba">זומבה</label><br>
@@ -120,8 +141,12 @@
         <input type="checkbox" id="kikbox" name="kikbox" class="regular-checkbox" onclick="showDetails()"><label
           for="kikbox">קיק-בוקס</label><br>
       </fieldset>
+      
+      </div>
     </div>
     <div class="row  text-right">
+    <button class="collapsible1 btn text-center sign_up ">סנן לפי מתקן  </button>
+    <div class="content">
         <fieldset><strong>מתקנים: </strong><br>
           <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" onclick="showDetails()"><label for="swimmingPool">בריכה</label><br>
           <input type="checkbox" id="spa" name="spa" class="regular-checkbox" onclick="showDetails()"><label for="spa">ספא</label><br>
@@ -129,8 +154,11 @@
             for="parking">חניה</label><br>
             <input type="checkbox" id="accessibility" name="accessibility" class="regular-checkbox" onclick="showDetails()"><label for="accessibility">נגישות</label><br>
         </fieldset>
+        </div>
       </div>
       <div class="row  text-right">
+      <button class="collapsible1 btn text-center sign_up ">סנן לפי דירוג  </button>
+    <div class="content">
         <fieldset><strong>דירוג: </strong><br>
           <input type="checkbox" id="1star" name="1star" class="regular-checkbox" onclick="showDetails()"><label for="1star">מעל 1 כוכבים</label><br>
           <input type="checkbox" id="2star" name="2star" class="regular-checkbox" onclick="showDetails()"><label for="2star">מעל 2 כוכבים</label><br>
@@ -138,32 +166,20 @@
           <input type="checkbox" id="4star" name="4star" class="regular-checkbox" onclick="showDetails()"><label for="4star">מעל 4 כוכבים</label><br>
           <input type="checkbox" id="5star" name="5star" class="regular-checkbox" onclick="showDetails()"><label for="5star"> 5 כוכבים</label><br>
           </fieldset>
+          </div>
       </div>
-  </form>
+  
     </div>
 
   
-    <div id="card" class="col-sm-5 toRight text-right"></div>
-    <div class="col-sm-6 toRight" id="map"></div>
+    <div id="card" class="col-sm-6 toRight text-right"></div>
+    <div class="col-sm-5 toRight" id="map"></div>
   
 
   </section>
 <div class="clear"></div>
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+  
+ 
   </main>
   <footer>
     <div class="container-fluid padding">
@@ -200,7 +216,22 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
   
-  
+    <script>
+var coll = document.getElementsByClassName("collapsible1");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 
 
 </body>

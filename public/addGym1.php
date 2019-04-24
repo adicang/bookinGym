@@ -91,7 +91,8 @@
 	
       <div class="panel panel-primary toRight col-6" style="margin-right:150px;">
         <div class="panel-heading">
-          <h3 class="panel-title text-right toRight">פרטים כלליים</h3>
+          <h3 class="panel-title text-right toRight" style=" font-weight: bold;">פרטים כלליים</h3><br><br>
+		  <h6 class="panel-title text-right toRight" style="color: red;"> * שדה חובה </h6>
         </div>
         <div class="panel-body">
           <form>
@@ -143,29 +144,20 @@
 		 
       </div>
   </section>
+
   <section class="container-fluid padding">
-      <button onclick="addFirstDetails()" class="btn btn-primary text-center sign_up toLeft" value="הבא">הבא</button>
-      <p id="loginError"></p>
-    </section>
+  <div class="col-sm-3 toLeft">
+  <p id="loginError"></p>
+    <button onclick="addFirstDetails()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הבא">הבא</button>	
+	<p style="text-align: center;"> עמוד 1 מתוך 5 </p>
+	</div>
+  </section>
 
 
   <div class="clear"></div>
 
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+  
+  
   </main>
   <footer>
     <div class="container-fluid padding">

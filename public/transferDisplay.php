@@ -79,63 +79,64 @@
   </header>
   <div id='transfer'>
       <div class="landing-text transfer-padding">
-        <h1 class="home_h1">קניית/מכירת מנוי או כרטיסייה</h1>    
+        <h1 class="home_h1">מכירה או קנייה של מנוי/כרטיסייה</h1>    
        </div>
     </div>
+
 <div class="clear"></div>
+
 <section class="container-fluid padding transferPadding">
-<a href="transferForm.php" class="btn btn-primary text-center sign_up toRight">לחץ כאן להוספת מנוי או כרטיסייה למכירה</a>
+<a href="transferForm.php" class="btn btn-primary text-center sign_up toRight">להוספת מנוי/כרטיסייה למכירה</a>
 </section>
 <section class="container-fluid padding transferPadding">
 <a href="myTransfer.php" class="btn btn-primary text-center sign_up toRight"> המודעות שלי </a>
 </section>
+
 <div class="clear"></div>
+
 <section class="container-fluid padding">
 
-<div class="row col-6 toRight card-title">
+<div class="row col-lg-6 toRight card-title">
   <div style="margin:auto">
   <h1 id="transferTitel">כרטיסיות</h1>
   <form action="transferDisplay.php" method="POST">
-			<div class="row col-3 toRight">
-				<label>אזור מכירה: <select name="place1" size="1">
+  <div class="row col-5 toRight">
+				<label>אזור מכירה: <select name="place1" size="1" style="font-size: 20px;">
 					<option value="" disabled selected hidden>בחר</option>
 					<option value="צפון" <?php if ($_POST['place1'] == 'צפון') echo 'selected="selected"'; ?>> צפון </option>
 					<option value ="מרכז" <?php if ($_POST['place1'] == 'מרכז') echo 'selected="selected"'; ?>> מרכז </option>
 					<option value ="דרום" <?php if ($_POST['place1'] == 'דרום') echo 'selected="selected"'; ?>> דרום </option>
 					</select></label>
 			</div>
-			<div class="row col-3 toRight">
-				<label>מחיר: <input type="text" class="form-control input-sm textAlignRight" id="from" name="from"
-                  placeholder="מ-">
-				  <input type="text" class="form-control input-sm textAlignRight" id="to" name="to"
-                  placeholder="עד-"></label>
+			<div class="row col-4 toRight">
+				<label>עד מחיר:<input type="number" name="upToPrice1" style="display:block; width: 95%;"></label>
+		
 			</div>
-			<div class="row col-3 toRight">
-				<button type="submit" value="חפש" id="searchDogButton">חפש</button>
-				
+			<div class="row col-1 toRight">
+				<button type="submit" value="חפש" id="search" class="btn btn-info searchBtnTransfer" style="margin-right: 20px;">חפש</button>
 			</div>
 		</form>
 </div>
 </div>
-<div class="row col-6 toRight card-title">
+
+<div class="row col-lg-6 toRight card-title">
 <div style="margin:auto ">
   <h1 id="transferTitel">מנויים</h1>
   <form action="transferDisplay.php" method="POST">
-			<div class="row col-5 toRight">
-				<label>אזור מכירה: <select name="place" size="1">
+			<div class="row col-5 toRight" >
+				<label>אזור מכירה: <select name="place" size="1" style="font-size: 20px;">
 					<option value="" disabled selected hidden>בחר</option>
 					<option value="צפון" <?php if ($_POST['place'] == 'צפון') echo 'selected="selected"'; ?>> צפון </option>
 					<option value ="מרכז" <?php if ($_POST['place'] == 'מרכז') echo 'selected="selected"'; ?>> מרכז </option>
 					<option value ="דרום" <?php if ($_POST['place'] == 'דרום') echo 'selected="selected"'; ?>> דרום </option>
 					</select></label>
 			</div>
-			<div class="row col-6 toRight">
-				<label>מחיר: <input type="text" class="form-control input-sm" id="from" name="from" placeholder="מ-"><input type="text" class="form-control input-sm" id="to" name="to"
-                  placeholder="עד-"></label>
+			<div class="row col-4 toRight">
+				<label>עד מחיר:<input type="number" name="upToPrice" style="display:block; width: 95%;"></label>
+		
 			</div>
 			<div class="row col-1 toRight">
-				<button type="submit" value="חפש" id="search">חפש</button>
-				
+				<button type="submit" value="חפש" id="search" class="btn btn-info searchBtnTransfer" style="margin-right: 20px;">חפש</button>
 			</div>
 		</form>
 </div>
@@ -144,19 +145,23 @@
 
   <section class="container-fluid padding">
     <div class="row col-6 toRight" >
-   <div style="margin:auto; width:100%;padding-right:80px ;padding-left:20px;">
+   <div style="margin:auto; width:100%;padding-right:20px ;padding-left:20px;">
       
   <?php 	
 			
-			if($_POST['place1']){
+			if($_POST['place1'] || $_POST['upToPrice1']){
 				
-				$by_place = $_POST['place1'];
+        $by_place = $_POST['place1'];
+        $by_price = $_POST['upToPrice1'];
 
 				$query = "SELECT * FROM cardTransfer inner Join Gyms on cardTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId";
 				$conditions = array();
 
-				if(! empty($by_place)) {
+				if(!empty($by_place)) {
 				  $conditions[] = 'place="'.$by_place.'"';
+        }
+        if(!empty($by_price)) {
+				  $conditions[] = "priceCard<=".$by_price."";
 				}
 				
 				$sql = $query;
@@ -164,26 +169,30 @@
 				  $sql .= " WHERE " . implode(' AND ', $conditions);
 				}
 				$result=$database->query($sql);
-			}
+      }
+      
+      
 			
 				if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
 		
           echo '<div id="item">';
-		 
-          echo '<div style="width:40%; float:right;padding:30px;">';
+          if($session->get_signed_in() && $row["userId"]==$session->get_user_id()){
+            echo '<div class="row" style="padding-right: 30px; padding-top: 5px;"><div style="margin: auto; color: #138496; text-shadow: 0.5px 1px gray;"><h2><b>המודעה שלי</b></h2></div></div>';
+          }
+          echo '<div style="width:43%; float:right;padding:30px; padding-top: 10px;">';
               
                   echo "<h3><b>פרטי הכרטיסייה:</b></h3>";
 				  echo '<div style="font-size:18px;">';
                   echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
                   echo "<b>כמות כניסות:</b> ".$row["count"]."<br>";
                   echo "<b>תוקף:</b> ".$row["validity"]."<br>";
-                  echo "<b>מחיר:</b>".$row["priceCard"]."<br>";
+                  echo "<b>מחיר:</b> ".$row["priceCard"]."<br>";
                   echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
 				  echo "</div>";
 		echo "</div>";
-        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px;">';
+        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px; padding-top: 10px;">';
                 echo "<h3><b>פרטי המוכר:</b></h3>";
 				 echo '<div style="font-size:18px;">';
                 echo "<b>שם:</b> ".$row["sellerName"]."<br>";
@@ -192,7 +201,7 @@
 				echo "</div>";
               echo "</div>";
 
-              echo '<div style="width:20%; float:right;padding:30px;">';
+              echo '<div style="width:25%; float:right; padding: 10px; padding-top: 10px;">';
     echo '<div style="margin:auto; margin-left: 10px;">';
     echo "<img src='images/GymImg/".$row["imgName"]."' style='float:left' width='60%'>";
     echo "</div>";
@@ -210,18 +219,22 @@ echo '</div>';
        ?>
       </div>
        </div>
-       <div class="row col-6 toRight">
-       <div style="margin:auto; width:100%; padding-left:80px;padding-right:20px;">  
+       <div class="row col-6 toRight" >
+       <div style="margin:auto; width:100%; padding-left:20px;padding-right:20px;">  
 <?php
-	if($_POST['place']){
+	if($_POST['place'] || $_POST['upToPrice']){
 				
-				$by_place = $_POST['place'];
+        $by_place = $_POST['place'];
+        $by_price = $_POST['upToPrice'];
 
 				$query = "SELECT * FROM subscriptionTransfer inner Join Gyms on subscriptionTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId";
 				$conditions = array();
 
-				if(! empty($by_place)) {
+				if(!empty($by_place)) {
 				  $conditions[] = 'place="'.$by_place.'"';
+        }
+        if(!empty($by_price)) {
+				  $conditions[] = "price<=".$by_price."";
 				}
 				
 				$sql = $query;
@@ -235,7 +248,10 @@ echo '</div>';
   // output data of each row
   while($row = $result->fetch_assoc()) {
     echo '<div id="item">';
-    echo '<div style="width:40%; float:right;padding:30px;">';
+    if($session->get_signed_in() && $row["userId"]==$session->get_user_id()){
+      echo '<div class="row" style="padding-right: 30px; padding-top: 5px;"><div style="margin: auto; color: #138496; text-shadow: 0.5px 1px gray;"><h2><b>המודעה שלי</b></h2></div></div>';
+    }
+    echo '<div style="width:45%; float:right; padding-right:15px;padding-top: 10px;">';
     echo "<h3><b>פרטי המנוי:</b></h3> ";
 		echo '<div style="font-size:18px;">';
 		echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
@@ -245,15 +261,15 @@ echo '</div>';
         echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
 		echo "</div>"; 
         echo "</div>";  
-        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px;">';
-        echo "<h3><b>פרטי המוכר:</b></h3> ";
+    echo '<div style="width:35%; float:right;padding:20px; padding-top: 10px;">';
+    echo "<h3><b>פרטי המוכר:</b></h3> ";
 		echo '<div style="font-size:18px;">';
         echo "<b>שם:</b> ".$row["sellerName"]."<br>";
         echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
         echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
 		 echo "</div>";  
         echo "</div>";    
-    echo '<div style="width:20%; float:right; padding:30px;">';
+    echo '<div style="width:20%; float:right; padding-top: 10px;">';
     echo '<div style="margin:auto;margin-left: 10px;">';
     echo "<img src='images/GymImg/".$row["imgName"]."' style='float:left' width='60%'>";
     echo "</div>";
@@ -275,21 +291,7 @@ echo '</div>';
 
  
 
-  <hr>
-  <section class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-12">
-        <h2>רשתות חברתיות</h2>
-      </div>
-      <div class="col-12 social padding">
-        <a href="#" title="לא מומש"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-twitter"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לא מומש"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </section>
+ 
   </main>
   <footer>
     <div class="container-fluid padding">

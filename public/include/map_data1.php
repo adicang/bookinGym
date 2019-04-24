@@ -93,6 +93,7 @@ $query = "SELECT * from `Gyms` a left join (select gymId,avg(rate) as rate from 
 		if (count($conditions) > 0) {
         		  $sql .= " WHERE " . implode(' AND ', $conditions);
         }
+        $sql .= " order by a.name";
               
 
 				$result=$database->query($sql);
