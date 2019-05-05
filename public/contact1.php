@@ -32,7 +32,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
@@ -44,7 +44,7 @@
           <li class="nav-item">
               <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
               <a class="nav-link" href="contact.php">צור קשר</a>
           </li>
 
@@ -184,8 +184,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+          <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

@@ -1,7 +1,7 @@
 <?php
 session_start();
   require_once('include/init.php');
-   
+   require_once('./f-init.php');
  
   ?>
 <html lang="heb" dir="rtl">
@@ -104,9 +104,14 @@ session_start();
                             </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" type="button" value="התחבר" onclick='login()'>
-                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    
 						
-					
+						<?php if(empty($access_token)): ?>
+						
+						<a href="<?php echo $login_url;?>" class="loginBtn loginBtn--facebook"> Login with facebook</a>
+						
+						
+						<?php endif; ?>
 									</fieldset>
 									
                     </form>
@@ -157,10 +162,7 @@ session_start();
   <script src='js/autoComplete.js'></script>
 
   
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
-    async defer></script>
-  
+
   
     <script>
             function login(){
@@ -192,6 +194,7 @@ session_start();
             
         
         </script>
+
 
 
 

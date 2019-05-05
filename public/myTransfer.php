@@ -35,7 +35,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
@@ -44,7 +44,7 @@
           <li class="nav-item">
             <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
               <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
@@ -80,7 +80,7 @@
       </div>
     </nav>
   </header>
-
+<main>
 
   <div id='transfer'>
       <div class="landing-text transfer-padding">
@@ -92,47 +92,53 @@
 
 
 
-  <section class="container-fluid padding">
-  <div class="row col-7 toRight">
+<section class="container-fluid padding">
+  <div class="col-12 text-center center">
     <?php
 				$sql = "SELECT * FROM cardTransfer inner Join Gyms on cardTransfer.gymId =Gyms.id inner join Logos on Gyms.id=Logos.gymId where cardTransfer.userId='".$session->get_user_id()."'";
 				$result=$database->query($sql);	
 				if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
 		
-          echo '<div id="item">';
-		 
-          echo '<div style="width:30%; float:right;padding:30px;">';
-           
-                  echo "<h3><b>פרטי הכרטיסייה:</b></h3>";
-				  echo '<div style="font-size:18px;">';
-				  
-                  echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
+          echo '<div id="item" class="card index">';
+
+            echo '<div class="col-lg-4" style="float:right;">';
+              echo "<h3><b>פרטי הכרטיסייה:</b></h3>";
+				      echo '<div style="font-size:18px;">';
+				          echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
                   echo "<b>כמות כניסות:</b> ".$row["count"]."<br>";
                   echo "<b>תוקף:</b> ".$row["validity"]."<br>";
                   echo "<b>מחיר:</b>".$row["priceCard"]."<br>";
                   echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
-				  echo "</div>";
-		echo "</div>";
-        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px;">';
+				      echo "</div>";
+            echo "</div>";
+            
+            echo '<div class="col-lg-3" style=" float:right;">';
                 echo "<h3><b>פרטי המוכר:</b></h3>";
-				 echo '<div style="font-size:18px;">';
-                echo "<b>שם:</b> ".$row["sellerName"]."<br>";
-                echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
-                echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
-				echo "</div>";
-              echo "</div>";
+				        echo '<div style="font-size:18px;">';
+                  echo "<b>שם:</b> ".$row["sellerName"]."<br>";
+                  echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
+                  echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
+                echo "</div>";
+            echo "</div>";
+            
 
-              echo '<div style="width:20%; float:right;padding:30px;">';
-    echo '<div style="margin:auto; margin-left: 10px;">';
-    echo "<img src='images/GymImg/".$row["imgName"]."' style='float:left' width='60%'>";
-    echo "</div>";
-    echo "</div>";
-    echo '<div style="width:20%; float:left;padding-right: 70px;">';
-    echo "<button class='btn btn-info' onclick='removeCardTransfer(".$row["cardTransfer_id"].")'> מחק מודעה</button>";
-    echo '</div>';
-    echo "</div>";
-   
+            echo '<div class="col-lg-3" style=" float:right;">';
+              echo '<div style="margin:auto; width: 70%;">';
+                echo "<img src='images/GymImg/".$row["imgName"]."'  width='80%'>";
+              echo "</div>";
+            echo "</div>";
+
+            echo '<div class="col-lg-2" style=" float:right;">';
+              echo '<div class="center">';
+                echo "<button class='btn btn-info' onclick='removeCardTransfer(".$row["cardTransfer_id"].")'> מחק מודעה</button>";
+              echo '</div>';
+            echo '</div>';
+
+          echo "</div>";
+          
+
+          echo '<div class="clear"></div>';
         }
       }
 	
@@ -150,38 +156,44 @@
   if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo '<div id="item">';
-    echo '<div style="width:30%; float:right;padding:30px;">';
-    echo "<h3><b>פרטי המנוי:</b></h3> ";
-		echo '<div style="font-size:18px;">';
-		echo "<b>שם המועדון:</b> ".$row["name"]."<br>";
-        echo "<b>תאריך התחלה:</b> ".$row["start"]."<br>";
-        echo "<b>תאריך סיום:</b> ".$row["end"]."<br>";
-        echo "<b>מחיר:</b> ".$row["price"]."<br>";
-        echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
-		echo "</div>"; 
-        echo "</div>";  
-        echo '<div style="width:30%; float:right;margin-right: 10px;padding:30px;">';
-        echo "<h3><b>פרטי המוכר:</b></h3> ";
-		echo '<div style="font-size:18px;">';
-        echo "<b>שם:</b> ".$row["sellerName"]."<br>";
-        echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
-        echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
-		 echo "</div>";  
-        echo "</div>";    
-    echo '<div style="width:20%; float:right; padding:30px;">';
-    echo '<div style="margin:auto;margin-left: 10px;">';
-    echo "<img src='images/GymImg/".$row["imgName"]."' style='float:left' width='60%'>";
-    echo "</div>";
-    
-    echo "</div>";
+    echo '<div id="item" class="card index">';
 
-    echo '<div style="width:20%; float:left;padding-right: 70px;">';
-    echo "<button class='btn btn-info' onclick='removeSubTransfer(".$row["subTransferId"].")'> מחק מודעה</button>";
-    echo '</div>';
-    echo "</div>";
+            echo '<div class="col-lg-4" style="float:right;">';
+              echo "<h3><b>פרטי המנוי:</b></h3>";
+				      echo '<div style="font-size:18px;">';
+                echo "<b>תאריך התחלה:</b> ".$row["start"]."<br>";
+                echo "<b>תאריך סיום:</b> ".$row["end"]."<br>";
+                echo "<b>מחיר:</b> ".$row["price"]."<br>";
+                echo "<b>איזור מכירה:</b> ".$row["place"]."<br>";
+				      echo "</div>";
+            echo "</div>";
+            
+            echo '<div class="col-lg-3" style=" float:right;">';
+                echo "<h3><b>פרטי המוכר:</b></h3>";
+				        echo '<div style="font-size:18px;">';
+                  echo "<b>שם:</b> ".$row["sellerName"]."<br>";
+                  echo "<b>מספר טלפון:</b> ".$row["phonenum"]."<br>";
+                  echo "<b>מייל:</b> ".$row["sellerMail"]."<br>";
+                echo "</div>";
+            echo "</div>";
+            
 
-    echo '<div class="clear"></div>';
+            echo '<div class="col-lg-3" style=" float:right;">';
+              echo '<div style="margin:auto; width: 70%;">';
+                echo "<img src='images/GymImg/".$row["imgName"]."'  width='80%'>";
+              echo "</div>";
+            echo "</div>";
+
+            echo '<div class="col-lg-2" style=" float:right;">';
+              echo '<div class="center">';
+                echo "<button class='btn btn-info' onclick='removeSubTransfer(".$row["subTransferId"].")'> מחק מודעה</button>";
+              echo '</div>';
+            echo '</div>';
+
+          echo "</div>";
+          
+
+          echo '<div class="clear"></div>';
    
   }
   
@@ -221,8 +233,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

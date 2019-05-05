@@ -32,10 +32,10 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
@@ -79,7 +79,7 @@
   </header>
   <main>
     <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" style="margin-right:95px;">
+      <div class="panel panel-primary toRight col-lg-6" style="margin-right:95px;">
         <div class="panel-heading">
           <h3 class="panel-title text-right toRight" style=" font-weight: bold;">ימים ושעות פעילות</h3>
         </div>
@@ -130,8 +130,8 @@ $(document).ready(function(){
     
 
     <section class="container-fluid padding">
-      <div class="col-sm-12 toRight" style="margin-right:100px;">
-        <div class="row  text-right">
+      <div class="col-lg-12 toRight" style="margin-right:100px;">
+        <div class="row col-lg-8 text-right">
           <fieldset><strong>בחר את ימי הפעילות: </strong><br><br>
             <div class="clear"></div>
 
@@ -180,7 +180,7 @@ $(document).ready(function(){
 
     <div class="clear"></div>
    <section class="container-fluid padding">
-  <div class="col-sm-3 toLeft">
+  <div class="col-lg-3 toLeft">
     <button onclick="addDaysAndHours()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הבא">הבא</button>	
     <p id="loginError"></p>
 	<p style="text-align: center;"> עמוד 2 מתוך 5 </p>
@@ -209,8 +209,8 @@ $(document).ready(function(){
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

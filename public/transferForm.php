@@ -1,116 +1,112 @@
 
 <?php
-    
-	
     require_once('include/init.php');
     if (!$session->get_signed_in()){
-      header('Location: regOnly.php');
-  }
+        header('Location: regOnly.php');
+      }
    
-        header('Content-Type: text/html; charset=utf-8');
+    header('Content-Type: text/html; charset=utf-8');
    
-       
-    
-				if($_POST){
-          $type = $_POST["transfer"];
-		      if ($type=="card"){
-            $error = NULL;
-        
-            if (!$_POST['count']) {
-              $error .= "Error: The count is required.<br>"; }	
-            if (!$_POST['validity']) {
-              $error .= "Error: The validity is required.<br>"; }
-            if (!$_POST['priceCard']) {
-              $error .= "Error: The price is required.<br>"; }
-            if (!$_POST['place']) {
-              $error .= "Error: The place is required.<br>"; }
-            if (!$_POST['sellerName']) {
-              $error .= "Error: The name is required.<br>"; }
-            if (!$_POST['phonenum']) {
-              $error .= "Error: The phone is required.<br>"; }
-            if ($_POST['sellerMail'] && !filter_var($_POST['sellerMail'], FILTER_VALIDATE_EMAIL)) {
-              $error .= "Error: Invalid email format.<br>"; } 
-              if (!$_POST['gymNameCard']) {
-              $error .= "Error: The gymName is required.<br>"; }
-            
+      if($_POST){
+        $type = $_POST["transfer"];
+        if ($type=="card"){
+          $error = NULL;
+      
+          if (!$_POST['count']) {
+            $error .= "Error: The count is required.<br>"; }	
+          if (!$_POST['validity']) {
+            $error .= "Error: The validity is required.<br>"; }
+          if (!$_POST['priceCard']) {
+            $error .= "Error: The price is required.<br>"; }
+          if (!$_POST['placeCard']) {
+            $error .= "Error: The place is required.<br>"; }
+          if (!$_POST['sellerName']) {
+            $error .= "Error: The name is required.<br>"; }
+          if (!$_POST['phonenum']) {
+            $error .= "Error: The phone is required.<br>"; }
+          if ($_POST['sellerMail'] && !filter_var($_POST['sellerMail'], FILTER_VALIDATE_EMAIL)) {
+            $error .= "Error: Invalid email format.<br>"; } 
+            if (!$_POST['gymNameCard']) {
+            $error .= "Error: The gymName is required.<br>"; }
           
-            if (isset($error)) {
+        
+          if (isset($error)) {
+            echo '<section style="margin-top:6%">'.$error.'</section>' ;
+          }
+          else{
+            $count=$_POST['count']; 
+            $validity=$_POST['validity'];
+            $priceCard=$_POST['priceCard'];
+            $place=$_POST['placeCard'];
+            $sellerName=$_POST['sellerName'];
+            $phonenum=$_POST['phonenum'];
+            $sellerMail=$_POST['sellerMail'];
+            $gymNameCard=$_POST['gymNameCard'];
+            $userId=$session->get_user_id();
+            
+            $error=null;
+            $sql="insert into `cardTransfer`(`count`,`validity`,`priceCard`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`,`userId`) values('".$count."','".$validity."',".$priceCard.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameCard."',".$userId.")";
+            $result=$database->query($sql);
+            if(!$result){
+              $error='Can not send message.';
               echo '<section style="margin-top:6%">'.$error.'</section>' ;
             }
             else{
-              $count=$_POST['count']; 
-              $validity=$_POST['validity'];
-              $priceCard=$_POST['priceCard'];
-              $place=$_POST['place'];
-              $sellerName=$_POST['sellerName'];
-              $phonenum=$_POST['phonenum'];
-              $sellerMail=$_POST['sellerMail'];
-              $gymNameCard=$_POST['gymNameCard'];
-              $userId=$session->get_user_id();
-              
-              $error=null;
-              $sql="insert into `cardTransfer`(`count`,`validity`,`priceCard`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`,`userId`) values('".$count."','".$validity."',".$priceCard.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameCard."',".$userId.")";
-              $result=$database->query($sql);
-              if(!$result){
-                $error='Can not send message.';
-                echo '<section style="margin-top:6%">'.$error.'</section>' ;
-              }
-              else{
-                header('Location: transferForm1.php');
-              }
+              header('Location: transferForm1.php');
             }
+          }
         }
-			 else if ($type=="subscription"){
-            $error = NULL;
-        
-            if (!$_POST['start']) {
-              $error .= "Error: The start is required.<br>"; }	
-            if (!$_POST['end']) {
-              $error .= "Error: The end is required.<br>"; }
-            if (!$_POST['price']) {
-              $error .= "Error: The price is required.<br>"; }
-            if (!$_POST['place']) {
-              $error .= "Error: The place is required.<br>"; }
-            if (!$_POST['sellerName']) {
-              $error .= "Error: The name is required.<br>"; }
-            if (!$_POST['phonenum']) {
-              $error .= "Error: The phone is required.<br>"; }
-            if ($_POST['sellerMail'] && !filter_var($_POST['sellerMail'], FILTER_VALIDATE_EMAIL)) {
-              $error .= "Error: Invalid sellerMail format.<br>"; } 
-              if (!$_POST['gymNameSub']) {
-                $error .= "Error: The gymName is required.<br>"; }
-            
+        else if ($type=="subscription"){
+          $error = NULL;
+      
+          if (!$_POST['start']) {
+            $error .= "Error: The start is required.<br>"; }	
+          if (!$_POST['end']) {
+            $error .= "Error: The end is required.<br>"; }
+          if (!$_POST['price']) {
+            $error .= "Error: The price is required.<br>"; }
+          if (!$_POST['place']) {
+            $error .= "Error: The place is required.<br>"; }
+          if (!$_POST['sellerName']) {
+            $error .= "Error: The name is required.<br>"; }
+          if (!$_POST['phonenum']) {
+            $error .= "Error: The phone is required.<br>"; }
+          if ($_POST['sellerMail'] && !filter_var($_POST['sellerMail'], FILTER_VALIDATE_EMAIL)) {
+            $error .= "Error: Invalid sellerMail format.<br>"; } 
+            if (!$_POST['gymNameSub']) {
+              $error .= "Error: The gymName is required.<br>"; }
           
-            if (isset($error)) {
+        
+          if (isset($error)) {
+            echo '<section style="margin-top:6%">'.$error.'</section>' ;
+          }
+          else{
+            $start=$_POST['start']; 
+            $end=$_POST['end'];
+            $price=$_POST['price'];
+            $place=$_POST['place'];
+            $sellerName=$_POST['sellerName'];
+            $phonenum=$_POST['phonenum'];
+            $sellerMail=$_POST['sellerMail'];
+            $gymNameSub=$_POST['gymNameSub'];
+            $userId=$session->get_user_id();
+            
+            $error=null;
+            $sql="insert into `subscriptionTransfer`(`start`,`end`,`price`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`,`userId`) values('".$start."','".$end."',".$price.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameSub."',".$userId.")";
+            $result=$database->query($sql);
+            if(!$result){
+              $error='Can not send message.';
               echo '<section style="margin-top:6%">'.$error.'</section>' ;
             }
             else{
-              $start=$_POST['start']; 
-              $end=$_POST['end'];
-              $price=$_POST['price'];
-              $place=$_POST['place'];
-              $sellerName=$_POST['sellerName'];
-              $phonenum=$_POST['phonenum'];
-              $sellerMail=$_POST['sellerMail'];
-              $gymNameSub=$_POST['gymNameSub'];
-              $userId=$session->get_user_id();
-              
-              $error=null;
-              $sql="insert into `subscriptionTransfer`(`start`,`end`,`price`,`place`,`sellerName`,`phonenum`,`sellerMail`,`gymId`,`userId`) values('".$start."','".$end."',".$price.",'".$place."','".$sellerName."','".$phonenum."','".$sellerMail."','".$gymNameSub."',".$userId.")";
-              $result=$database->query($sql);
-              if(!$result){
-                $error='Can not send message.';
-                echo '<section style="margin-top:6%">'.$error.'</section>' ;
-              }
-              else{
-                header('Location: transferForm1.php');
-              }
-		}
-	 }
-	}	 
+              header('Location: transferForm1.php');
+            }
+          }
+        }
+      }	 
 	
 		
-    ?>
+?>
 
 <html lang="heb" dir="rtl">
 
@@ -142,7 +138,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
@@ -151,7 +147,7 @@
           <li class="nav-item">
             <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
               <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
@@ -187,180 +183,175 @@
       </div>
     </nav>
   </header>
-  <div id='transferForm'>
-      <div class="landing-text transfer-padding">
-        <h1 class="home_h1">הוספת מנוי או כרטיסייה</h1>    
-       </div>
-    </div>
-<div class="clear"></div>
-  <section class="container-fluid padding">
-    <form class="mbr-form " action="transferForm.php" method="post" >
 
-      <div class="form-group col-8 text-right toRight">
-	  <fieldset>
-	<legend> סוג מנוי</legend>
-      <div id="transferType">
-        <input type="radio" id="subscription" name="transfer" class="form-group col-2 text-right toRight" value="subscription" onclick="selectedSection()"><label for="subscription">מנוי </label><br>
-        <input type="radio" id="card" name="transfer"class="form-group col-2 text-right toRight" value="card" onclick="selectedSection()"><label for="card" >כרטיסיה </label><br>
+  <main>
+      <div id='transferForm'>
+          <div class="landing-text transfer-padding">
+            <h1 class="home_h1" style="text-shadow: 1px 1px grey;">הוספת מנוי או כרטיסייה</h1>    
+          </div>
       </div>
-	      
-	</fieldset>
-	</div>
-	  
-<div class="form-group col-8 text-right toRight">
-<div id="cardSection">
-	<fieldset>
-	<legend> פרטי כרטיסיה</legend>
-  <div class="form-group col-2 text-right toRight">
-          <label for="gymNameCard">שם מועדון</label>
-
-          <select class="form-control input-sm textAlignRight" id="gymNameCard" name="gymNameCard" required>
-          <option value="" disabled selected hidden>בחר</option>
-            <?php
-              $sql="Select * From Gyms order by name asc";
-              $result=$database->query($sql);
-              if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
     
-        echo "<option value=".$row["id"].">".$row["name"]."</option>";
-  }
-}
-            ?>
-          </select>
-		  <br>
-        </div>
-			<div class="form-group col-2 text-right toRight">
-          <label for="numberOf">כמות כניסות</label>
+    
+      <div class="clear"></div>
 
-          <select class="form-control input-sm textAlignRight" id="count" name="count" required>
-            <option value="1"> 1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-		  <br>
-        </div>
-
+      <section class="container-fluid padding">
+        <form class="mbr-form " action="transferForm.php" method="post" >
+          <div class="form-group col-8 text-right toRight">
+            <fieldset>
+              <legend> סוג מנוי</legend>
+              <div id="transferType">
+                <input type="radio" id="subscription" name="transfer" class="form-group col-2 text-right toRight" value="subscription" onclick="selectedSection()"><label for="subscription">מנוי </label><br>
+                <input type="radio" id="card" name="transfer"class="form-group col-2 text-right toRight" value="card" onclick="selectedSection()"><label for="card" >כרטיסיה </label><br>
+              </div>    
+            </fieldset>
+          </div>
         
-		
-        <div class="form-group col-3 text-right toRight">
-          <label for="validity">תוקף</label>
-          <input  type="date" class="form-control input-sm textAlignRight" id="validity" name="validity" required >
-		  
-        </div>
+          <div class="form-group col-8 text-right toRight">
+            <div id="cardSection">
+              <fieldset>
+                <legend> פרטי כרטיסיה</legend>
+                <div class="form-group col-lg-2 text-right toRight">
+                  <label for="gymNameCard">שם מועדון</label>
+                  <select class="form-control input-sm textAlignRight" id="gymNameCard" name="gymNameCard" required>
+                    <option value="" disabled selected hidden>בחר</option>
+                    <?php
+                      $sql="Select * From Gyms order by name asc";
+                      $result=$database->query($sql);
+                      if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                          echo "<option value=".$row["id"].">".$row["name"]."</option>";
+                        }
+                      }
+                    ?>
+                  </select>
+                  <br>
+                </div>
 
-        <div class="form-group col-2 text-right toRight">
-          <label for="price"> מחיר</label>
-          <input type="number" class="form-control input-sm textAlignRight" id="priceCard" name="priceCard" required>
-        </div>
+                <div class="form-group col-lg-2 text-right toRight">
+                  <label for="numberOf">כמות כניסות</label>
+                  <select class="form-control input-sm textAlignRight" id="count" name="count" required>
+                    <option value="1"> 1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                  <br>
+                </div>
+                
+                <div class="form-group col-lg-3 text-right toRight">
+                  <label for="validity">תוקף</label>
+                  <input  type="date" class="form-control input-sm textAlignRight" id="validity" name="validity" required >
+                </div>
 
-        <div class="form-group col-2 text-right toRight">
-          <label for="place">איזור מכירה</label>
-          <select class="form-control input-sm textAlignRight" id="placeCard" name="place" required >
-            <option value="צפון"> צפון</option>
-            <option value="מרכז">מרכז</option>
-            <option value="דרום">דרום</option>
-          </select>
-        </div>
-    
-</fieldset>
-</div>
+                <div class="form-group col-lg-2 text-right toRight">
+                  <label for="price"> מחיר</label>
+                  <input type="number" class="form-control input-sm textAlignRight" id="priceCard" name="priceCard" required>
+                </div>
 
-<div id="subscriptionSection">
-	<fieldset>
-	<legend>פרטי המנוי</legend>
-  <div class="form-group col-2 text-right toRight">
-          <label for="gymNameSub">שם מועדון</label>
+                <div class="form-group col-lg-2 text-right toRight">
+                  <label for="place">איזור מכירה</label>
+                  <select class="form-control input-sm textAlignRight" id="placeCard" name="placeCard" required >
+                    <option value="" disabled selected hidden>בחר</option>
+                    <option value="צפון"> צפון</option>
+                    <option value="מרכז">מרכז</option>
+                    <option value="דרום">דרום</option>
+                  </select>
+                </div>
+            
+            
+              </fieldset>
+            </div>
 
-          <select class="form-control input-sm textAlignRight" id="gymNameSub" name="gymNameSub" required>
-          <option value="" disabled selected hidden>בחר</option>
-            <?php
-              $sql="Select * From Gyms order by name asc";
-              $result=$database->query($sql);
-              if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    
-        echo "<option value=".$row["id"].">".$row["name"]."</option>";
-  }
-}
-            ?>
-          </select>
-		  <br>
-        </div>    
+            <div id="subscriptionSection">
+              <fieldset>
+                <legend>פרטי המנוי</legend>
+                <div class="form-group col-lg-2 text-right toRight">
+                  <label for="gymNameSub">שם מועדון</label>
+                  <select class="form-control input-sm textAlignRight" id="gymNameSub" name="gymNameSub" required>
+                    <option value="" disabled selected hidden>בחר</option>
+                    <?php
+                      $sql="Select * From Gyms order by name asc";
+                      $result=$database->query($sql);
+                      if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                          echo "<option value=".$row["id"].">".$row["name"]."</option>";
+                        }
+                      }
+                    ?>
+                  </select>
+                  <br>
+                </div>    
 
-			 <div id="subscription">
-	  <div class="form-group col-3 text-right toRight">
-          <label for="startDate">תאריך התחלה</label>
-          <input type="date" class="form-control input-sm textAlignRight" id="startDate" name="start" required>
-        </div>
+                <div id="subscription">
 
-        <div class="form-group col-3 text-right toRight">
-          <label for="endDate"> תאריך סיום</label>
-          <input type="date" class="form-control input-sm textAlignRight" id="endDate" name="end" required>
-        </div>
-		
+                  <div class="form-group col-lg-3 text-right toRight">
+                    <label for="startDate">תאריך התחלה</label>
+                    <input type="date" class="form-control input-sm textAlignRight" id="startDate" name="start" required>
+                  </div>
 
-        <div class="form-group col-2 text-right toRight">
-          <label for="price"> מחיר</label>
-          <input type="number" class="form-control input-sm textAlignRight" id="priceSub" name="price" required>
-        </div>
+                  <div class="form-group col-lg-3 text-right toRight">
+                    <label for="endDate"> תאריך סיום</label>
+                    <input type="date" class="form-control input-sm textAlignRight" id="endDate" name="end" required>
+                  </div>
 
-        <div class="form-group col-2 text-right toRight">
-          <label for="place">איזור מכירה</label>
-          <select class="form-control input-sm textAlignRight" id="placeSub" name="place" required>
-            <option value="צפון"> צפון</option>
-            <option value="מרכז">מרכז</option>
-            <option value="דרום">דרום</option>
-          </select>
-        </div>
-    
-</fieldset>
-</div>
-  </div>  
-  
+                  <div class="form-group col-lg-2 text-right toRight">
+                    <label for="price"> מחיר</label>
+                    <input type="number" class="form-control input-sm textAlignRight" id="priceSub" name="price" required>
+                  </div>
+
+                  <div class="form-group col-lg-2 text-right toRight">
+                    <label for="place">איזור מכירה</label>
+                    <select class="form-control input-sm textAlignRight" id="placeSub" name="place" required>
+                      <option value="" disabled selected hidden>בחר</option>
+                      <option value="צפון"> צפון</option>
+                      <option value="מרכז">מרכז</option>
+                      <option value="דרום">דרום</option>
+                    </select>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>  
+          
 
 
-		<div class="form-group col-8 text-right toRight">
-		<fieldset>
-			<legend> פרטי איש קשר</legend>
-			<div id="contacts">
-			<div class="form-group col-3 text-right toRight">
-			<label for="name">שם</label>
-			<input type="text" class="form-control input-sm textAlignRight" id="name"  name= "sellerName" placeholder="הזן את שמך" required>
-			</div>
-			
-			<div class="form-group col-3 text-right toRight">
-			<label for="phonenum" >מספר טלפון: </label>
-			<input id="phonenum" type="tel"  class="form-control input-sm textAlignRight" name="phonenum" pattern="^\d{3}\d{7}$" required >
-			</div>
-		
-			<div class="form-group col-3 text-right toRight">
-			<label for="sellerMail" >אימייל:</label>
-			<input type="email" class="form-control input-sm textAlignRight" name="sellerMail" required>
-			</div>
-		</div>
-	  </fieldset>
-	  <span class="input-group-btn"><input type="submit" class="btn btn-primary text-center sign_up" value="שלח"/></span>
-                  
-	  </div>
-	  
-    </form>
-	
-  </section>
-  
+           
+              <fieldset>
+                <legend> פרטי איש קשר</legend>
+                <div id="contacts">
+                  <div class="form-group col-lg-3 text-right toRight">
+                    <label for="name">שם</label>
+                    <input type="text" class="form-control input-sm textAlignRight" id="name"  name= "sellerName" placeholder="שם מלא" required>
+                  </div>
+              
+                  <div class="form-group col-lg-3 text-right toRight">
+                    <label for="phonenum" >טלפון</label>
+                    <input id="phonenum" type="tel"  class="form-control input-sm textAlignRight" name="phonenum" placeholder="מספר טלפון" pattern="^\d{3}\d{7}$" required >
+                  </div>
+              
+                  <div class="form-group col-lg-5 text-right toRight">
+                    <label for="sellerMail" >מייל</label>
+                    <input type="email" class="form-control input-lg textAlignRight" placeholder="כתובת מייל" name="sellerMail" required>
+                  </div>
+                </div>
+              </fieldset>
 
-  <div class="clear"></div>
-
+              <span class="input-group-btn"><input type="submit" class="btn btn-primary text-center sign_up" value="שלח"/></span>            
+            
+            
+        </form>
+      </section>
+          
+      <div class="clear"></div>
   
   </main>
+
   <footer>
     <div class="container-fluid padding">
       <div class="row text-center">
@@ -377,8 +368,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+          <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">
@@ -390,37 +381,7 @@
   </footer>
   <script src="js/animations.js"></script>
   <script src='js/autoComplete.js'></script>
-
-<script>
-  
-
-function selectedSection(){
-  if(document.getElementById("card").checked){
-    document.getElementById("cardSection").style.display = "inline";
-    document.getElementById("startDate").removeAttribute("required");
-    document.getElementById("endDate").removeAttribute("required");
-    document.getElementById("priceSub").removeAttribute("required");
-    document.getElementById("placeSub").removeAttribute("required");
-    document.getElementById("gymNameSub").removeAttribute("required");
-  }
-  else{
-    document.getElementById("cardSection").style.display = "none";
-	
-  }
-  if(document.getElementById("subscription").checked){
-    document.getElementById("subscriptionSection").style.display = "inline";
-    document.getElementById("count").removeAttribute("required");
-    document.getElementById("validity").removeAttribute("required");
-    document.getElementById("priceCard").removeAttribute("required");
-    document.getElementById("placeCard").removeAttribute("required");
-    document.getElementById("gymNameCard").removeAttribute("required");
-  		  }
-  else{
-    document.getElementById("subscriptionSection").style.display = "none";
-	
-  }
-}
-  </script>
+  <script src="js/transferForm.js"></script>
 
 
 </body>

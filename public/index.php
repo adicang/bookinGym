@@ -26,7 +26,7 @@
 </head>
 
 <body>
-  <header>
+  <header style="">
     <nav class="navbar navbar-expand-md navbar-light">
       <a class="navbar-brand" href="index.php">
         <img src="images/13546.jpg" alt=""> bookinGym
@@ -34,7 +34,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="collapse navbar-collapse" id="collapsibleNavbar" >
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="index.php">דף הבית</a>
@@ -83,18 +83,25 @@
   </header>
   <main>
     <div id='home'>
-      <div class="landing-text">
+      <div class="landing-text ">
+        <div class="center" style="margin-bottom: 45px;">
         <h1 class="home_h1">bookinGym</h1>
-        <h3 class="home_h3">מנוע חיפוש המאגד את כל חדרי הכושר במקום אחד!</h3>
+        <h3 class="home_h3" style="text-shadow: 1px 1px black;">מנוע חיפוש המאגד את כל חדרי הכושר במקום אחד!</h3>
         <div class="form-group col-12 textAlignRight">
           <div class="locationFieldHomePage">
-            <input class="autocompleteHomePage col-4" id="autocomplete" placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
-            <a href="#" id="find_gym" onclick="onClickFindGym()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</a>
+            <div class="center">
+              <div class="form-group col-lg-6 text-right toRight padding1">
+                <input type="text" class="autocompleteHomePage form-control input-sm textAlignRight" id="autocomplete"  placeholder="הזן כתובת" onFocus="geolocate()"/>
           </div>
-
+          <div class="form-group col-lg-5 toRight padding1">
+                <a href="#" id="find_gym" onclick="onClickFindGym()" class="btn btn-primary text-center sign_up form-control input-sm " >מצא לי מועדון כושר</a>
+                </div>
+               </div>
+          </div>
+          </div>
+          </div>
         </div>
-
-      </div>
+      
     </div>
     
     <section class="container-fluid padding FirstCo">
@@ -115,7 +122,7 @@
             הקשיים הכרוכים בבחירת מרכז כושר.
           </p>
           <br>
-          <a href="contact.php" class="btn btn-primary text-center my_btn" style="width: 20%">צור קשר</a>
+          <a href="contact.php" class="btn btn-primary text-center my_btn" >צור קשר</a>
         </div>
       </div>
     </section>
@@ -210,8 +217,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

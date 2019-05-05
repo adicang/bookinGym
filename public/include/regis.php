@@ -19,6 +19,9 @@
     else if(!$urlaray['email']){
         $post_data = array('code'=>0,'regError'=>'*אנא הזן כתובת אימייל ');
     }
+    else if(!$urlaray['phoneNum']){
+        $post_data = array('code'=>0,'regError'=>'*אנא הזן מספר טלפון  ');
+    }
     else if(!$urlaray['password']){
         $post_data = array('code'=>0,'regError'=>'*אנא הזן סיסמה ');
     }
@@ -41,6 +44,7 @@
         $fullName=$urlaray['fullname'];
         $username=$urlaray['username'];
         $email=$urlaray['email'];
+        $phoneNum=$urlaray['phoneNum'];
         $pwd=$urlaray['password'];
         if($urlaray['male']==1){
             $gender='male';
@@ -69,7 +73,7 @@
         }     
         else{
             $password=md5($urlaray['password']);
-            $error=user::add_user($userType,$fullName,$username,$email,$password,$gender,$address,$yearOfBirth,md5($randomCode));
+            $error=user::add_user($userType,$fullName,$username,$email,$phoneNum,$password,$gender,$address,$yearOfBirth,md5($randomCode));
             if ($error){
                 $error='Can not add user.  Error is:'.$database->get_connection()->error;
                 $post_data = array('code'=>0,'regError'=>$error);

@@ -32,10 +32,10 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
@@ -77,11 +77,12 @@
       </div>
     </nav>
   </header>
-
+<main>
   <section class="container-fluid padding">
     <div class="panel panel-primary toRight col-6" style="margin-right:100px;">
       <div class="panel-heading">
-        <h3 class="panel-title text-right toRight" style=" font-weight: bold;">פרטי תשלום</h3>
+        <h3 class="panel-title text-right toRight" style=" font-weight: bold;">פרטי תשלום</h3><br><br>
+		  <h6 class="panel-title text-right toRight" style="color: red;"> * שדה חובה </h6>
       </div>
     </div>
     <div class="clear"></div>
@@ -93,7 +94,7 @@
           פרטי חשבון העסק:
           </legend>
           <div class="row col-6 toRight">
-            <label for="businessNum">מספר עסק:
+            <label for="businessNum">מספר עסק*
               <br>
               <input type="number" name="businessNum" id="businessNum">
             </label>
@@ -101,14 +102,14 @@
           <div class="clear"></div>
 
           <div class="row col-6 toRight">
-            <label for="accountNum">מספר חשבון בנק:
+            <label for="accountNum">מספר חשבון בנק*
               <br>
               <input type="number" name="accountNum" id="accountNum">
             </label>
           </div>
           <div class="clear"></div>
           <div class="row col-6 toRight">
-            <label for="branchNum">מספר סניף:
+            <label for="branchNum">מספר סניף*
               <br>
               <input type="number" name="branchNum" id="branchNum">
             </label>
@@ -135,13 +136,13 @@
         <legend>פרטי המנוי</legend>
 
 
-        <div class="form-group col-3 text-right toRight">
-          <label for="periodTimeSub">לאורך:</label>
+        <div class="form-group col-lg-3 text-right toRight">
+          <label for="periodTimeSub">לאורך*</label>
             <input type="number" class="form-control input-sm textAlignRight" id="periodTimeSub" name="periodTimeSub">
         </div>
 
-        <div class="form-group col-3 text-right toRight">
-            <label for="periodTypeSub">  בחר תקופה:</label>
+        <div class="form-group col-lg-3 text-right toRight">
+            <label for="periodTypeSub">תקופת זמן*</label>
             <select class="form-control input-lg textAlignRight" id="periodTypeSub" name="periodTypeSub" >
                 <option value="days"> ימים</option>
                 <option value="weeks">שבועות</option>
@@ -151,8 +152,8 @@
 
         
 
-        <div class="form-group col-3 text-right toRight">
-          <label for="priceSub"> מחיר</label>
+        <div class="form-group col-lg-3 text-right toRight">
+          <label for="priceSub">מחיר*</label>
           <input type="number" class="form-control input-sm textAlignRight" id="priceSub" name="priceSub">
         </div>
       </fieldset>
@@ -163,35 +164,33 @@
         <fieldset>
           <legend> פרטי כרטיסיה</legend>
 
-          <div class="form-group col-3 text-right toRight">
-            <label for="enterCount">כמות כניסות</label>
+          <div class="form-group col-lg-3 text-right toRight">
+            <label for="enterCount">כמות כניסות*</label>
 
             <input type="number" class="form-control input-sm textAlignRight" id="enterCount" name="enterCount"
               >
             <br>
           </div>
 
-          <div class="form-group col-3 text-right toRight">
-            <label for="priceCard"> מחיר</label>
-            <input type="number" class="form-control input-sm textAlignRight" id="priceCard" name="priceCard">
-          </div>
-
-          <div class="form-group col-3 text-right toRight">
-              <label for="periodTimeCard">לאורך:</label>
+          <div class="form-group col-lg-3 text-right toRight">
+              <label for="periodTimeCard">לאורך*</label>
                 <input type="number" class="form-control input-sm textAlignRight" id="periodTimeCard" name="periodTimeCard"
                   >
             </div>
     
-            <div class="form-group col-3 text-right toRight">
-                <label for="periodTypeCard">  בחר תקופה:</label>
+            <div class="form-group col-lg-3 text-right toRight">
+                <label for="periodTypeCard">תקופת זמן*</label>
                 <select class="form-control input-lg textAlignRight" id="periodTypeCard" name="periodTypeCard"  >
                     <option value="days"> ימים</option>
                     <option value="weeks">שבועות</option>
                     <option value="months">חודשים</option>
                 </select>
-              </div>
+             </div>
     
-
+			<div class="form-group col-lg-3 text-right toRight">
+            <label for="priceCard">מחיר*</label>
+            <input type="number" class="form-control input-sm textAlignRight" id="priceCard" name="priceCard">
+          </div>
         </fieldset>
       </div>
       </form>
@@ -230,8 +229,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+         <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

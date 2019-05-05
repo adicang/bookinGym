@@ -180,12 +180,14 @@ function showNewImgDiv(id) {
 function preview_image(event, id, title) {
    
     const reader = new FileReader();
+	
     reader.onload = function () {
         var src = reader.result;
         var url = "url(" + src + ")";
         document.getElementById(id).style.backgroundImage = url;
         document.getElementById(id).style.backgroundSize = "200px 200px";
         document.getElementById(title).innerHTML = "לחץ להחלפת התמונה";
+		document.getElementById(title).style.backgroundColor= "white";
     }
     reader.readAsDataURL(event.target.files[0]);
     

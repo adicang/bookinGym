@@ -109,7 +109,9 @@ function unParse(str) {
 }
 
 
-
+function gymRegis(gymId, type) {
+    window.location = '/payForGym.php?gymId=' + gymId + '&type=' + type;
+}
 
 /*review stars functions*/
 (function (e) {
@@ -163,7 +165,7 @@ $(function () {
     var newReview = $('#new-review');
     var openReviewBtn = $('#open-review-box');
     var closeReviewBtn = $('#close-review-box');
-    var ratingsField = $('#ratings-hidden');
+   
 
     openReviewBtn.click(function (e) {
         reviewBox.slideDown(400, function () {
@@ -184,11 +186,45 @@ $(function () {
 
     });
 
-    $('.starrr').on('starrr:change', function (e, value) {
-        ratingsField.val(value);
-    });
+    
 });
 
 
+  //initial setup
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    addListeners();
+    setRating(); //based on value inside the div
+});
+
+function addListeners() {
+    var stars = document.querySelectorAll('.star');
+    [].forEach.call(stars, function (star, index) {
+        
+
+        star.addEventListener('click', (function (idx) {
+            console.log('adding rating on', index)
+            document.querySelector('.stars').setAttribute('data-rating', idx + 1);
+            console.log('Rating is now', idx + 1);
+            setRating();
+        }).bind(window, index));
+    });
+
+}
+
+function setRating() {
+    var stars = document.querySelectorAll('.star');
+                var rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+                document.getElementById("ratings-hidden").value=rating;
+    [].forEach.call(stars, function (star, index) {
+        if (rating > index) {
+            star.classList.add('rated');
+            console.log('added rated on', index);
+        } else {
+            star.classList.remove('rated');
+            console.log('removed rated on', index);
+        }
+    });
+}
 
 

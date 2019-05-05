@@ -32,23 +32,23 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
+            <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="contact.php">צור קשר</a>
+            <a class="nav-link" href="contact.php">צור קשר</a>
           </li>
 
-         
+
           <?php
 
             if($session->get_signed_in()){
@@ -67,47 +67,47 @@
                 <i class="fa fa-user-circle logged_in" aria-hidden="true"></i>כניסת משתמשים</a>
             </li>';
               echo '<li>
-                  <a class="nav-link " href="reg.html"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
+                  <a class="nav-link " href="reg.php"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
                     הירשם</a>
                 </li>';
             }
           ?>
-          
+
         </ul>
       </div>
     </nav>
   </header>
   <main>
 
-  <div id='addGymSuc'>
+    <div id='addGymSuc'>
       <div class="landing-text3">
         <h1 class="home_h1">מועדון הכושר נוסף בהצלחה!</h1>
-        <h3 class="home_h3">בקרוב כמות המתאמנים שלך תגדל!</h3>
+        <h3 class="home_h3" style="text-shadow: 1px 1px black;">בקרוב כמות המתאמנים שלך תגדל!</h3>
         <div class="center">
-          
-        <a href="index.php" id="find_gym"  class="btn btn-primary text-center sign_up "> חזור לעמוד הבית </a>
-          
-          </div>
+
+          <a href="index.php" id="find_gym" class="btn btn-primary text-center sign_up "> חזור לעמוד הבית </a>
+
         </div>
-
       </div>
-   
+
+    </div>
 
 
 
 
 
 
-<div class="clear"></div>
+
+    <div class="clear"></div>
 
 
 
 
 
- 
 
 
-  
+
+
   </main>
   <footer>
     <div class="container-fluid padding">
@@ -125,8 +125,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">
@@ -139,12 +139,12 @@
   <script src="js/animations.js"></script>
   <script src='js/autoComplete.js'></script>
 
-  
+
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
-  
-  
+
+
 
 
 </body>

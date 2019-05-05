@@ -42,10 +42,10 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
@@ -87,11 +87,12 @@
       </div>
     </nav>
   </header>
-
+<main>
   <section class="container-fluid padding">
       <div class="panel panel-primary toRight col-6" style="margin-right:100px;">
         <div class="panel-heading">
-          <h3 class="panel-title text-right toRight" style=" font-weight: bold;">הוספת תמונות</h3>
+          <h3 class="panel-title text-right toRight" style=" font-weight: bold;">הוספת תמונות</h3><br><br>
+		  <h6 class="panel-title text-right toRight" style="color: red;"> * שדה חובה </h6>
         </div>
       </div>
     </section>
@@ -103,12 +104,12 @@
 
   <form method="post" enctype="multipart/form-data">  
   <section class="container-fluid padding">
-  <div class="toRight">
-    <div id="addLogo" style="padding-left:130px;">
-        <label for="logoUpload" class="imageUpload" id="insertLogo">לחצו על מנת להעלות את לוגו המועדון</label>
+  <div class="col-lg-6 toRight text-right" style="margin-right:100px;">
+    <div id="addLogo" >
+        <label for="logoUpload" class="imageUpload" id="insertLogo">לחצו על מנת להעלות את לוגו המועדון*</label>
         <input type="file" name="file_array[]" id="logoUpload" accept="image/*" style="display: none" onchange="preview_logo(event)">
     </div>
-	<p style="margin-right:100px;">* שימו לב שעל הלוגו להיות במידות של 50X50 פיקסלים</p>
+	<u><p style="font-size:13px;">שימו לב שעל הלוגו להיות במידות של 50X50 פיקסלים</p></u>
 	</div>
   </section>
 
@@ -116,15 +117,15 @@
   <hr>
   <section class="container-fluid padding">
        
-      <div id="addImage1" class="toRight" style="margin-right:100px;">
+      <div id="addImage1" class=" col-lg-2 toRight text-right" style="margin-right:100px;">
          
   
-          <label for="imageUpload1" class="imageUpload" id="insertImage1"><span id="inputTitle1">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
+          <label for="imageUpload1" class="imageUpload" id="insertImage1"><span id="inputTitle1">לחצו על מנת להוסיף תמונות של המועדון* </span> </label>
           <input type="file" name="file_array[]" id="imageUpload1" accept="image/*" style="display: none" onchange="uploadedImage(event,'insertImage1','2','inputTitle1')">
           
           
       </div>
-      <div id="addImage2" class="toRight hide">
+      <div id="addImage2" class="  col-lg-2 toRight hide">
          
   
           <label for="imageUpload2" class="imageUpload" id="insertImage2"><span id="inputTitle2">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -132,7 +133,7 @@
           
           
       </div>
-      <div id="addImage3" class="toRight hide">
+      <div id="addImage3" class="col-lg-2 toRight hide">
          
   
           <label for="imageUpload3" class="imageUpload" id="insertImage3"><span id="inputTitle3">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -140,7 +141,7 @@
           
           
       </div>
-      <div id="addImage4" class="toRight hide">
+      <div id="addImage4" class="col-lg-2 toRight hide">
          
   
           <label for="imageUpload4" class="imageUpload" id="insertImage4"><span id="inputTitle4">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -148,7 +149,7 @@
           
           
       </div>
-      <div id="addImage5" class="toRight hide">
+      <div id="addImage5" class="col-lg-2 toRight hide">
          
   
           <label for="imageUpload5" class="imageUpload" id="insertImage5"><span id="inputTitle5">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -162,7 +163,7 @@
       if(isset($_POST['uploadfilesub'])) {
         if (!is_uploaded_file($_FILES['file_array']['tmp_name'][0])) {
           
-          echo '<p id="loginError">אנא העלה תמונות</p>';
+          echo '<p id="loginError" class="col-sm-3 toLeft" style="text-align: center;">אנא העלה לוגו/תמונות</p>';
         }
         else{
           $name_array = $_FILES['file_array']['name'];
@@ -227,8 +228,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

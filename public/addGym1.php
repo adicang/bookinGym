@@ -40,10 +40,10 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
@@ -85,11 +85,11 @@
       </div>
     </nav>
   </header>
-
+<main>
   <section class="container-fluid padding">
     <div class="toRight">
 	
-      <div class="panel panel-primary toRight col-6" style="margin-right:150px;">
+      <div class="panel panel-primary toRight col-lg-6" style="margin-right: 20px;">
         <div class="panel-heading">
           <h3 class="panel-title text-right toRight" style=" font-weight: bold;">פרטים כלליים</h3><br><br>
 		  <h6 class="panel-title text-right toRight" style="color: red;"> * שדה חובה </h6>
@@ -97,41 +97,40 @@
         <div class="panel-body">
           <form>
             
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                 <label for="name">שם המועדון* </label>
                 <input type="text" class="form-control input-sm textAlignRight" id="name" name="name"
                   placeholder="הכנס את שם המועדון">
               </div>
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                 <label for="email">אימייל*</label>
                 <input type="text" class="form-control input-sm textAlignRight" id="email" name="email"
                   placeholder="הכנס אימייל ליצירת קשר">
               </div>
 
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                 <label for="phone">מספר טלפון*</label>
-                <input type="text" class="form-control input-sm textAlignRight" id="phone" name="phone"
-                  placeholder="הכנס מספר טלפון ליצירת קשר">
+                <input type="tel" class="form-control input-sm textAlignRight" id="phone" name="phone" placeholder="הכנס מספר טלפון ליצירת קשר">
               </div>
 
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                 <label for="description">תיאור*</label>
                 <textarea rows="4" class="form-control input-sm textAlignRight" id="description" name="description"
                   placeholder="כתוב תיאור קצר של מועדון הכושר"></textarea>
               </div>
 
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                 <label for="address">כתובת*</label>
                 <input class="form-control input-sm textAlignRight" id="autocomplete"
                   placeholder="הכנס את כתובת המועדון" onFocus="geolocate()" type="text" />
 
               </div>
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                   <label for="description">אתר המועדון</label>
                   <input type="url"  class="form-control input-sm textAlignRight" id="website" name="website"
                     placeholder="הזן את כתובת האינטרנט של המועדון"></textarea>
                 </div>
-              <div class="form-group col-12 text-right toRight">
+              <div class="form-group col-lg-12 text-right toRight">
                 <label for="address">סוג המועדון*</label>
                 <p>
                 <label class="radio-inline"><input type="radio" name="type" id="gym" value="gym">מכון כושר</label>
@@ -146,7 +145,7 @@
   </section>
 
   <section class="container-fluid padding">
-  <div class="col-sm-3 toLeft">
+  <div class="col-lg-3 toLeft">
   <p id="loginError"></p>
     <button onclick="addFirstDetails()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הבא">הבא</button>	
 	<p style="text-align: center;"> עמוד 1 מתוך 5 </p>
@@ -175,8 +174,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+          <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

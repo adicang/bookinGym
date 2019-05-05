@@ -24,7 +24,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <img src="images/13546.jpg" alt=""> bookinGym
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -32,7 +32,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
@@ -67,7 +67,7 @@
                 <i class="fa fa-user-circle logged_in" aria-hidden="true"></i>כניסת משתמשים</a>
             </li>';
               echo '<li>
-                  <a class="nav-link " href="reg.html"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
+                  <a class="nav-link " href="reg.php"><i class="fa fa-user-plus fa-w-20" aria-hidden="true"></i> |
                     הירשם</a>
                 </li>';
             }
@@ -81,8 +81,8 @@
 
   <div id='regOnlyScreen'>
       <div class="landing-text3">
-        <h1 class="home_h1">עמוד זה מיועד למשתמשים רשומים בלבד</h1>
-        <h3 class="home_h3">הצטרפו למשתמשי האתר שלנו!</h3>
+        <h1 style="text-shadow: 1px 1px grey;">עמוד זה מיועד למשתמשים רשומים בלבד</h1>
+        <h3 >הצטרפו למשתמשי האתר שלנו!</h3>
         <div class="center">
           
         <a href="reg.php" id="find_gym"  class="btn btn-primary text-center sign_up ">להרשמה והצטרפות </a>  <a href="signIn.php" id="find_gym"  class="btn btn-primary text-center sign_up ">להתחברות משתמש קיים </a>
@@ -114,8 +114,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+          <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

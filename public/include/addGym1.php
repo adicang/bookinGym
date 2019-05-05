@@ -8,8 +8,7 @@
     $urlContents = file_get_contents('php://input');
     $urlaray = json_decode($urlContents, true);
 
-   
-
+	
 	
 
     if (!$urlaray['name']){
@@ -18,9 +17,18 @@
     else if(!$urlaray['email']) {
         $post_data = array('code'=>0,'loginError'=>'*אנא הזן כתובת אימייל');
     }
+    else if(!filter_var($urlaray['email'], FILTER_VALIDATE_EMAIL)) {
+        $post_data = array('code'=>0,'loginError'=>'*אנא הזן כתובת אימייל תקינה');
+    }
     else if(!$urlaray['phone']) {
         $post_data = array('code'=>0,'loginError'=>'*אנא הזן מספר טלפון');
     }
+	else if(strlen($urlaray['phone'])!=9 && strlen($urlaray['phone']) !=10){ 
+		 $post_data = array('code'=>0,'loginError'=>'*אנא הזן מספר טלפון תקין');
+    }
+    else if(!ctype_digit($urlaray['phone'])){ 
+        $post_data = array('code'=>0,'loginError'=>'*אנא הזן מספר טלפון תקין');
+   }
     else if(!$urlaray['description']) {
         $post_data = array('code'=>0,'loginError'=>'*אנא הזן תיאור');
     }

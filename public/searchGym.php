@@ -34,13 +34,13 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
@@ -79,25 +79,30 @@
       </div>
     </nav>
   </header>
-
+<main>
   <section class="container-fluid padding">
-    <div class="form-group col-12 text-right toRight">
-      <div id="locationField">
-        <input class="autoCompleteSearchPage col-3" id="autocomplete"
-          placeholder="הקלד את כתובת המגורים שלך" onFocus="geolocate()" type="text" />
-        <button onclick="showDetails()" class="btn btn-primary text-center sign_up ">מצא לי מועדון כושר</button>
+    <div class="col-12 text-right toRight">
+      <div class="col-lg-2 text-right toRight padding05rem" id="locationField">
+        <input class="autoCompleteSearchPage" id="autocomplete"
+          placeholder="הזן כתובת" onFocus="geolocate()" type="text" />
+          </div>
+          <div class="col-lg-2 text-right toRight padding05rem">
+        <button onclick="showDetails()" class="btn btn-primary text-center sign_up width100">מצא לי מועדון כושר</button>
+          </div>
+          <div class="col-lg-2 text-right toRight padding05rem">
         <label>בטווח של: <select id="radiusKm" name="radiusKm" size="1" onchange="showDetails()">
         <option value="1000" >1 קילומטר</option>
           <option value="2000" >2 קילומטר</option>
           <option value="3000" >3 קילומטר</option>
-          <option value="5000" >5 קילומטר</option>
-					<option value="10000" selected>10 קילומטר</option>
+          <option value="4000" >4 קילומטר</option>
+          <option value="5000" selected>5 קילומטר</option>
+					<option value="10000" >10 קילומטר</option>
           <option value="20000" >20 קילומטר</option>
-					</select></label>
-        
+          </select></label>
+          </div>
       </div>
     </div>
-    <button type="submit" ></button>
+    <button type="submit" style="background-color: white; border-style: none"></button>
   </section>
 
 
@@ -178,8 +183,6 @@
 
   </section>
 <div class="clear"></div>
-  
- 
   </main>
   <footer>
     <div class="container-fluid padding">
@@ -197,8 +200,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+          <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">

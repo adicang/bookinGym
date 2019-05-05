@@ -15,10 +15,12 @@
   <script src="https://unpkg.com/scrollreveal"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  
+	<link href="//netdna.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
-  <title>bookinGym</title>
+	<title>bookinGym</title>
+	
+
 </head>
 
 <body>
@@ -32,13 +34,13 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
@@ -78,7 +80,7 @@
     </nav>
   </header>
 
-  
+  <main>
   <section class="container-fluid padding">
 	<div class="row padding text-right">
 	  <?php
@@ -92,22 +94,24 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-2 toRight">';
+				echo '<div class="col-lg-12 toRight">';
+				echo '<div class="col-lg-2 toRight" id="starGym"  >';
 				$query1 = "SELECT ROUND(AVG(rate), 1) FROM reviews group by gymId having gymId=".$id."";
 				$result1=$database->query($query1);
 				if ($result1->num_rows > 0) {
 			// output data of each row
 				while($row1 = $result1->fetch_assoc()) {
-									
+									echo '<a href="#reviewPart" style="color: black">';
 										echo '<div class="avgStar grow" >';
 											echo '<span id="inputTitle1"><br><br><br><h1><b>'.$row1["ROUND(AVG(rate), 1)"].'</b></h1> </span>';
 											echo '</div>';
+									echo '</a>';
 											
 				}
 			}
 				echo '</div>';
-				echo '<div class="col-lg-10 grow toRight" id="title">';
-				echo '<h1 style="text-shadow:3px 2px #cce0ff"><b>'.$row["name"]."</b></h1>";
+				echo '<div class="col-lg-8 grow toRight" id="titleGym"><br>';
+				echo '<h1><b>'.$row["name"]."</b></h1>";
 				if($row["type"]=="studio"){
 						echo "<b><h3>סטודיו</h3></b><br>";
 						}
@@ -117,18 +121,69 @@
 				else {
 						echo "<b><h3>בריכה</h3></b><br>";
 						}
-				echo '<img src="images/GymImg/'.$row["imgName"].'" width="110" class="grow">';
+				echo '<img src="images/GymImg/'.$row["imgName"].'" width="80" class="grow">';
+				echo '</div>';
 				echo '</div>';
 			}
 		}
+		
+		?>
+		
+		<div class="col-lg-12 text-right toRight" >
+				
+		<div id="carouselExampleControls" class="carousel slide cars" data-ride="carousel">
+		  <div class="carousel-inner" >
+			<?php
+				
+				$query = "SELECT * FROM Gyms inner Join uploadedimage on Gyms.id=uploadedimage.gymId where Gyms.id=".$id."";
+				$result=$database->query($query);
+				if ($result->num_rows > 0) {
+					// output data of each row
+					$flag=1;
+					while($row = $result->fetch_assoc()) {
+						if($flag==1){
+							echo '<div class="carousel-item active ">';
+							echo '<img class="d-block w-90" src="images/GymImg/'.$row["imagename"].'" >';
+							echo '</div>';
+						$flag=2;
+						}
+						else{
+							echo '<div class="carousel-item ">';
+							echo '<img class="d-block w-90" src="images/GymImg/'.$row["imagename"].'" >';
+							echo '</div>';
+						}
+						
+							
+							
+					}
+				}			  
+			
+			?>
+						
+		  </div>
+		  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+
+		</div>
+		</div>
+		
+		
+		<?php
 		$query = "SELECT * FROM Gyms inner Join DaysAndHours on Gyms.id=DaysAndHours.gymId where Gyms.id=".$id."";
 		$result=$database->query($query);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-6 text-right toRight" id="main">';
+				echo '<div class="col-lg-4 text-right toRight" id="parts">';
+				echo "<h2><b> אודות </h2><br>";
 					echo "<p>".$row["description"]."</p><br>";
-					echo "<b>ימים ושעות פעילות:</b><br>";
+					echo "<b><u>ימים ושעות פעילות</u>:</b><br>";
 					if($row["Sunday"]==1){
 						echo "<b>יום ראשון: </b>".$row["SundayTo"]." - ".$row["SundayFrom"]."<br>";
 					}
@@ -160,32 +215,16 @@
 				echo '</div>';
 		}
 	}
-		$query = "SELECT * FROM Gyms where Gyms.id=".$id."";
-		$result=$database->query($query);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-6 text-right toRight" id="details">';
-				echo '<div id="mapGymPage" class="grow"></div>';
-					echo "<span class='icon mail '></span>";
-					echo "<u>מייל:</u> ".$row["email"]."<br>";
-					echo "<span class='icon phone '></span>";
-					echo "<u>טלפון:</u> ".$row["phone"]."<br>";
-					echo "<span class='icon address '></span>";
-					echo "<u>כתובת:</u> ".$row["address"]."<br>";
-					echo "<span class='icon exploer '></span>";
-					echo "<u>אתר המועדון:</u> <a href=".$row["website"].">קישור לאתר</a><br>";
-				
-				echo '</div>';
-			}
-		}
+		
+echo '<div class="col-lg-3 text-right toRight" id="parts">';	
 		$query = "SELECT * FROM Gyms inner Join Facilities on Gyms.id=Facilities.gymId inner join Classes on Gyms.id=Classes.gymId where Gyms.id=".$id."";
 		$result=$database->query($query);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				echo '<div class="col-lg-6 text-right toRight">';
-					echo '<div class="col-lg-3" id="typeC">';
+				
+				echo "<h2><b> פרטים </h2>";
+					echo '<div class="col-lg-12" >';
 					echo "<b><u>סוגי חוגים</b></u>";
 					echo "<ul>";
 					if($row["zumba"]==1){
@@ -217,7 +256,7 @@
 					}
 					echo "</ul>";
 					echo "</div>";
-					echo '<div class="col-lg-3" id="typeF">';
+					echo '<div class="col-lg-12" >';
 					echo "<b><u>סוגי מתקנים</b></u>";
 					echo "<ul>";
 					if($row["swimmingPool"]==1){
@@ -234,120 +273,131 @@
 					}
 					echo "</ul>"; 
 					echo "</div>";
-				echo '</div>';
+			
 			}
 		}
-		echo '<div class="col-lg-6 text-right toRight id="typeS">';
-		echo "<b><u>סוגי מנויים</b></u><br>";
+		echo '<div class="col-lg-12" >';
+		echo "<b><u>סוגי מנויים</b></u>";
 			$query = "SELECT * FROM Gyms inner Join card on Gyms.id=card.gymId where Gyms.id=".$id."";
 			$result=$database->query($query);
 			if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
-					echo "<b>פרטי כרטיסיה: </b><br>";
+				
+					echo "<br><br><b><i>פרטי כרטיסיה </b></i><br>";
+					
 					echo "מספר כניסות: ".$row["enterCount"]."<br>";
 					echo "מחיר: ".$row["price"]."<br>";
 					echo "משך זמן: ".$row["periodTime"]." ";
-					if ($row["priodTime"]=="days"){
+					if ($row["periodType"]=="days"){
 						echo "ימים";
 					}
-					else if ($row["priodTime"]=="weeks"){
+					else if ($row["periodType"]=="weeks"){
 						echo "שבועות";
 					}
 					else{
 						echo "חודשים";
+					
 					}
+					
+					echo "<button class='btn btn-info toLeft' onclick='gymRegis(".$id.",1)'>לרכישה</button>";
+			
+					
 				}
 				echo "<br><br>";
 				
 			}
-	
+		echo '</div>';
+			echo '<div class="col-lg-12" >';
 			$query = "SELECT * FROM Gyms inner join subscription on Gyms.id=subscription.gymId where Gyms.id=".$id."";
 			$result=$database->query($query);
 			if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
+				
+					echo "   "."<b><i>פרטי מנוי </i></b><br>";
 					
-					echo "<b>פרטי מנוי: </b><br>";
-					echo "מחיר: ".$row["price"]."<br>";
-					echo "משך זמן: ".$row["periodTime"]." ";
-					if ($row["priodTime"]=="days"){
+					echo " "."מחיר: ".$row["price"]."<br>";
+					echo " "."משך זמן: ".$row["periodTime"]." ";
+					if ($row["periodType"]=="days"){
 						echo "ימים";
 					}
-					else if ($row["priodTime"]=="weeks"){
+					else if ($row["periodType"]=="weeks"){
 						echo "שבועות";
 					}
 					else{
 						echo "חודשים";
+					
 					}
+					echo "<button class='btn btn-info toLeft' onclick='gymRegis(".$id.",2)'>לרכישה</button>";
+					
 				}
 			}
+			echo '</div>';
+			echo '</div>';
+			
+			$query = "SELECT * FROM Gyms where Gyms.id=".$id."";
+		$result=$database->query($query);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				echo '<div class="col-lg-4 text-right toRight" id="parts">';
+					echo '<div class="part3">';
+						echo "<h2><b> מיקום ופרטי קשר </h2><br>";
+						echo '<div style="height: 250px;">';
+							echo '<div id="mapGymPage" class="grow col-sm-10"></div>';
+						echo '</div>';
+						echo '<div class="clear"></div>';
+						echo '<br>';
+						echo "<span class='icon mail '></span>";
+						echo "<u>מייל:</u> ".$row["email"]."<br>";
+						echo "<span class='icon phone '></span>";
+						echo "<u>טלפון:</u> ".$row["phone"]."<br>";
+						echo "<span class='icon address '></span>";
+						echo "<u>כתובת:</u> ".$row["address"]."<br>";
+						echo "<span class='icon exploer '></span>";
+						echo "<u>אתר המועדון:</u> <a href=".$row["website"].">קישור לאתר</a><br></b>";
+					echo '</div>';
+				echo '</div>';
+			}
+		}
 
 		echo '</div>';
 		
 		?>
 		
 
-<div class="col-lg-12 text-right toRight">
-<div id="carouselExampleControls" class="carousel slide cars" data-ride="carousel">
-  <div class="carousel-inner">
-	<?php
-		
-		$query = "SELECT * FROM Gyms inner Join uploadedimage on Gyms.id=uploadedimage.gymId where Gyms.id=".$id."";
-		$result=$database->query($query);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			$flag=1;
-			while($row = $result->fetch_assoc()) {
-				if($flag==1){
-					echo '<div class="carousel-item active">';
-					echo '<img class="d-block w-100" src="images/GymImg/'.$row["imagename"].'" >';
-				echo '</div>';
-				$flag=2;
-				}
-				else{
-					echo '<div class="carousel-item">';
-					echo '<img class="d-block w-100" src="images/GymImg/'.$row["imagename"].'" >';
-				echo '</div>';
-				}
-				
-					
-					
-			}
-		}			  
-	
-	?>
-				
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
+
 		
 	</div>	
 	</section>
-	<div class="clear"></div>
+	<section id="reviewPart" class="col-md-8 " >
+	
+	
   <div class="container marginTopLow">
       <div class="row" style="margin-top:40px;">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="well well-sm">
-                <div class="text-right">
+		  <div class="text-right"style="float:right">
+                   <h2><b>חוות דעת </h2>
+                </div>
+                <div class="text-right"style="float:left">
                     <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">הוסף ביקורת</a>
                 </div>
-            
+            <div class="clear"></dov>
                 <div class="row" id="post-review-box" style="display:none;">
                     <div class="col-md-12">
                         <form accept-charset="UTF-8" action="" method="post">
                             <input id="ratings-hidden" name="rating" type="hidden"> 
                             <textarea class="form-control animated textAlignRight" cols="50" id="new-review" name="comment" placeholder="הוסף ביקורת כאן..." rows="5"></textarea>
                             <div class="text-right">
-                                <div class="stars starrr" data-rating="0"></div>
+															<div class="stars" data-rating="0">
+																<span class="star"></span>
+																<span class="star"></span>
+																<span class="star"></span>
+																<span class="star"></span>
+																<span class="star"></span>
+															</div>
                                 <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
                                 <span class="glyphicon glyphicon-remove"></span>ביטול</a>
                                 <input class="btn btn-success btn-sm" type="submit" name="submitReview" value="שמור">
@@ -376,7 +426,7 @@
 			while($row = $result->fetch_assoc()) {
 					echo '<div class="container marginTopLow grow">';
 						echo '<div class="row" style="margin-top:40px;">';
-							echo '<div class="col-md-9">';
+							echo '<div class="col-md-12 ">';
 								echo '<div class="ReviewItem">';
 									echo '<div class="startest" >';
 										echo '<span id="inputTitle1"><br><br><br><h1><b>'.$row["rate"].'</b></h1> </span>';
@@ -385,7 +435,7 @@
 										
 									
 								
-									echo '<div style="width:70%; float:right;margin-right: 10px;padding:30px;">';
+									echo '<div style="width:75%; float:right;margin-right: 10px;padding:30px;">';
 										echo "<h3><b>תיאור:</b></h3>";
 										echo "".$row["description"]."<br>";
 									echo "</div>";
@@ -397,7 +447,7 @@
 				}	
 		}	
 ?>
-
+	</section>
 		<div class="clear"></div>
     <section class="container-fluid padding">
         <button onclick="window.history.back()" class="btn btn-primary text-center sign_up toRight">חזרה לחיפוש מועדוני כושר</button>
@@ -422,8 +472,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">
@@ -438,7 +488,9 @@
 	<script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
-  
+
+	
+		
 
 </body>
 

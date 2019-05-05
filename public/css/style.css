@@ -2,6 +2,9 @@
 body{
     font-family: 'Rubik', sans-serif;
 }
+main{
+	padding-top:60px;
+}
 .navbar-brand img {
   padding: 0;
   width: 32px;
@@ -9,6 +12,56 @@ body{
 .navbar-collapse.collapse.in {
   display: block!important;
 }
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+}
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.navbar-light .navbar-toggler {
+    color: rgba(0,0,0,.5);
+    border-color: rgba(0,0,0,.1);
+}
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+.navbar {
+    position: fixed;z-index:99999;
+	background-color:white;
+	width:100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+	
+}
+
 .about{
   font-size: 1.2em;
   width: 75%;
@@ -54,10 +107,6 @@ body{
   margin-left: 10px;
 }
 
-.searchBtnTransfer{
-  margin-top: 8px;
-  padding-top: 7px;
-}
 
 .startest{
   width: 200px;
@@ -92,13 +141,17 @@ body{
   width: 100%;
   background-size: cover;
   background-attachment: scroll;
+  z-index:1
 }
 
 .cars{
   width: 70%;
     margin: auto;
 }
-
+.carousel-inner > .carousel-item > img {
+	width:90%; max-height:570px; 
+	margin: 0 auto;
+	}
 
 .regis{
   background: url('../images/686.jpg') no-repeat center center fixed;
@@ -156,7 +209,7 @@ body{
 }
 
 #addGymSuc {
-  background: url('../images/addGymSuc.jpg') no-repeat center center fixed;
+  background: url('../images/33720.jpg') no-repeat center center fixed;
   
   display: table;
   height: 600px;
@@ -190,13 +243,74 @@ body{
   float: right;
   padding-left: 300px
 }
-#main #details{
-	float: right;
-	text-align: right;
+
+#titleGym{
+	text-align: center;
+	color: black;
+	text-decoration: bold;
+  margin: 0 auto;
+  float: right;
+  
 }
-#typeC #typeF #typeS{
+
+#starGym{
+		
+  margin: 0 auto;
+  float: right;
+  
+}
+#parts{
 	float: right;
-	text-align: right;
+	text-align: center;
+	border: 1px #dee2e6 solid;
+ background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 2px #e7eaed;
+    width: 95%;
+	padding:5px;
+	margin:20px;
+	margin-right:15px;
+	flex-direction: column;
+	display: inline-block;
+}
+
+#parts:hover{
+  -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+}
+
+.pay{
+	border: 1px #dee2e6 solid; 
+	box-shadow: 0px 1px 5px 2px #e7eaed; 
+	background-image: linear-gradient(-45deg, #e1eaea, #ffffff);
+	border-radius: 15px; 
+	
+}
+.pay:hover{
+  -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+}
+
+#reviewPart{
+	float: right;
+	text-align: center;
+	border: 1px #dee2e6 solid;
+ background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 2px #e7eaed;
+    width: 95%;
+	padding:15px;
+	margin:20px;
+	margin-right:20px;
+	flex-direction: column;
+	display: inline-block;
+	
+	
+}
+.part3{
+	margin-right:5px;
 }
 #pictures{
 	margin: 0 auto;
@@ -222,7 +336,7 @@ body{
   display: table-cell;
   text-align: right;
   vertical-align: middle;
-  color: #7EC4B0;
+  color: #7bcae8;
 }
 
 .hide{
@@ -240,8 +354,23 @@ body{
   vertical-align: middle;
 }
 
+@media only screen and (max-width: 1000px) {
+
+  .landing-text3 h1{
+    font-size: 200%;
+  }
+
+  .landing-text h1{
+    font-size: 300%;
+  }
+
+  
+}
+
+
+
 .landing-text3 h1{
-  font-size: 500%;
+  font-size: 450%;
   font-weight: 700;
   text-align: center;
   vertical-align: middle;
@@ -289,7 +418,7 @@ body{
 
 .landing-text3 h3{
   text-align: center;
-  color: #0e0d0d;
+  color: #f8f9fa;
   font-weight: 700
 }
 
@@ -320,7 +449,7 @@ body{
 .my_btn {
   background-color: #8C81DB;
   border: solid 1px #efefef;
-  width: 50%;
+  width: auto;
 }
 .my_btn:hover{
   background-color: #8C9FDB;
@@ -477,10 +606,10 @@ box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
 }
 
 #regOnlyScreen{
-  background: url('../images/468714-PFZ3YN-813.jpg') no-repeat center center fixed;
+  background: url('../images/600.jpg') no-repeat center center fixed;
   
   display: table;
-  height: 800px;
+  height: 550px;
   position: relative;
   width: 100%;
   background-size: cover;
@@ -568,18 +697,22 @@ img.card {
 
 .locationFieldHomePage {
   
-  margin-bottom: 160px;
-  margin-right: 35%;
+  
+  width: 100%;
+ margin-bottom: 120px
 }
 
 .finalAddGym{
   background: url('../images/545489-PJW07A-562.jpg') no-repeat center center fixed;
 }
 
+
+.padding1{
+  padding: 1;
+}
 .autocompleteHomePage {
   
   margin: auto;
-  width: 50%;
   vertical-align: middle;
   display: table-cell;
   height: 40px;
@@ -591,7 +724,7 @@ img.card {
 	clear:both;
 	flex-direction: column;
 	display: inline-block;
-  margin: 2%;
+  margin: 1%;
   text-align: right;
   position: relative;
     background-color: #ffffff;
@@ -600,10 +733,17 @@ img.card {
     float: right;
     width: 100%;
 	padding:1px;
-	height:280px;
+
   
 }
 
+.inputItem{
+  width: 149px;
+}
+.inputItem1{
+  width: 50px;
+  display: inline-block;
+}
 .transferItem{
   margin-left: 6%;
 	width: 100%;
@@ -614,8 +754,20 @@ img.card {
   
 }
 
+.width100{
+  width: 100%;
+}
+
+.tdlabel{
+	margin-left: 15px;
+}
+
+.padding05rem{
+  padding: 0.5rem;
+}
+
 .autoCompleteSearchPage{
-  width: 80%;
+  width: 100%;
   height: 40px;
   border-radius: 5px 5px 5px 5px;
  
@@ -628,10 +780,11 @@ img.card {
 
       #mapGymPage {
 		
-        height: 50%;
-    width: 100%;
+        height: 100%;
+    width: 80%;
     margin-bottom: 5%;
     box-shadow: 5px 5px 5px 5px #888888;
+    margin: auto;
    
       }
 
@@ -643,7 +796,60 @@ img.card {
   .grow:hover { 
   transform: scale(1.1); 
   }
-	  
+  
+  .credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
+#payForGym{
+  background: url('../images/2336342.jpg') no-repeat center center fixed;
+  display: table;
+  height: 440px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+.textAlignRight{
+  text-align: right;
+}
+
 .toRight{
 	float: right;
 }
@@ -659,6 +865,12 @@ img.card {
   text-align: center;
 
 }
+
+.responsive{
+  max-height: 100px;
+  position: relative;
+}
+
 .gymCardStyle:hover{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -822,8 +1034,29 @@ padding-top: 2px;
                  
              }
 
-             .glyphicon-star:before{content:"\e006"}.glyphicon-star-empty:before{content:"\e007"}
-             .glyphicon{position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+             .star {
+              color: #d17581;
+              ;
+              font-size: 2.0rem;
+          }
+  
+          .star::before {
+              content: '\2606';
+              cursor: pointer;
+          }
+  
+          .star:hover::before {
+              /* the :hover should come first */
+              content: '\2605';
+              color: #d17581;
+              
+          }
+  
+          .star.rated::before {
+              /* the :hover should come first */
+              content: '\2605';
+          }
+  
 
          
           .regular-checkbox {
@@ -878,55 +1111,22 @@ padding-top: 2px;
 	padding:1px;
 	
     }
-	
-	
-	
-	/* Facebook */
-	
-	loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
-  color: #FFF;
-}
-.loginBtn:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
-}
-.loginBtn:focus {
-  outline: none;
-}
-.loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
-}
 
-
-
-.loginBtn--facebook {
-  background-color: #4C69BA;
-  background-image: linear-gradient(#4C69BA, #3B55A0);
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
-  text-shadow: 0 -1px 0 #354C8C;
-}
-.loginBtn--facebook:before {
-  border-right: #364e92 1px solid;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
-}
-.loginBtn--facebook:hover,
-.loginBtn--facebook:focus {
-  background-color: #5B7BD5;
-  background-image: linear-gradient(#5B7BD5, #4864B1);
-}
+    .textRight{
+      text-align: right;
+	  font-size:18px;
+    }
+	.textCenter{
+		text-align: center;
+	}
+	.payCredit{
+		width: 50px; 
+		float:right;
+	}
+	.demo{
+		color: red; 
+		text-align: right;
+	}
+	
+	
+	

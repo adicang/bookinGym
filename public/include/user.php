@@ -70,10 +70,10 @@ class User{
         return $this;
     }
 	
-    public static function add_user($userType,$fullName,$username,$email,$password,$gender,$address,$yearOfBirth,$randomCode){
+    public static function add_user($userType,$fullName,$username,$email,$phoneNum,$password,$gender,$address,$yearOfBirth,$randomCode){
         global $database;
         $error=null;
-        $sql="INSERT INTO `users`(`userType`, `FullName`, `username`, `email`, `password`, `gender`, `address`, `yearOfBirth`, `confirmationCode`) VALUES ('".$userType."','".$fullName."','".$username."','".$email."','".$password."','".$gender."','".$address."',".$yearOfBirth.",'".$randomCode."')";
+        $sql="INSERT INTO `users`(`userType`, `FullName`, `username`, `email`, `user_phone`, `password`, `gender`, `address`, `yearOfBirth`, `confirmationCode`) VALUES ('".$userType."','".$fullName."','".$username."','".$email."','".$phoneNum."','".$password."','".$gender."','".$address."',".$yearOfBirth.",'".$randomCode."')";
         $result=$database->query($sql);
         if (!$result)
             $error='Can not add user.  Error is:'.$database->get_connection()->error;

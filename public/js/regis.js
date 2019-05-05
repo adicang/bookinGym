@@ -23,6 +23,7 @@ function addUserToDatabase() {
         "fullname": document.getElementById("fullname").value,
         "username": document.getElementById("username").value,
         "email": document.getElementById("email").value,
+        "phoneNum": document.getElementById("phoneNum").value,
         "password": document.getElementById("password").value,
         "male": document.getElementById("male").checked,
         "female": document.getElementById("female").checked,

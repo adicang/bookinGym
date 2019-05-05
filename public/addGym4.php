@@ -31,10 +31,10 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">דף הבית</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addGym1.php">הוסף מועדון</a>
           </li>
           <li class="nav-item">
@@ -78,7 +78,7 @@
   </header>
   <main>
     <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" style="margin-right:90px;>
+      <div class="panel panel-primary toRight col-6" style="margin-right:80px;>
         <div class="panel-heading">
           <h3 class="panel-title text-right toRight" style=" font-weight: bold;">חוגים ומתקנים</h3>
         </div>
@@ -89,7 +89,7 @@
    
 
     <section class="container-fluid padding">
-        <div class="row text-right" style="margin-right:110px;">
+        <div class="row text-right" style="margin-right:100px;">
             <fieldset><strong>בחר חוגים: </strong><br>
               <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" ><label for="TRX">TRX</label><br>
               <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox"><label for="zumba">זומבה</label><br>
@@ -108,7 +108,7 @@
             </fieldset>
           </div>
 		  <br>
-          <div class="row  text-right" style="margin-right:110px;">
+          <div class="row  text-right" style="margin-right:100px;">
               <fieldset><strong>בחר מתקנים: </strong><br>
                 <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" ><label for="swimmingPool">בריכה</label><br>
                 <input type="checkbox" id="spa" name="spa" class="regular-checkbox" ><label for="spa">ספא</label><br>
@@ -151,8 +151,8 @@
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-          <p>ראשון - חמישי: 09:00 - 18:00</p>
-          <p>שישי : 08:00-13:00</p>
+           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
         <div class="col-12">
