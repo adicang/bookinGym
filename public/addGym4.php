@@ -78,7 +78,7 @@
   </header>
   <main>
     <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" style="margin-right:80px;>
+      <div class="panel panel-primary toRight col-6" style="margin-right:50px;">
         <div class="panel-heading">
           <h3 class="panel-title text-right toRight" style=" font-weight: bold;">חוגים ומתקנים</h3>
         </div>
@@ -89,7 +89,7 @@
    
 
     <section class="container-fluid padding">
-        <div class="row text-right" style="margin-right:100px;">
+        <div class="row text-right" style="margin-right:50px;">
             <fieldset><strong>בחר חוגים: </strong><br>
               <input type="checkbox" id="TRX" name="TRX" class="regular-checkbox" ><label for="TRX">TRX</label><br>
               <input type="checkbox" id="zumba" name="zumba" class="regular-checkbox"><label for="zumba">זומבה</label><br>
@@ -108,7 +108,7 @@
             </fieldset>
           </div>
 		  <br>
-          <div class="row  text-right" style="margin-right:100px;">
+          <div class="row  text-right" style="margin-right:50px;">
               <fieldset><strong>בחר מתקנים: </strong><br>
                 <input type="checkbox" id="swimmingPool" name="swimmingPool" class="regular-checkbox" ><label for="swimmingPool">בריכה</label><br>
                 <input type="checkbox" id="spa" name="spa" class="regular-checkbox" ><label for="spa">ספא</label><br>

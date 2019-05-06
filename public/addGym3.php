@@ -89,7 +89,7 @@
   </header>
 <main>
   <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-6" style="margin-right:100px;">
+      <div class="panel panel-primary toRight col-6">
         <div class="panel-heading">
           <h3 class="panel-title text-right toRight" style=" font-weight: bold;">הוספת תמונות</h3><br><br>
 		  <h6 class="panel-title text-right toRight" style="color: red;"> * שדה חובה </h6>
@@ -104,7 +104,7 @@
 
   <form method="post" enctype="multipart/form-data">  
   <section class="container-fluid padding">
-  <div class="col-lg-6 toRight text-right" style="margin-right:100px;">
+  <div class="col-lg-6 toRight text-right">
     <div id="addLogo" >
         <label for="logoUpload" class="imageUpload" id="insertLogo">לחצו על מנת להעלות את לוגו המועדון*</label>
         <input type="file" name="file_array[]" id="logoUpload" accept="image/*" style="display: none" onchange="preview_logo(event)">
@@ -117,7 +117,7 @@
   <hr>
   <section class="container-fluid padding">
        
-      <div id="addImage1" class=" col-lg-2 toRight text-right" style="margin-right:100px;">
+      <div id="addImage1" class=" col-lg-2 toRight text-right">
          
   
           <label for="imageUpload1" class="imageUpload" id="insertImage1"><span id="inputTitle1">לחצו על מנת להוסיף תמונות של המועדון* </span> </label>
@@ -125,7 +125,7 @@
           
           
       </div>
-      <div id="addImage2" class="  col-lg-2 toRight hide">
+      <div id="addImage2" class="  col-lg-2 toRight hide text-right">
          
   
           <label for="imageUpload2" class="imageUpload" id="insertImage2"><span id="inputTitle2">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -133,7 +133,7 @@
           
           
       </div>
-      <div id="addImage3" class="col-lg-2 toRight hide">
+      <div id="addImage3" class="col-lg-2 toRight hide text-right">
          
   
           <label for="imageUpload3" class="imageUpload" id="insertImage3"><span id="inputTitle3">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -141,7 +141,7 @@
           
           
       </div>
-      <div id="addImage4" class="col-lg-2 toRight hide">
+      <div id="addImage4" class="col-lg-2 toRight hide text-right">
          
   
           <label for="imageUpload4" class="imageUpload" id="insertImage4"><span id="inputTitle4">לחצו על מנת להוסיף תמונות של המועדון </span> </label>
@@ -149,7 +149,7 @@
           
           
       </div>
-      <div id="addImage5" class="col-lg-2 toRight hide">
+      <div id="addImage5" class="col-lg-2 toRight hide text-right">
          
   
           <label for="imageUpload5" class="imageUpload" id="insertImage5"><span id="inputTitle5">לחצו על מנת להוסיף תמונות של המועדון </span> </label>

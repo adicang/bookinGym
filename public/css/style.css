@@ -766,6 +766,10 @@ img.card {
   padding: 0.5rem;
 }
 
+.padding0{
+  padding: 0;
+}
+
 .autoCompleteSearchPage{
   width: 100%;
   height: 40px;

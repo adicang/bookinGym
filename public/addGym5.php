@@ -79,14 +79,14 @@
   </header>
 <main>
   <section class="container-fluid padding">
-    <div class="panel panel-primary toRight col-6" style="margin-right:100px;">
+    <div class="panel panel-primary toRight col-6" >
       <div class="panel-heading">
         <h3 class="panel-title text-right toRight" style=" font-weight: bold;">פרטי תשלום</h3><br><br>
 		  <h6 class="panel-title text-right toRight" style="color: red;"> * שדה חובה </h6>
       </div>
     </div>
     <div class="clear"></div>
-    <div class="form-group col-8 text-right toRight" style="margin-right:100px;">
+    <div class="form-group col-8 text-right toRight" >
       <form action="" method="post">
 
         <fieldset>
@@ -131,7 +131,7 @@
         </fieldset>
     </div>
 
-    <div class="form-group col-8 text-right toRight" id="subscriptionSection" style="margin-right:100px;">
+    <div class="form-group col-8 text-right toRight" id="subscriptionSection" >
       <fieldset>
         <legend>פרטי המנוי</legend>
 
@@ -159,7 +159,7 @@
       </fieldset>
     </div>
 
-    <div class="form-group col-8 text-right toRight" style="margin-right:100px;">
+    <div class="form-group col-8 text-right toRight">
       <div id="cardSection">
         <fieldset>
           <legend> פרטי כרטיסיה</legend>

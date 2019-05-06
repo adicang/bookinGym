@@ -42,13 +42,13 @@
             <a class="nav-link" href="searchGym.php">חפש מועדון</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
+            <a class="nav-link" href="transferDisplay.php">העברת מנוי/כרטיסייה</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="contact.php">צור קשר</a>
+            <a class="nav-link" href="contact.php">צור קשר</a>
           </li>
 
-         
+
           <?php
 
             if($session->get_signed_in()){
@@ -72,14 +72,15 @@
                 </li>';
             }
           ?>
-          
+
         </ul>
       </div>
     </nav>
   </header>
+
   <main>
     <section class="container-fluid padding">
-      <div class="panel panel-primary toRight col-lg-6" style="margin-right:95px;">
+      <div class="panel panel-primary toRight col-lg-6">
         <div class="panel-heading">
           <h3 class="panel-title text-right toRight" style=" font-weight: bold;">ימים ושעות פעילות</h3>
         </div>
@@ -87,112 +88,158 @@
     </section>
 
     <div class="clear"></div>
-    <form method="post" enctype="multipart/form-data">  
-    <section class="container-fluid padding">   
-       <div class="toRight" style="margin-right:100px;">
-         <label for="logoUpload" class="imageUpload" id="insertPdf">לחצו על מנת להעלות את לוח החוגים של המועדון</label>
-         <input type="file" name="file_array[]" id="logoUpload" accept="application/pdf" style="display: none;" onchange="preview_pdf()">
+    <form method="post" enctype="multipart/form-data">
+      <section class="container-fluid padding">
+        <div class="toRight">
+          <label for="logoUpload" class="imageUpload" id="insertPdf">לחצו על מנת להעלות את לוח החוגים של המועדון</label>
+          <input type="file" name="file_array[]" id="logoUpload" accept="application/pdf" style="display: none;"
+            onchange="preview_pdf()">
         </div>
-   
-    </section>
+      </section>
     </form>
 
     <script>
-$(document).ready(function(){
- $(document).on('change', '#logoUpload', function(){
-  var name = document.getElementById("logoUpload").files[0].name;
-  var form_data = new FormData();
-  var ext = name.split('.').pop().toLowerCase();
-  var oFReader = new FileReader();
-  oFReader.readAsDataURL(document.getElementById("logoUpload").files[0]);
-  
-   form_data.append("file", document.getElementById('logoUpload').files[0]);
-   $.ajax({
-    url:"include/uploadPdf.php",
-    method:"POST",
-    data: form_data,
-    contentType: false,
-    cache: false,
-    processData: false,
-    beforeSend:function(){
-     $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
-    },   
-    success:function(data)
-    {
-     $('#uploaded_image').html(data);
-    }
-   }); 
- });
-});
-</script>
+      $(document).ready(function () {
+        $(document).on('change', '#logoUpload', function () {
+          var name = document.getElementById("logoUpload").files[0].name;
+          var form_data = new FormData();
+          var ext = name.split('.').pop().toLowerCase();
+          var oFReader = new FileReader();
+          oFReader.readAsDataURL(document.getElementById("logoUpload").files[0]);
+
+          form_data.append("file", document.getElementById('logoUpload').files[0]);
+          $.ajax({
+            url: "include/uploadPdf.php",
+            method: "POST",
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function () {
+              $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
+            },
+            success: function (data) {
+              $('#uploaded_image').html(data);
+            }
+          });
+        });
+      });
+    </script>
 
     <div class="clear"></div>
-    
+
 
     <section class="container-fluid padding">
-      <div class="col-lg-12 toRight" style="margin-right:100px;">
-        <div class="row col-lg-8 text-right">
-          <fieldset><strong>בחר את ימי הפעילות: </strong><br><br>
-            <div class="clear"></div>
+      <div class="col-lg-12 toRight textAlignRight">
+
+        <fieldset><strong>בחר את ימי הפעילות: </strong><br><br>
+          <div class="clear"></div>
 
 
-            <input type="checkbox" id="Sunday" name="Sunday" class="regular-checkbox" onclick="showFromTo('Sunday')"><label for="Sunday">ראשון</label>
+          <div class="row col-lg-1 toRight padding0">
+            <input type="checkbox" id="Sunday" name="Sunday" class="regular-checkbox"
+              onclick="showFromTo('Sunday')"><label for="Sunday">ראשון</label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
             <label id="fromSunday" class="fromTo">משעה: <input type="time" id="fromSunday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
             <label id="toSunday" class="fromTo">עד שעה: <input type="time" id="toSunday1"> </label>
-            <br>
+          </div>
+          <div class="clear"></div>
+
+          <div class="row col-lg-1 toRight padding0">
             <input type="checkbox" id="Monday" name="Monday" class="regular-checkbox"
               onclick="showFromTo('Monday')"><label for="Monday">שני</label>
-              <label id="fromMonday" class="fromTo">משעה: <input type="time" id="fromMonday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="fromMonday" class="fromTo">משעה: <input type="time" id="fromMonday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
             <label id="toMonday" class="fromTo">עד שעה: <input type="time" id="toMonday1"> </label>
-            <br>
+          </div>
+          <div class="clear"></div>
+          
+          <div class="row col-lg-1 toRight padding0">
             <input type="checkbox" id="Tuesday" name="Tuesday" class="regular-checkbox"
               onclick="showFromTo('Tuesday')"><label for="Tuesday">שלישי</label>
-              <label id="fromTuesday" class="fromTo">משעה: <input type="time" id="fromTuesday1"> </label>
-              <label id="toTuesday" class="fromTo">עד שעה: <input type="time" id="toTuesday1"> </label>
-              <br>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="fromTuesday" class="fromTo">משעה: <input type="time" id="fromTuesday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="toTuesday" class="fromTo">עד שעה: <input type="time" id="toTuesday1"> </label>
+          </div>
+          <div class="clear"></div>
+          
+          <div class="row col-lg-1 toRight padding0">
             <input type="checkbox" id="Wednesday" name="Wednesday" class="regular-checkbox"
               onclick="showFromTo('Wednesday')"><label for="Wednesday">רביעי</label>
-              <label id="fromWednesday" class="fromTo">משעה: <input type="time" id="fromWednesday1"> </label>
-              <label id="toWednesday" class="fromTo">עד שעה: <input type="time" id="toWednesday1"> </label>
-          <br>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="fromWednesday" class="fromTo">משעה: <input type="time" id="fromWednesday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="toWednesday" class="fromTo">עד שעה: <input type="time" id="toWednesday1"> </label>
+          </div>
+          <div class="clear"></div>
 
+          <div class="row col-lg-1 toRight padding0">
             <input type="checkbox" id="Thursday" name="Thursday" class="regular-checkbox"
               onclick="showFromTo('Thursday')"><label for="Thursday">חמישי</label>
-              <label id="fromThursday" class="fromTo">משעה: <input type="time" id="fromThursday1"> </label>
-              <label id="toThursday" class="fromTo">עד שעה: <input type="time" id="toThursday1"> </label>
-              <br>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="fromThursday" class="fromTo">משעה: <input type="time" id="fromThursday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="toThursday" class="fromTo">עד שעה: <input type="time" id="toThursday1"> </label>
+          </div>
+          <div class="clear"></div>
 
+          <div class="row col-lg-1 toRight padding0">
             <input type="checkbox" id="Friday" name="Friday" class="regular-checkbox"
               onclick="showFromTo('Friday')"><label for="Friday">שישי</label>
-              <label id="fromFriday" class="fromTo">משעה: <input type="time" id="fromFriday1"> </label>
-              <label id="toFriday" class="fromTo">עד שעה: <input type="time" id="toFriday1"> </label>
-              <br>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="fromFriday" class="fromTo">משעה: <input type="time" id="fromFriday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="toFriday" class="fromTo">עד שעה: <input type="time" id="toFriday1"> </label>
+          </div>
+          <div class="clear"></div>
 
+          <div class="row col-lg-1 toRight padding0">
             <input type="checkbox" id="Saturday" name="Saturday" class="regular-checkbox"
               onclick="showFromTo('Saturday')"><label for="Saturday">שבת</label>
-              <label id="fromSaturday" class="fromTo">משעה: <input type="time" id="fromSaturday1"> </label>
-              <label id="toSaturday" class="fromTo">עד שעה: <input type="time" id="toSaturday1"> </label>
-              <br>
-          </fieldset>
-        </div>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="fromSaturday" class="fromTo">משעה: <input type="time" id="fromSaturday1"> </label>
+          </div>
+          <div class="row col-lg-2 toRight padding0">
+            <label id="toSaturday" class="fromTo">עד שעה: <input type="time" id="toSaturday1"> </label>
+          </div>
+          <div class="clear"></div>
+        </fieldset>
       </div>
     </section>
 
     <div class="clear"></div>
-   <section class="container-fluid padding">
-  <div class="col-lg-3 toLeft">
-    <button onclick="addDaysAndHours()" class="btn btn-primary text-center sign_up" style="display: flex; justify-content: center;" value="הבא">הבא</button>	
-    <p id="loginError"></p>
-	<p style="text-align: center;"> עמוד 2 מתוך 5 </p>
-	</div>
-  </section>
+
+    <section class="container-fluid padding">
+      <div class="col-lg-3 toLeft">
+        <button onclick="addDaysAndHours()" class="btn btn-primary text-center sign_up"
+          style="display: flex; justify-content: center;" value="הבא">הבא</button>
+        <p id="loginError"></p>
+        <p style="text-align: center;"> עמוד 2 מתוך 5 </p>
+      </div>
+    </section>
 
 
     <div class="clear"></div>
-    
+
   </main>
- 
-  
+
+
   <footer>
     <div class="container-fluid padding">
       <div class="row text-center">
@@ -209,7 +256,7 @@ $(document).ready(function(){
           <hr class="light">
           <h5>שעות פעילות</h5>
           <hr class="light">
-           <p>ראשון - חמישי: 18:00 - 09:00</p>
+          <p>ראשון - חמישי: 18:00 - 09:00</p>
           <p>שישי: 13:00 - 08:00</p>
           <p>שבת - סגור</p>
         </div>
