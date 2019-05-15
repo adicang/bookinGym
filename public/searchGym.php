@@ -84,7 +84,7 @@
     <div class="col-12 text-right toRight">
       <div class="col-lg-2 text-right toRight padding05rem" id="locationField">
         <input class="autoCompleteSearchPage" id="autocomplete"
-          placeholder="הזן כתובת" onFocus="geolocate()" type="text" />
+          placeholder="הזן כתובת" type="text" />
           </div>
           <div class="col-lg-2 text-right toRight padding05rem">
         <button onclick="showDetails()" class="btn btn-primary text-center sign_up width100">מצא לי מועדון כושר</button>

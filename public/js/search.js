@@ -1,5 +1,3 @@
-
-
 window.onload = function () {
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -85,9 +83,27 @@ function showDetails() {
     if (!lng || lng=="undefined") {
         lng = 34.7818;
     }
+    var selector = document.getElementById('radiusKm');
+    var selectedDistance = selector[selector.selectedIndex].value;
+    if(selectedDistance=="1000"){
+        zoomByRadius=15;
+    }
+    else if(selectedDistance=="2000" || selectedDistance=="3000"|| selectedDistance=="4000"){
+        zoomByRadius=14;
+    }
+    else if(selectedDistance=="5000"){
+        zoomByRadius=13;
+    }
+    else if(selectedDistance=="10000"){
+        zoomByRadius=12;
+    }
+    else{
+        zoomByRadius=11;
+    }
+    
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(lat, lng),
-        zoom: 14
+        zoom: zoomByRadius
     });
     var infoWindow = new google.maps.InfoWindow;
 

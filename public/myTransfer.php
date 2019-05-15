@@ -123,8 +123,8 @@
             echo "</div>";
             
 
-            echo '<div class="col-lg-3" style=" float:right;">';
-              echo '<div style="margin:auto; width: 70%;">';
+            echo '<div class="col-lg-2" style=" float:right;">';
+              echo '<div style="margin:auto; width: 100%;">';
                 echo "<img src='images/GymImg/".$row["imgName"]."'  width='80%'>";
               echo "</div>";
             echo "</div>";
@@ -178,8 +178,8 @@
             echo "</div>";
             
 
-            echo '<div class="col-lg-3" style=" float:right;">';
-              echo '<div style="margin:auto; width: 70%;">';
+            echo '<div class="col-lg-2" style=" float:right;">';
+              echo '<div style="margin:auto; width: 100%;">';
                 echo "<img src='images/GymImg/".$row["imgName"]."'  width='80%'>";
               echo "</div>";
             echo "</div>";

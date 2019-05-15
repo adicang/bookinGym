@@ -207,6 +207,8 @@ function preview_logo(event) {
         var url = "url(" + src + ")";
         document.getElementById('insertLogo').style.backgroundImage = url;
         document.getElementById("insertLogo").style.backgroundSize = "200px 200px";
+        document.getElementById("logoTitle").innerHTML = "לחץ להחלפת התמונה";
+        document.getElementById("logoTitle").style.backgroundColor= "white";
     }
     reader.readAsDataURL(event.target.files[0]);
 }

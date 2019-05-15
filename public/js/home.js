@@ -1,3 +1,7 @@
+window.onload = function () {
+    geolocate();
+}
+
 function onClickFindGym (event) {
     var address = document.getElementById('autocomplete').value;
     var lat1= returnLat();

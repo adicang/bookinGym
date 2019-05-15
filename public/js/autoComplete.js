@@ -28,7 +28,6 @@ function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
   lat = place.geometry.location.lat();
-
   long = place.geometry.location.lng();
 
   for (var component in componentForm) {
@@ -72,9 +71,11 @@ function returnLng() {
   return long;
 }
 
-function geocodeLatLng(lat, lng) {
+function geocodeLatLng(lat1, lng1) {
+  lat=lat1;
+  long=lng1;
   var geocoder = new google.maps.Geocoder;
-  var latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+  var latlng = { lat: parseFloat(lat1), lng: parseFloat(lng1) };
   geocoder.geocode({ 'location': latlng }, function (results, status) {
     if (status === 'OK') {
       if (results[0]) {

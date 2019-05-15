@@ -1,8 +1,11 @@
 <?php
 session_start();
   require_once('include/init.php');
-   require_once('./f-init.php');
- 
+   require_once('include/f-config.php');
+   
+   $redirectURL="https://adica.mtacloud.co.il/f-callback.php";
+   $permissions=['email'];
+	$login_url=$helper->getLoginUrl($redirectURL,$permissions);
   ?>
 <html lang="heb" dir="rtl">
 
@@ -104,14 +107,9 @@ session_start();
                             </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" type="button" value="התחבר" onclick='login()'>
-                    
+						<input type="button" onclick="window.location='<?php echo $login_url ?>';" value="התחבר באמצעות פייסבוק" class="btn btn-lg btn-facebook btn-block">
+           
 						
-						<?php if(empty($access_token)): ?>
-						
-						<a href="<?php echo $login_url;?>" class="loginBtn loginBtn--facebook"> Login with facebook</a>
-						
-						
-						<?php endif; ?>
 									</fieldset>
 									
                     </form>

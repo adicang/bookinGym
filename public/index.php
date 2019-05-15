@@ -91,7 +91,7 @@
           <div class="locationFieldHomePage">
             <div class="center">
               <div class="form-group col-lg-6 text-right toRight padding1">
-                <input type="text" class="autocompleteHomePage form-control input-sm textAlignRight" id="autocomplete"  placeholder="הזן כתובת" onFocus="geolocate()"/>
+                <input type="text" class="autocompleteHomePage form-control input-sm textAlignRight" id="autocomplete"  placeholder="הזן כתובת"/>
           </div>
           <div class="form-group col-lg-5 toRight padding1">
                 <a href="#" id="find_gym" onclick="onClickFindGym()" class="btn btn-primary text-center sign_up form-control input-sm " >מצא לי מועדון כושר</a>

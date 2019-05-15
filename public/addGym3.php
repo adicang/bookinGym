@@ -106,7 +106,7 @@
   <section class="container-fluid padding">
   <div class="col-lg-6 toRight text-right">
     <div id="addLogo" >
-        <label for="logoUpload" class="imageUpload" id="insertLogo">לחצו על מנת להעלות את לוגו המועדון*</label>
+        <label for="logoUpload" class="imageUpload" id="insertLogo"><span id="logoTitle">לחצו על מנת להעלות את לוגו המועדון*</span></label>
         <input type="file" name="file_array[]" id="logoUpload" accept="image/*" style="display: none" onchange="preview_logo(event)">
     </div>
 	<u><p style="font-size:13px;">שימו לב שעל הלוגו להיות במידות של 50X50 פיקסלים</p></u>
