@@ -486,7 +486,7 @@ echo '<div class="col-lg-3 text-right toRight" id="parts">';
   <script src="js/animations.js"></script>
 	<script src="js/gymPage.js"></script>
 	<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
+    src="https://maps.googleapis.com/maps/api/js?key=5468B82E5+H98c4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
 
 	
