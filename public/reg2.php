@@ -143,7 +143,7 @@
 
   
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places,geometry&callback=initAutocomplete&language=iw&region=IL"
+    src="https://maps.googleapis.com/maps/api/js?key=,geometry&callback=initAutocomplete&language=iw&region=IL"
     async defer></script>
   
   
