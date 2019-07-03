@@ -233,7 +233,7 @@
   </script>
      <script src="js/home.js"></script>
   <script src='./js/autoComplete.js'></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82EdqJSv80J9--zaL2APp17ybPYlJGc4&libraries=places&callback=initAutocomplete&language=iw&region=IL" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key45648NIJOI&libraries=places&callback=initAutocomplete&language=iw&region=IL" async defer></script>
   
 </body>
 
